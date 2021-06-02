@@ -1,0 +1,595 @@
+---
+layout: structure--pattern
+title: NPEU Layout Patterns
+---
+
+<ul>
+    <li><a href="/patterns/layout/primary-content--main-only">Primary content - main only</a></li>
+    <li><a href="/patterns/layout/primary-content--pull-outs">Primary content - with pull-outs</a></li>
+    <li><a href="/patterns/layout/primary-content--pull-outs--super">Primary content - with pull-outs and super pull-out</a></li>
+    <li><a href="/patterns/layout/primary-content--pull-outs--super-only">Primary content - with super pull-out only</a></li>
+    <li><a href="/patterns/layout/distribute">Distribute</a></li>
+    <li><a href="/patterns/layout/distribute-balance-top">Distribute - Balance Top</a></li>
+    <li><a href="/patterns/layout/distribute-balance-bottom">Distribute - Balance Bottom</a></li>
+    <li><a href="/patterns/layout/gallery-grid">Gallery Grid</a></li>
+</ul>
+
+<hr>
+
+<h2 class="u-padding--sides">A note on Blockrow</h2>
+
+<p class="u-padding--sides">
+Currently, <code>l-blockrow</code> does not apply any styles, so it may seem like a redundant container.
+However, it's value is in it's delimiting effect;
+it makes it clear that the contents of the element where this class is applied is intended to take a full-width of the screen, and never be changed due to responsiveness.
+</p>
+
+
+<h2 class="u-padding--sides">Col to Row</h2>
+
+<div class="l-col-to-row-wrap  u-space--below">
+    <div class="l-col-to-row">
+        <div class="ff-width-100--40--33-333">
+
+            <div class="c-card">
+                <div class="c-card__image">
+                    <div class="l-proportional-container  l-proportional-container--3-1">
+                        <div class="l-proportional-container__content">
+                            <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-1.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-card__main">
+                    <h2 class="c-card__title">Card title</h2>
+                    <div class="c-card__body">
+                        <p>
+                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt lorem sit amet enim.
+                        </p>
+                        <p class="c-card__cta">
+                            <a href="#" class="c-cta c-cta--has-icon">More<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ff-width-100--40--33-333">
+
+            <div class="c-card">
+                <div class="c-card__image">
+                    <div class="l-proportional-container  l-proportional-container--3-1">
+                        <div class="l-proportional-container__content">
+                            <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-2.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-card__main">
+                    <h2 class="c-card__title">Longer card title to test text wrapping</h2>
+                    <div class="c-card__body">
+                        <p>
+                            Pellentesque habitant morbi tristique senectus et netus et malesuada.
+                        </p>
+                        <p class="c-card__cta">
+                            <a href="#" class="c-cta c-cta--has-icon">More<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ff-width-100--40--33-333">
+
+            <div class="c-card">
+                <div class="c-card__image">
+                    <div class="l-proportional-container  l-proportional-container--3-1">
+                        <div class="l-proportional-container__content">
+                            <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-3.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-card__main">
+                    <h2 class="c-card__title">Card title</h2>
+                    <div class="c-card__body">
+                        <p>
+                            Pellentesque tincidunt lorem sit amet enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt lorem sit amet enim.
+                        </p>
+                        <p class="c-card__cta">
+                            <a href="#" class="c-cta c-cta--has-icon">More<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<h3 class="u-padding--sides">Col to Row (gutter)</h3>
+
+<p class="u-padding--sides">Also demonstrates cards with only Title and Footer.</p>
+
+<div class="l-col-to-row  l-col-to-row--gutter--m  u-space--below" style="background-color: #8e8279;">
+    <div class="ff-width-100--40--33-333">
+
+        <div class="c-card">
+            <div class="c-card__image">
+                <div class="l-proportional-container  l-proportional-container--3-1">
+                    <div class="l-proportional-container__content">
+                        <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-1.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c-card__main">
+                <h2 class="c-card__title">Card title</h2>
+                <div class="c-card__footer">
+                    <p class="c-card__info  u-text-group  u-text-group--wide-space">
+                        <span class="u-text-group"><span>Published on: </span><span>18 June 2018 10:11</span></span>
+                        <span class="u-text-group"><span>Published in: </span><span>Quite a long category name to test wrapping</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ff-width-100--40--33-333">
+
+        <div class="c-card">
+            <div class="c-card__image">
+                <div class="l-proportional-container  l-proportional-container--3-1">
+                    <div class="l-proportional-container__content">
+                        <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-2.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c-card__main">
+                <h2 class="c-card__title">Longer card title to test text wrapping</h2>
+                <div class="c-card__footer">
+                    <p class="c-card__info  u-text-group  u-text-group--wide-space">
+                        <span class="u-text-group"><span>Published on: </span><span>18 June 2018 10:11</span></span>
+                        <span class="u-text-group"><span>Published in: </span><span>Quite a long category name to test wrapping</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ff-width-100--40--33-333">
+
+        <div class="c-card">
+            <div class="c-card__image">
+                <div class="l-proportional-container  l-proportional-container--3-1">
+                    <div class="l-proportional-container__content">
+                        <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-3.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c-card__main">
+                <h2 class="c-card__title">Card title</h2>
+                <div class="c-card__footer">
+                    <p class="c-card__info  u-text-group  u-text-group--wide-space">
+                        <span class="u-text-group"><span>Published on: </span><span>18 June 2018 10:11</span></span>
+                        <span class="u-text-group"><span>Published in: </span><span>Category name</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<h3 class="u-padding--sides">Col to Row (gutter flush gutter)</h3>
+
+<p class="u-padding--sides">Also demonstrates cards with Title, Body and Footer.</p>
+
+<div class="l-col-to-row--flush-edge-gutters  u-space--below">
+    <div class="l-col-to-row  l-col-to-row--gutter--m" style="background-color: #8e8279;">
+        <div class="ff-width-100--40--33-333">
+
+            <div class="c-card">
+                <div class="c-card__image">
+                    <div class="l-proportional-container  l-proportional-container--3-1">
+                        <div class="l-proportional-container__content">
+                            <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-1.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-card__main">
+                    <h2 class="c-card__title">Card title</h2>
+                    <div class="c-card__body">
+                        <p>
+                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt lorem sit amet enim.
+                        </p>
+                        <p class="c-card__cta">
+                            <a href="#" class="c-cta c-cta--has-icon">More<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a>
+                        </p>
+                    </div>
+                    <div class="c-card__footer">
+                        <p class="c-card__info  u-text-group  u-text-group--wide-space">
+                            <span class="u-text-group"><span>Published on: </span><span>18 June 2018 10:11</span></span>
+                            <span class="u-text-group"><span>Published in: </span><span>Quite a long category name to test wrapping</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ff-width-100--40--33-333">
+
+            <div class="c-card">
+                <div class="c-card__image">
+                    <div class="l-proportional-container  l-proportional-container--3-1">
+                        <div class="l-proportional-container__content">
+                            <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-2.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-card__main">
+                    <h2 class="c-card__title">Longer card title to test text wrapping</h2>
+                    <div class="c-card__body">
+                        <p>
+                            Pellentesque habitant morbi tristique senectus et netus et malesuada.
+                        </p>
+                        <p class="c-card__cta">
+                            <a href="#" class="c-cta c-cta--has-icon">More<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a>
+                        </p>
+                    </div>
+                    <div class="c-card__footer">
+                        <p class="c-card__info  u-text-group  u-text-group--wide-space">
+                            <span class="u-text-group"><span>Published on: </span><span>18 June 2018 10:11</span></span>
+                            <span class="u-text-group"><span>Published in: </span><span>Quite a long category name to test wrapping</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ff-width-100--40--33-333">
+
+            <div class="c-card">
+                <div class="c-card__image">
+                    <div class="l-proportional-container  l-proportional-container--3-1">
+                        <div class="l-proportional-container__content">
+                            <div class="u-image-cover  js-image-cover">
+                                <div class="u-image-cover__inner">
+                                    <img src="/assets/images/patterns/placeholder-3.jpg" alt="" class="u-image-cover__image" width="200">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-card__main">
+                    <h2 class="c-card__title">Card title</h2>
+                    <div class="c-card__body">
+                        <p>
+                            Pellentesque tincidunt lorem sit amet enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt lorem sit amet enim.
+                        </p>
+                        <p>
+                            Pellentesque habitant morbi tristique senectus et netus et malesuada.
+                        </p>
+                        <p class="c-card__cta">
+                            <a href="#" class="c-cta c-cta--has-icon">More<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a>
+                        </p>
+                    </div>
+                    <div class="c-card__footer">
+                        <p class="c-card__info  u-text-group  u-text-group--wide-space">
+                            <span class="u-text-group"><span>Published on: </span><span>18 June 2018 10:11</span></span>
+                            <span class="u-text-group"><span>Published in: </span><span>Category name</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<h3 class="u-padding--sides">Col to Row (nested)</h3>
+
+<p class="u-padding--sides">Homepage news panel.</p>
+
+<div class="c-panel  c-panel--dark  t-npeu">
+    <div class="l-col-to-row--flush-edge-gutters">
+        <div class="l-col-to-row  l-col-to-row--gutter--m">
+            <div class="ff-width-100--55--50">
+                <div class="u-fill-height">
+                    <article class="c-card  t-npeu">
+                        <div class="c-card__image">
+                            <div class="l-proportional-container  l-proportional-container--2-1">
+                                <div class="l-proportional-container__content">
+                                    <div class="u-image-cover  js-image-cover">
+                                        <div class="u-image-cover__inner">
+                                            <img src="/assets/images/patterns/placeholder-2.jpg" alt="" class="u-image-cover__image" width="200">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-card__main">
+                            <h2 class="c-card__title">
+                                <a href="/news/2107-european-requirements-for-training-in-neonatology">European Requirements for Training in Neonatology</a>
+                            </h2>
+                            <div class="c-card__body">
+                                <p>
+                                    <a href="https://www.uems.eu/__data/assets/pdf_file/0018/134109/UEMS-2021.18-European-Training-Requirements-in-Neonatology.pdf" rel="external">The European Training Requirements in Neonatology</a> (ETR Neonatology) represent a curriculum that has been developed to support national training programmes in Neonatal Medicine and is one of the Paediatric Specialist training programmes, defined by the <a href="http://www.uems.eu/" rel="external">Union Européenne des Medicins Specialistes</a> (UEMS) through the <a href="https://www.eapaediatrics.eu/about-ebp/" rel="external">European Board of Paediatrics</a> (EBP).
+                                </p>
+
+                                <p>
+                                    Work on the ETR was led by NPEU's Clinical Director of CTU, <a href="https://dev.npeu.ox.ac.uk/about/people/charles-roehr-934">Prof Charles C Roehr</a>, a neonatologist and the current President of the <a href="https://www.espr.eu/" rel="external">European Society for Paediatric Research</a> (ESPR). The document has the objective to define the minimum requirements for training in Neonatology by adapting it to modern-day, clinical work patterns and administrative realities. It strives to make the up-to-date process of training in Neonatology (following the core-training in Paediatrics) transparent, while facilitating the incorporation of high-quality national training programmes that were not easily reconciled with the modular system of the ETR Neonatology.
+                                </p>
+
+                                <p class="u-text-align--right">
+                                    <a href="/news/2107-european-requirements-for-training-in-neonatology" class="c-cta  c-cta--has-icon">Read more<span hidden="" aria-hidden="false"> about European Requirements for Training in Neonatology</span><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a>
+                                </p>
+                            </div>
+                            <div class="c-card__footer">
+                                <p>
+                                    28 Apr 2021
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="ff-width-100--55--50">
+                <div class="l-distribute--flush-edge-gutters  u-fill-height">
+                    <div class="l-distribute  l-distribute--balance-top  l-distribute--gutter--m  l-distribute--basis-25">
+                        <div>
+                            <div class="u-fill-height">
+                                <article class="c-card  t-npeu">
+                                    <a href="/news/2097-pregnant-women-are-not-more-at-risk-of-severe-covid-19-but-their-care-in-hospital-could-be-improved" class="c-card__full-link  t-npeu  u-fill-height--column">
+                                        <div class="c-card__image">
+                                            <div class="l-proportional-container  l-proportional-container--2-1">
+                                                    <div class="l-proportional-container__content">
+                                                        <div class="u-image-cover  js-image-cover">
+                                                            <div class="u-image-cover__inner">
+                                                                <img src="/assets/images/patterns/placeholder-1.jpg" alt="" class="u-image-cover__image" width="200">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="c-card__main">
+                                            <h2 class="c-card__title">
+                                                Pregnant women are not more at risk of severe COVID-19, but their care in hospital could be improved
+                                            </h2>
+                                            <div class="c-card__footer">
+                                                <p>
+                                                    12 Apr 2021
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="u-fill-height">
+                                <article class="c-card  t-npeu">
+                                    <a href="/news/2096-professor-marian-knight-has-appeared-in-channel-4-s-dispatches" class="c-card__full-link  t-npeu  u-fill-height--column">
+                                        <div class="c-card__image">
+                                            <div class="l-proportional-container  l-proportional-container--2-1">
+                                                <div class="l-proportional-container__content">
+                                                    <div class="u-image-cover  js-image-cover">
+                                                        <div class="u-image-cover__inner">
+                                                            <img src="/assets/images/patterns/placeholder-3.jpg" alt="" class="u-image-cover__image" width="200">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="c-card__main">
+                                            <h2 class="c-card__title">
+                                                Professor Marian Knight has appeared in Channel 4's Dispatches
+                                            </h2>
+                                            <div class="c-card__footer">
+                                                <p>
+                                                    31 Mar 2021
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="u-fill-height">
+                                <article class="c-card  t-npeu">
+                                    <a href="/news/2095-the-baby-oscar-trial-have-published-their-study-protocol" class="c-card__full-link  t-npeu  u-fill-height--column">
+                                        <div class="c-card__main">
+                                            <h2 class="c-card__title">
+                                                The Baby-Oscar trial have published their study protocol
+                                            </h2>
+                                            <div class="c-card__footer">
+                                                <p>
+                                                    02 Mar 2021
+                                                </p>
+                                            </div>             
+                                        </div>
+                                    </a>
+                                </article>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="u-fill-height">
+                                <article class="c-card  t-npeu">
+                                    <a href="/news/2092-npeu-is-launching-a-new-clinical-trial-toast" class="c-card__full-link  t-npeu  u-fill-height--column">
+                                        <div class="c-card__main">
+                                            <h2 class="c-card__title">
+                                                TOAST clinical trial for babies born with the birth defect oeasophageal atresia
+                                            </h2>
+                                            <div class="c-card__footer">
+                                                <p>
+                                                    01 Mar 2021
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<hr>
+<h2 class="u-padding--sides  d-background  t-white">Primary Content</h2>
+<p class="u-padding--sides">
+This pattern should only really be used once per page, where the primary content of the page is text (like an article) as opposed to being composed of different blocks where it's harder to establish and single primary focus.
+</p>
+
+<div class="l-primary-content  l-primary-content--has-pull-outs  d-background  t-white  u-space--below">
+
+    <div class="l-primary-content__header">
+        <h1 style="border-bottom: 1px solid #aaa;">Main heading</h1>
+        <p>- By line (or whatever)</p>
+    </div>
+
+    <div class="l-primary-content__pull-out  l-primary-content__pull-out--super  u-space--below">
+        <div class="l-primary-content__pull-out__padded--@small">
+            <a href="/elfin" class="c-badge  c-badge--limit-height  u-fill-width">
+                <img src="/assets/images/brand-logos/unit/elfin-logo.svg" onerror="this.src='/img/brand-logos/unit/elfin-logo.png'; this.onerror=null;" alt="Elfin Logo Badge" height="80">
+            </a>
+        </div>
+    </div>
+
+    <div class="l-primary-content__pull-out  l-primary-content__pull-out--top" style="background-color: #eee;">
+        <div class="l-primary-content__pull-out__padded--@small">
+            <h2>Side bar - top section</h2>
+
+             <p>
+                This area includes padding @small screen widths. We want to apply this on a
+                case-by-case basis as there are plenty of pull-outs that don't need padding at this
+                width and should snap to full-width.
+            </p>
+        </div>
+    </div>
+
+    <div class="l-primary-content__main">
+
+        <p>
+            Suspendisse pellentesque, elit et laoreet gravida, nunc arcu eleifend sem, luctus pellentesque diam lorem quis justo. Curabitur id ex id tellus viverra cursus. In faucibus et nunc ut egestas. Suspendisse accumsan mi id maximus gravida. Donec vitae nunc ex. Quisque gravida ultricies sapien viverra tristique. Ut vitae libero viverra, faucibus dolor semper, dignissim lectus.
+        </p>
+
+        <p>
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt lorem sit amet enim congue, non molestie arcu aliquam. Vestibulum sagittis feugiat vulputate. Sed pharetra aliquam diam, eu euismod quam ullamcorper in. Sed a tempor tellus. Suspendisse in tellus hendrerit, aliquam ipsum nec, faucibus neque. Fusce a neque urna.
+        </p>
+
+        <p>
+            Maecenas vehicula, felis a tincidunt ultrices, ante velit aliquet lectus, sed sollicitudin libero tellus at elit. Fusce eget quam et tortor gravida hendrerit. In urna libero, vulputate sit amet mauris eget, efficitur luctus tortor.
+        </p>
+
+
+        <h2>Main - bottom section</h2>
+
+        <p>
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt lorem sit amet enim congue, non molestie arcu aliquam. Vestibulum sagittis feugiat vulputate. Sed pharetra aliquam diam, eu euismod quam ullamcorper in. Sed a tempor tellus. Suspendisse in tellus hendrerit, aliquam ipsum nec, faucibus neque. Fusce a neque urna.
+        </p>
+
+        <p>
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt lorem sit amet enim congue, non molestie arcu aliquam. Vestibulum sagittis feugiat vulputate. Sed pharetra aliquam diam, eu euismod quam ullamcorper in. Sed a tempor tellus. Suspendisse in tellus hendrerit, aliquam ipsum nec, faucibus neque. Fusce a neque urna.
+        </p>
+
+        <p>
+            Maecenas vehicula, felis a tincidunt ultrices, ante velit aliquet lectus, sed sollicitudin libero tellus at elit. Fusce eget quam et tortor gravida hendrerit. In urna libero, vulputate sit amet mauris eget, efficitur luctus tortor.
+        </p>
+
+    </div>
+
+    <div class="l-primary-content__pull-out  l-primary-content__pull-out--bottom" style="background-color: #eee;">
+        <h2>Side bar - bottom section</h2>
+        <p>
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque tincidunt lorem sit amet enim congue, non molestie arcu aliquam. Vestibulum sagittis feugiat vulputate. Sed pharetra aliquam diam, eu euismod quam ullamcorper in. Sed a tempor tellus. Suspendisse in tellus hendrerit, aliquam ipsum nec, faucibus neque. Fusce a neque urna.
+        </p>
+
+        <p>
+            Maecenas vehicula, felis a tincidunt ultrices, ante velit aliquet lectus, sed sollicitudin libero tellus at elit. Fusce eget quam et tortor gravida hendrerit. In urna libero, vulputate sit amet mauris eget, efficitur luctus tortor.
+        </p>
+
+    </div>
+
+</div>
+
+<hr>
+<h2 class="u-padding--sides">Proportional Container</h2>
+
+<p class="u-padding--sides">Note - default proportions are:</p>
+<ul class="u-padding--sides">
+    <li>1-1</li>
+    <li>2-1</li>
+    <li>3-1</li>
+    <li>4-1</li>
+    <li>4-3</li>
+    <li>5-1</li>
+    <li>16-9</li>
+</ul>
+
+<p class="u-padding--sides">All proportions are also available at "wide" breakpoint (default 45em).</p>
+
+<h3 class="u-padding--sides">Proportional Container - 3-1</h3>
+
+<div class="l-proportional-container  l-proportional-container--3-1  u-space--below">
+    <div class="l-proportional-container__content">
+        <div class="u-image-cover  js-image-cover">
+            <div class="u-image-cover__inner">
+                <img class="u-image-cover__image" src="/assets/images/patterns/placeholder-1.jpg" width="600" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="u-padding--sides">Proportional Container - 4-3, 3-1 wide</h3>
+
+<div class="l-proportional-container  l-proportional-container--4-3  l-proportional-container--3-1--wide  u-space--below">
+    <div class="l-proportional-container__content">
+        <div class="u-image-cover  js-image-cover">
+            <div class="u-image-cover__inner">
+                <img class="u-image-cover__image" src="/assets/images/patterns/placeholder-2.jpg" width="600" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr>
+<hr>

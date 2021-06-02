@@ -1,0 +1,29 @@
+{% assign total = 389 %}
+{% assign target = 1020 %}
+{% assign r_percent = total | times: 100 | divided_by: target %}
+{% assign meter_threshold = 5 %}
+<div class="c-sign  c-sign--span-all  t-{{ page.project }}--alt">
+                                <a href="/{{ page.project }}/recruitment" class="c-sign__link">
+                                    <span class="c-sign__centered-content">
+                                        <span class="l-col-to-row-wrap">
+                                            <span class="l-col-to-row">
+                                                <span class="l-col-to-row__item  ff-width-100--30--50">
+                                                    <span class="c-sign__text  c-sign__text--large">Recruitment total: {{ total }}</span><br>
+                                                    <span class="c-sign__text  c-sign__text--small">(Target: {{ target }})</span>
+                                                    {% if r_percent > meter_threshold %}
+                                                    <div class="c-meter">
+                                                        <meter min="0" max="{{ target }}" value="{{ total }}">
+                                                            <span style="width: calc(175 / {{ target }} * 100%);">{{ total }} out of {{ target }} recruited.</span>
+                                                        </meter>
+                                                        <div aria-hidden="true" class="c-meter__marker" style="width: calc({{ total }} / {{ target }} * 100%);" data-value="{{ total }}"></div>
+                                                    </div>
+                                                    {% endif %}
+                                                </span>
+                                                <span class="l-col-to-row__item  ff-width-100--30--50  u-padding--sides--xs  l-center">
+                                                    <span class="c-sign__text  c-sign__text">The latest infant was recruited at <b>Princess Anne Hospital, Southampton</b> on <b>13 February 2019</b></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>

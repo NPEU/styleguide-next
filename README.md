@@ -1,2 +1,2 @@
-# styleguide-next
-Next iteration of the NPEU styleguide/
+# styleguide
+NPEU Style Guide and Pattern Library
