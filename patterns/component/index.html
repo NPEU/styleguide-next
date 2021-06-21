@@ -1434,7 +1434,7 @@ Block header with option inline CTA.
 <p class="u-padding--sides">This pattern takes into account a no-js scenario and uses a static image as the default.</p>
 
 <div class="u-padding--s">
-    <div class="c-map  c-map--300" id="test_map" tabindex="0">
+    <div class="c-map  c-map--300" id="test_map" tabindex="0" style="width: 500px; height: 500px; overflow: hidden;">
         <p class="u-text-align--center">
             <img src="https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/-1.21574715729,51.751613839,13,0,0/600x600?access_token=pk.eyJ1IjoiYW5keWtraXJrIiwiYSI6ImNqbGh3a3FnbzA1aDMza204eDJnMmVhMmMifQ.I7diR0BZvQWzn2okKy6qIQ" alt="">
         </p>
@@ -1817,10 +1817,55 @@ leafletMapInitialize(&apos;test_map&apos;, {&quot;lat&quot;:51.75161383900000089
 <h3 class="u-padding--sides">Line of text with links</h3>
 
 <div class="u-padding--sides  u-space--below">
-    <p class="c-utilitext">
-        <a href="/user-profile"><span>Logged in as stargazer (view profile)</span></a> | <a href="/logout"><span>Logout</span></a> | <a href="/administrator"><span>Admin</span></a> | <a href="https://intranet.npeu.ox.ac.uk"><span>Staff Area</span></a> | <a href="#" class="u-padding--right--s"><span>Edit page</span><svg display="none" focusable="false" class="icon  u-space--left--xs" aria-hidden="true"><use xlink:href="#icon-edit"></use></svg></a>
+    <p class="c-utilitext" role="list">
+        <span role="listitem">
+            <a href="/user-profile"><span>Logged in as stargazer (view profile)</span></a>
+        </span>
+        <span data-if-css="hide"> | </span>
+        <span role="listitem">
+            <a href="/logout"><span>Logout</span></a>
+        </span>
+        <span data-if-css="hide"> | </span>
+        <span role="listitem">
+            <a href="/administrator"><span>Admin</span></a>
+        </span>
+        <span data-if-css="hide"> | </span>
+        <span role="listitem">
+            <a href="https://intranet.npeu.ox.ac.uk"><span>Staff Area</span></a>
+        </span>
+        <span data-if-css="hide"> | </span>
+        <span role="listitem">
+            <a href="#" class="u-padding--right--s"><span>Edit page</span> <svg display="none" focusable="false" class="icon  u-space--left--xs" aria-hidden="true"><use xlink:href="#icon-edit"></use></svg></a>
+        </span>
     </p>
 </div>
+
+<p>NOT Utilitext (for comparison)</p>
+
+<div class="u-padding--sides  u-space--below">
+    <p role="list">
+        <span role="listitem">
+            <a href="/user-profile"><span>Logged in as stargazer (view profile)</span></a>
+        </span>
+        <span data-if-css="hide"> | </span>
+        <span role="listitem">
+            <a href="/logout"><span>Logout</span></a>
+        </span>
+        <span data-if-css="hide"> | </span>
+        <span role="listitem">
+            <a href="/administrator"><span>Admin</span></a>
+        </span>
+        <span data-if-css="hide"> | </span>
+        <span role="listitem">
+            <a href="https://intranet.npeu.ox.ac.uk"><span>Staff Area</span></a>
+        </span>
+        <span data-if-css="hide"> | </span>
+        <span role="listitem">
+            <a href="#" class="u-padding--right--s"><span>Edit page</span> <svg display="none" focusable="false" class="icon  u-space--left--xs" aria-hidden="true"><use xlink:href="#icon-edit"></use></svg></a>
+        </span>
+    </p>
+</div>
+
 
 <h3 class="u-padding--sides">List of links</h3>
 

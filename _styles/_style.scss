@@ -2,8 +2,7 @@
 
 // NOTE - Needs an overhaul because of updated StartCSS
 
-
-@import "_settings.scss";
+//@import "_settings.scss";
 /*@import "_core_themes.scss";
 
 $theme-map: ($theme-name: $theme);
@@ -13,10 +12,10 @@ $themes: map-merge($themes, $theme-map);
 $s__base-background-color: #fff;
 $s__main-background-color: #fff;
 
-//$s__procedural-margins: true;
+//$s__use-layout: true;
 $s__use-last-child-margin-zero: true;
-//$s__use-layout: false;
-$s__zero-header-hx-margin: true;
+//$s__procedural-margins: false;
+//$s__zero-header-hx-margin: true;
 $s__space_dl_groups: true;
 
 $s__text_zoom_scales_all: true;
@@ -39,19 +38,20 @@ $s__select-focus-shadow-width: 0.3rem;
 
 $s__textarea-focus-shadow-width: 0.3rem;
 
+$s__figure-scroll: true;
+
+
+
+
+$s__anchor-text-color: inherit;
+$s__anchor-text-color--alt: $s__anchor-text-color;
 
 
 
 
 
 
-
-
-
-
-
-
-
+/*
 //@debug $s__base-ui-color;
 
 $s__html-background-color: darken(map-get(map-get($themes, neutral), primary-color), 20%);
@@ -78,7 +78,7 @@ $s__class-namespace: c-;
 $fs__include_class_bordered: false;
 $fs__include_class_padded:   false;
 $fs__include_class_poem:     false;
-
+*/
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
@@ -88,8 +88,6 @@ $fs__include_class_poem:     false;
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-utilities.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
-
-
 
 
 

@@ -129,21 +129,28 @@ title: NPEU Navigation Patterns
 <hr>
 <h2 class="u-padding--sides" id="breadcrumbs">Breadcrumbs</h2>
 
-<div class="u-padding--sides  u-padding--bottom--xs  u-padding--top--xs  d-background  t-npeu">
+<div class="u-padding--sides  u-padding--bottom--xs  u-padding--top--xs  d-background  t-npeu">    
     <nav aria-label="Breadcrumbs">
-        <dl class="n-breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList">
-            <dt class="n-breadcrumbs__title">You are here: </dt>
-            <dd class="n-breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                <a class="n-breadcrumbs__link" itemprop="item" href="/neoclear?view=bespoke"><span itemprop="name">NeoCLEAR</span></a>
+        <p role="list" class="n-breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+            <span class="n-breadcrumbs__title">You are here: </span>
+            <span role="listitem" class="n-breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a class="n-breadcrumbs__link" itemprop="item" href="#"><span itemprop="name">NeoCLEAR</span></a>
                 <meta itemprop="position" content="1">
-            </dd>
-            <dd class="n-breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                <a class="n-breadcrumbs__link" itemprop="name"><span>Clinicians</span></a>
+                <span data-if-css="hide"> / </span>
+            </span>
+            <span role="listitem" class="n-breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a class="n-breadcrumbs__link" itemprop="item" href="#"><span itemprop="name">Clinicians</span></a>
                 <meta itemprop="position" content="2">
-            </dd>
-        </dl>
+                <span data-if-css="hide"> / </span>
+            </span>
+            <span role="listitem" class="n-breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                <a class="n-breadcrumbs__link" itemprop="name" aria-current="page"><span>DCFs</span></a>
+                <meta itemprop="position" content="3">
+            </span>
+        </p>
     </nav>
 </div>
+
 
 <hr>
 <h2 class="u-padding--sides" id="links-list">Links list</h2>
@@ -172,15 +179,15 @@ title: NPEU Navigation Patterns
 
 <div class="u-padding--sides  u-space--below">
     <div class="n-pagination">
-        <ul class="n-pagination__list">
-            <li class="n-pagination__item"><span class="n-pagination__link"><span>First</span></span></li>
-            <li class="n-pagination__item"><span class="n-pagination__link"><span>Prev</span></span></li>
-            <li class="n-pagination__item  n-pagination__item--active"><span class="n-pagination__link"><span>1</span></span></li>
-            <li class="n-pagination__item"><a href="#" class="n-pagination__link"><span>2</span></a></li>
-            <li class="n-pagination__item"><a href="#" class="n-pagination__link"><span>3</span></a></li>
-            <li class="n-pagination__item"><a href="#" class="n-pagination__link"><span>Next</span></a></li>
-            <li class="n-pagination__item"><a href="#" class="n-pagination__link"><span>Last</span></a></li>
-        </ul>
+        <p role="list" class="n-pagination__list">
+            <span role="listitem" class="n-pagination__item"><span class="n-pagination__link"><span>First</span></span></span>
+            <span role="listitem" class="n-pagination__item"><span class="n-pagination__link"><span>Prev</span></span></span>
+            <span role="listitem" class="n-pagination__item  n-pagination__item--active"><span class="n-pagination__link"><span>1</span></span></span>
+            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>2</span></a></span>
+            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>3</span></a></span>
+            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>Next</span></a></span>
+            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>Last</span></a></span>
+        </p>
     </div>
 </div>
 
@@ -188,18 +195,18 @@ title: NPEU Navigation Patterns
 
 <div class="u-padding--sides  u-space--below">
     <div class="n-pagination">
-        <ul class="n-pagination__list  n-pagination__list--push-apart">
-            <li class="n-pagination__item">
+        <p role="list" class="n-pagination__list  n-pagination__list--push-apart">
+            <span role="listitem" class="n-pagination__item">
                 <a class="n-pagination__link" aria-label="Newer article: Bradford start recruiting" href="/neoclear/updates/1681-bradford-start-recruiting" rel="prev">
                     <span aria-hidden="true"><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-left"></use></svg>Newer article</span>
                 </a>
-            </li>
-            <li class="n-pagination__item">
+            </span>
+            <span role="listitem" class="n-pagination__item">
                 <a class="n-pagination__link" aria-label="Older article: Congratulations to St. Peter's Hospital, Chertsey" href="/neoclear/updates/1672-congratulations-to-st-peter-s-hospital-chertsey" rel="next">
                     <span aria-hidden="true">Older article<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></span>
                 </a>
-            </li>
-        </ul>
+            </span>
+        </p>
     </div>
 </div>
 
