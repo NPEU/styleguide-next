@@ -275,7 +275,7 @@ html {
   overflow-y: scroll;
   /* 3 */
   color: #333;
-  background-color: #0d2b38;
+  background-color: #1f1727;
   font-size: 0.625em;
   /* 4 */
   -ms-text-size-adjust: 100%;
@@ -365,9 +365,9 @@ body {
   width: 100%;
   min-width: 250px;
   min-height: 100%;
-  max-width: 50em;
-  margin: 0 auto;
-  padding: 2.4rem;
+  max-width: none;
+  margin: 0;
+  padding: 0;
   font-family: "Lato", sans-serif;
   font-size: 1.6em;
   line-height: 2.4rem;
@@ -463,7 +463,7 @@ a[href]:hover, a[href]:active {
 
 a[href]:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
 }
 
 @supports (-moz-appearance: none) {
@@ -640,7 +640,7 @@ button {
   border-width: 0.1rem;
   border-radius: 0.3rem;
   color: #fff;
-  background-color: #247BA0;
+  background-color: #5d4777;
   font-weight: inherit;
   font-style: inherit;
   font-size: inherit;
@@ -668,12 +668,12 @@ button {
 }
 
 button:hover, button:active {
-  background-color: #1b5b76;
+  background-color: #443457;
 }
 
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
 }
 
 button svg {
@@ -734,7 +734,7 @@ caption {
   padding-bottom: 1.2rem;
   padding-left: 1.2rem;
   color: #fff;
-  background-color: rgba(36, 123, 160, 0.7);
+  background-color: rgba(93, 71, 119, 0.7);
   font-weight: bold;
 }
 
@@ -782,7 +782,7 @@ details {
   padding-bottom: 2.4rem;
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #247BA0;
+  border-color: #5d4777;
   padding-top: 2.4rem;
   padding-top: calc(2.4rem - 0.1rem);
   padding-left: 2.4rem;
@@ -883,7 +883,7 @@ fieldset {
   min-width: 0;
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #247BA0;
+  border-color: #5d4777;
   padding-top: 2.4rem;
   padding-top: calc(2.4rem - 0.1rem);
   padding-left: 2.4rem;
@@ -983,7 +983,7 @@ header {
   margin-top: 0;
   border-width: 0;
   border-style: solid;
-  border-color: #247BA0;
+  border-color: #5d4777;
   padding-top: 2.4rem;
   padding-top: calc(2.4rem - 0);
   padding-left: 2.4rem;
@@ -1071,7 +1071,7 @@ hr {
   margin-bottom: 2.4rem;
   border-top: none;
   border-right: none;
-  border-bottom: 0.1rem solid #247BA0;
+  border-bottom: 0.1rem solid #5d4777;
   border-left: none;
 }
 
@@ -1144,7 +1144,7 @@ a img:active, a img:hover {
 */
 a:focus img {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1209,7 +1209,7 @@ input:not([type]):focus,
 [type="time"]:focus,
 [type="url"]:focus,
 [type="week"]:focus {
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
   outline: 0;
 }
 
@@ -1219,7 +1219,7 @@ input:not([type]):focus,
     */
 [type="checkbox"]:focus,
 [type="radio"]:focus {
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
   outline: 0;
 }
 
@@ -1263,7 +1263,7 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
   border-width: 0.1rem;
   border-radius: 0.3rem;
   color: #fff;
-  background-color: #247BA0;
+  background-color: #5d4777;
   font-weight: inherit;
   font-style: inherit;
   font-size: inherit;
@@ -1295,14 +1295,14 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
 [type="reset"]:active,
 [type="submit"]:hover,
 [type="submit"]:active {
-  background-color: #1b5b76;
+  background-color: #443457;
 }
 
 [type="button"]:focus,
 [type="reset"]:focus,
 [type="submit"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
 }
 
 /*
@@ -1342,7 +1342,7 @@ _:-moz-any-link, :root [type="file"] {
 }
 
 _:-ms-input-placeholder, :root [type="file"] {
-  background-color: #247BA0;
+  background-color: #5d4777;
 }
 
 @media screen and (min-width: 0\0) and (min-resolution: 72dpi) {
@@ -1524,7 +1524,7 @@ main {
   /* 1 */
   width: 100%;
   min-height: 100%;
-  padding: 2.4rem;
+  padding: 0;
   margin-bottom: 2.4rem;
   margin-top: 0;
   background-color: #fff;
@@ -1634,7 +1634,7 @@ option {
 }
 
 option:hover {
-  background-color: #a5d6eb;
+  background-color: #c4b6d4;
   color: #333;
 }
 
@@ -1673,7 +1673,7 @@ pre {
   /* 1 */
   margin-bottom: 3.1rem;
   /* 1 */
-  background-color: #e4f3f9;
+  background-color: #ebe6f0;
   /*1 */
   font-size: 1em;
   /* 2 */
@@ -1851,7 +1851,7 @@ _:-moz-tree-row(hover), select:not([multiple]) {
 }
 
 select:focus {
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
   outline: 0;
 }
 
@@ -1987,7 +1987,7 @@ summary {
 }
 
 summary:focus {
-  outline: 0.2rem solid rgba(36, 123, 160, 0.6);
+  outline: 0.2rem solid rgba(93, 71, 119, 0.6);
   outline-offset: 0.2rem;
 }
 
@@ -2079,7 +2079,7 @@ table {
   margin-bottom: calc(2.4rem - 0.1rem);
   /* 2 */
   margin-top: 0;
-  border: 0.1rem solid #247BA0;
+  border: 0.1rem solid #5d4777;
   background-color: transparent;
   border-spacing: 0;
 }
@@ -2102,7 +2102,7 @@ td {
   padding-bottom: calc(1.2rem - 0.1rem);
   /* 2 */
   padding-left: 1.2rem;
-  border: 0.1rem solid #247BA0;
+  border: 0.1rem solid #5d4777;
   background-color: transparent;
 }
 
@@ -2164,7 +2164,7 @@ textarea {
 }
 
 textarea:focus {
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
   outline: 0;
 }
 
@@ -2186,8 +2186,8 @@ th {
   padding-bottom: calc(1.2rem - 0.1rem);
   /* 2 */
   padding-left: 1.2rem;
-  border: 0.1rem solid #247BA0;
-  background-color: rgba(36, 123, 160, 0.3);
+  border: 0.1rem solid #5d4777;
+  background-color: rgba(93, 71, 119, 0.3);
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2254,7 +2254,7 @@ video {
 ::-moz-selection,
 ::selection {
   color: #fff;
-  background-color: #7cc3e1;
+  background-color: #aa96c1;
   text-shadow: none;
 }
 
@@ -2271,34 +2271,34 @@ main :target {
 
 @-moz-keyframes target-fade {
   0% {
-    background-color: rgba(124, 195, 225, 0.4);
-    box-shadow: 0 0 0 1.2rem rgba(124, 195, 225, 0.4);
+    background-color: rgba(170, 150, 193, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0.4);
   }
   100% {
-    background-color: rgba(124, 195, 225, 0);
-    box-shadow: 0 0 0 1.2rem rgba(124, 195, 225, 0);
+    background-color: rgba(170, 150, 193, 0);
+    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0);
   }
 }
 
 @-webkit-keyframes target-fade {
   0% {
-    background-color: rgba(124, 195, 225, 0.4);
-    box-shadow: 0 0 0 1.2rem rgba(124, 195, 225, 0.4);
+    background-color: rgba(170, 150, 193, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0.4);
   }
   100% {
-    background-color: rgba(124, 195, 225, 0);
-    box-shadow: 0 0 0 1.2rem rgba(124, 195, 225, 0);
+    background-color: rgba(170, 150, 193, 0);
+    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0);
   }
 }
 
 @keyframes target-fade {
   0% {
-    background-color: rgba(124, 195, 225, 0.4);
-    box-shadow: 0 0 0 1.2rem rgba(124, 195, 225, 0.4);
+    background-color: rgba(170, 150, 193, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0.4);
   }
   100% {
-    background-color: rgba(124, 195, 225, 0);
-    box-shadow: 0 0 0 1.2rem rgba(124, 195, 225, 0);
+    background-color: rgba(170, 150, 193, 0);
+    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0);
   }
 }
 
@@ -2527,11 +2527,11 @@ a[href].cta {
   padding-bottom: -moz-calc(0);
   padding-bottom: calc(0.3rem - 0.1rem);
   padding-left: 0.6rem;
-  border-color: #247BA0;
+  border-color: #5d4777;
   border-style: solid;
   border-width: 0.1rem;
   border-radius: 0.3rem;
-  color: #247BA0;
+  color: #5d4777;
   background-color: #fff;
   font-weight: inherit;
   font-style: inherit;
@@ -2575,7 +2575,7 @@ a[href].button:hover, a[href].button:active, a[href].button:focus,
 a[href].cta:hover,
 a[href].cta:active,
 a[href].cta:focus {
-  background-color: #e4f3f9;
+  background-color: #ebe6f0;
 }
 
 a[href].button--has-icon,
@@ -2618,7 +2618,7 @@ a[href].cta--has-icon .icon {
   border-width: 0.1rem;
   border-radius: 0.3rem;
   color: #fff;
-  background-color: #247BA0;
+  background-color: #5d4777;
   font-weight: inherit;
   font-style: inherit;
   font-size: inherit;
@@ -2646,12 +2646,12 @@ a[href].cta--has-icon .icon {
 }
 
 .button[data-text][aria-hidden="true"]:hover, .button[data-text][aria-hidden="true"]:active {
-  background-color: #1b5b76;
+  background-color: #443457;
 }
 
 .button[data-text][aria-hidden="true"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(36, 123, 160, 0.5);
+  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
 }
 
 .button[data-text][aria-hidden="true"]::before {
@@ -2661,7 +2661,7 @@ a[href].cta--has-icon .icon {
 .bordered {
   border-width: 6px;
   border-style: solid;
-  border-color: #247BA0;
+  border-color: #5d4777;
   padding-top: 24px;
   padding-top: calc(24px - 6px);
   padding-left: 24px;
@@ -2675,7 +2675,7 @@ a[href].cta--has-icon .icon {
 .padded {
   border-width: 0px;
   border-style: solid;
-  border-color: #247BA0;
+  border-color: #5d4777;
   padding-top: 2.4rem;
   padding-top: calc(2.4rem - 0px);
   padding-left: 2.4rem;
@@ -2803,7 +2803,7 @@ p.subtitle {
 }
 
 .custom-input:focus + .custom-input-label::before {
-  box-shadow: 0 0 0 2px #52b0d8;
+  box-shadow: 0 0 0 2px #9076ae;
   outline: 0;
 }
 
@@ -2831,7 +2831,7 @@ p.subtitle {
 
 /* Define the checkbox :checked state: */
 .custom-input[type="checkbox"]:checked + .custom-input-label::before {
-  background: #247BA0;
+  background: #5d4777;
 }
 
 /* Define the checkbox 'tick': */
@@ -2853,7 +2853,7 @@ p.subtitle {
 /* Define the radio 'dot': */
 .custom-input[type="radio"]:checked + .custom-input-label::before {
   background: #fff;
-  border-color: #247BA0;
+  border-color: #5d4777;
   border-width: 0.25em;
   border-style: solid;
 }
@@ -3216,6 +3216,833 @@ _:-o-prefocus, :root .icon {
     1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
        keeping both for now.
 */
+/* --| Component Patterns |---------------------------------------------------------------------- */
+/*
+
+*/
+.c-badge {
+  /*
+        1. For positioned pseudo elements, e.g. External indicator.
+        2. For IE11
+    */
+  /*
+    &.c-badge--circle {
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &.c-badge--rounded {
+        border-radius: 0.2em;
+        overflow: hidden;
+    }
+    */
+}
+
+.c-badge.c-badge {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  /* [1] */
+  max-width: 100%;
+  /* [2] */
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.c-badge svg {
+  max-width: 100%;
+}
+
+.c-badge img {
+  /*
+                1. This is to provide positioning context for the ::after pseudo-element.
+                2. This is so a broken image is still 100%.
+                3. -- Center in container. -- don't think this is necessary until find example
+                   breaks IE11 so need to overridide it below if keeping.
+            */
+  position: relative;
+  /* [1] */
+  display: block;
+  /* [2] */
+  width: 100%;
+  max-width: 100%;
+  border-style: none;
+  background-color: transparent;
+  /* margin: 0 auto; /* [3] */
+  margin: 0;
+}
+
+.c-badge.c-badge--limit-height img, .c-badge.c-badge--limit-height--8 img {
+  max-height: 8rem;
+}
+
+.c-badge.c-badge--limit-height--4 img {
+  max-height: 4rem;
+}
+
+.c-badge.c-badge--limit-height--6 img {
+  max-height: 6rem;
+}
+
+.c-badge.c-badge--limit-height--10 img {
+  max-height: 10rem;
+}
+
+.c-badge.c-badge--limit-height--12 img {
+  max-height: 12rem;
+}
+
+.c-badge.c-badge--limit-height--m img {
+  max-height: 2.4rem;
+}
+
+.c-badge.c-badge--limit-height--l img {
+  max-height: 4.8rem;
+}
+
+.c-badge.c-badge--limit-height--xl img {
+  max-height: 9.6rem;
+}
+
+.c-badge.c-badge--limit-height--xxl img {
+  max-height: 19.2rem;
+}
+
+.c-badge.c-badge--small {
+  height: 2em;
+  width: 2em;
+}
+
+.c-badge.c-badge--small img {
+  width: 100%;
+  height: 100%;
+}
+
+.c-badge.c-badge--decorated {
+  position: relative;
+  padding: 2.4rem;
+}
+
+.c-badge.c-badge--decorated::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.05;
+  background-color: currentColor;
+}
+
+.c-badge.c-badge--decorated::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-width: 0.3rem;
+  border-style: solid;
+  border-color: currentColor;
+}
+
+.c-badge.c-badge--page-brand img {
+  display: block;
+  margin: 0 auto;
+  max-height: 18rem;
+}
+
+a[href].c-badge:hover, a[href].c-badge:active, a[href].c-badge:focus {
+  border: 0;
+  box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0, 0, 0, 0.2);
+}
+
+a[href].c-badge:hover img, a[href].c-badge:active img, a[href].c-badge:focus img {
+  box-shadow: none;
+}
+
+a[href].c-badge img {
+  border: 0;
+}
+
+a[href][rel~="external"].c-badge::after {
+  display: none;
+}
+
+a[href][rel~="external"].c-badge:hover::after,
+a[href][rel~="external"].c-badge:active::after,
+a[href][rel~="external"].c-badge:focus::after {
+  position: absolute;
+  right: -1em;
+  top: -1em;
+  width: 1.25em;
+  height: 1.25em;
+  display: block;
+  margin: 0;
+}
+
+/*
+    IE10-11
+
+    1. IE11- seems to need this.
+    ... Or, maybe not!?!?! Weird. 03/09/2020 - taken this out.
+    UGGGGH - needs it in the banner badges, but not badge list badges.
+*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .c-badge {
+    /*
+            For some reason flex images size differently in IE11, so we need to multiply these
+            values by 1.666 !!! but only in the header. Footer logos behave properly.
+            I can't figure out what's causing the difference, so scoping to the header for now.
+        */
+    /*.c-page-header__affiliate_logos &.c-badge--limit-height,
+        .c-page-header__affiliate_logos &.c-badge--limit-height--8 {
+            img {
+                max-height: 8rem * 1.666;
+            }
+        }
+
+        .c-page-header__affiliate_logos &.c-badge--limit-height--4 {
+            img {
+                max-height: 4rem * 1.666;
+            }
+        }
+
+        .c-page-header__affiliate_logos &.c-badge--limit-height--6 {
+            img {
+                max-height: 6rem * 1.666;
+            }
+        }
+
+        .c-page-header__affiliate_logos &.c-badge--limit-height--10 {
+            img {
+                max-height: 10rem * 1.666;
+            }
+        }
+
+        .c-page-header__affiliate_logos &.c-badge--limit-height--12 {
+            img {
+                max-height: 12rem * 1.666;
+            }
+        }*/
+  }
+  .c-badge svg {
+    width: 100%;
+  }
+  /*
+        Undo rule set above (commented out currently until I'm sure)
+    */
+  /*a[href].c-badge img {
+        margin: 0;
+    }*/
+}
+
+/*
+    The `height: 100%;` in the `.card` class below allows the card to fill it's container (if inside,
+    say, a list-grid). However, it doesn't work in Safari OSX/iOS.
+    Applying a `card-wrap` class to a list item to make those items flex-containers seems to work
+    OK, but perhaps this would be better abstracted as a `fill-height` class or something?
+
+    Note IE10-11 flexbox for card, main and body causes problems when in other flex contexts.
+    For IE10 I'm just leaving off the -ms prefixes - it's still usable without flex.
+*/
+/*
+$card-cta--border-width: 1px !default;
+$card-cta--border-style: solid !default;
+$card-cta--border-radius: 3px !default;
+*/
+/*
+$card--link-color: false !default;
+$card--link-color--alt: false !default;
+$card--link-has-border-bottom: false !default;
+$card--link-border-bottom: false !default;
+$card--link-border-bottom--alt: false !default;
+
+// If we've specified a link color for the card, but not an alt state (e.g. hover)
+// then generate one
+@if $card--link-color != false and $card--link-color--alt == false {
+    $card--link-color--alt: darken($card--link-color, 10%) !default;;
+}
+
+// If we've specified a link color for the card, and we want bottom borders, generate the borders:
+@if $card--link-color != false and $card--link-has-border-bottom != false {
+    $card--link-border-bottom: 1px solid lighten($card--link-color, 20%) !default;
+    $card--link-border-bottom--alt: 2px solid lighten($card--link-color--alt, 30%) !default;
+}
+*/
+/*
+$card-button--text-color: #fff !default;
+$card-button--background-color: $card--base-color !default;
+$card-button--background-color-alt: lighten($card--base-color, 20%) !default;
+$card-button--border-color: darken($card--base-color, 20%) !default;
+*/
+/*
+    .c-card-wrap .c-card {
+
+        //width: 100%;
+    }
+*/
+/*
+        IE10-11 needs this wrapper to behave properly.
+        If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.   
+    */
+/*.c-card-wrap {
+        & {
+            display: flex;
+            height: 100%;
+        }
+
+        & > .c-card {
+            flex-basis: 100%;
+        }
+    }*/
+/*
+        Older webkit browsers also need special treatment.
+        
+        1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
+           breaks IE11 otherwise, so may as well use for all.
+    */
+/*
+        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+    */
+.c-card.c-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex-grow: 1;
+  margin: 0;
+  color: #333;
+  background-color: #eee;
+  padding: 0;
+  outline: 1px solid #d5d5d5;
+  /*
+                If the 'pull' is > module body content height, it'll protrude below the container,
+                so hide it:
+            */
+  overflow: hidden;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
+}
+
+.c-card > * {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.c-card .c-card__image {
+  position: relative;
+  text-align: center;
+}
+
+.c-card .c-card__image img {
+  width: 100%;
+}
+
+.c-card .c-card__image-link,
+.c-card .c-card__image-link:hover {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.c-card .c-card__full-link {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.c-card .c-card__full-link,
+.c-card .c-card__full-link:hover {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  background: #eee;
+  position: relative;
+  display: block;
+  min-height: 100%;
+}
+
+.c-card .c-card__full-link:hover::before,
+.c-card .c-card__full-link:active::before,
+.c-card .c-card__full-link:focus::before {
+  border: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.2;
+  background: #000;
+  z-index: 1;
+}
+
+.c-card .c-card__main {
+  position: relative;
+  color: #333;
+  background-color: #eee;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 2rem;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.c-card .c-card__title {
+  flex: 0 0 auto;
+  font-size: 3rem;
+  line-height: 1.2;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.c-card .c-card__title a {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.c-card .c-card__title:only-child {
+  margin-bottom: 0;
+}
+
+.c-card.c-card--stub .c-card__title {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.c-card .c-card__body {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c-card .c-card__body > * {
+  flex: 0 0 auto;
+}
+
+.c-card .c-card__body > :last-child {
+  margin-bottom: 0;
+}
+
+.c-card .c-card__cta {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-start;
+}
+
+.c-card .c-card__cta > * {
+  align-self: flex-end;
+}
+
+.c-card .c-card__footer {
+  flex: 0 0 auto;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.c-card .c-card__body + .c-card__footer {
+  margin-top: 1rem;
+}
+
+.c-card .c-card__footer > * {
+  margin: 0;
+}
+
+.c-card .c-card__info {
+  font-size: 1.4rem;
+  margin-bottom: -1rem;
+  margin-top: -1rem;
+  border-top: 1px solid #999;
+  padding-top: calc((1rem - 1px));
+}
+
+.c-card.c-card--themed-content .c-card__main > * {
+  padding-left: 1rem;
+}
+
+.c-card.c-card--themed-content .c-card__main::before {
+  display: block;
+  content: "";
+  width: 0.75rem;
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: #999;
+}
+
+/*
+        Chrome 39-50, Opera 26-37, Safari/iOS 9-10:
+        1. iOS 9-10 collapses box if using height, so using min-height instead.
+    */
+/*
+    @include card-theme(
+        "",
+        (
+            card-text-color       : $primary-cta--text-color,
+            card-background-color : $primary-cta--background-color
+        )
+    );
+    */
+.c-card--unpublished {
+  opacity: 0.5;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.c-card--unpublished::after {
+  content: "Unpublished";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px;
+  font-size: 0.75em;
+  color: #fff;
+  background-color: #000;
+}
+
+/*
+*/
+.c-page-wrap.c-page-wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --| Layout Patterns |------------------------------------------------------------------------- */
+/*
+
+*/
+/*
+    I'm considering using grid for this.
+    It is already necessary for IE11
+*/
+.l-center {
+  /*
+        IE10-11
+
+        1. IE11- seems to need this.
+        ... Or, maybe not!?!?! Weird. 03/09/2020 - taken this out.
+        UGGGGH - needs it in the banner badges, but not badge list badges.
+    */
+  /* NEEDS WORK
+    @media only all and (-ms-high-contrast: none), only all and (-ms-high-contrast: active) {
+
+        &.l-center {
+            display: -ms-grid;
+            -ms-grid-columns: 100%;
+            -ms-grid-rows: 100%;
+        }
+
+        & > * {            
+            -ms-grid-column-align: center;
+            -ms-grid-row-align: center;
+        }
+
+    }
+    */
+}
+
+.l-center.l-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-center > * {
+  flex: 0 1 auto;
+}
+
+/*    Distribute items inside a container.*/
+/*    IE11 needs this wrapper to behave properly.    If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.*.l-distribute-wrap {    display: -ms-flexbox;    display: flex;    width: 100%;    & > .l-distribute {        -webkit-flex-basis: 100%;        -ms-flex-preferred-size: 100%;        flex-basis: 100%;    }}*/
+/*    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.*/
+.l-distribute.l-distribute {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  --s: 0;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
+}
+
+.l-distribute > * {
+  flex: 0 1 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.l-distribute.l-distribute--start {
+  justify-content: flex-start;
+}
+
+.l-distribute.l-distribute--end {
+  justify-content: flex-end;
+}
+
+.l-distribute.l-distribute--limit-10 > * {
+  -webkit-flex-basis: 10em;
+  flex-basis: 7.5em;
+}
+
+.l-distribute.l-distribute--limit-15 > * {
+  -webkit-flex-basis: 15em;
+  flex-basis: 11.25em;
+}
+
+.l-distribute.l-distribute--limit-20 > * {
+  -webkit-flex-basis: 20em;
+  flex-basis: 15em;
+}
+
+.l-distribute.l-distribute--limit-25 > * {
+  -webkit-flex-basis: 25em;
+  flex-basis: 18.75em;
+}
+
+.l-distribute.l-distribute--limit-30 > * {
+  -webkit-flex-basis: 30em;
+  flex-basis: 22.5em;
+}
+
+.l-distribute.l-distribute--limit-35 > * {
+  -webkit-flex-basis: 35em;
+  flex-basis: 26.25em;
+}
+
+.l-distribute.l-distribute--limit-40 > * {
+  -webkit-flex-basis: 40em;
+  flex-basis: 30em;
+}
+
+.l-distribute.l-distribute--gutter--s,
+.l-distribute.l-distribute--gutter--s > * {
+  padding: 0.6rem;
+  --s: 1.2rem;
+}
+
+.l-distribute.l-distribute--gutter,
+.l-distribute.l-distribute--gutter > *, .l-distribute.l-distribute--gutter--m,
+.l-distribute.l-distribute--gutter--m > * {
+  padding: 1.2rem;
+  --s: 2.4rem;
+}
+
+.l-distribute.l-distribute--gutter--l,
+.l-distribute.l-distribute--gutter--l > * {
+  padding: 2.4rem;
+  --s: 4.8rem;
+}
+
+/*            1. This is a hack for IE11, otherwise the container goes as wide as the children in a               row.            2. Note we ONLY want this on the outermost container, so we need to turn off this hack               for the main distribute container.        */
+.l-distribute--flush-edge-gutters {
+  overflow: hidden;
+  flex-basis: 100%;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
+}
+
+.l-distribute--flush-edge-gutters > .l-distribute {
+  width: auto;
+  /* [2] */
+  min-width: none;
+  /* [2] */
+}
+
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--s {
+  margin: -1.2rem;
+}
+
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter,
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--m {
+  margin: -2.4rem;
+}
+
+.l-distribute--flush-edge-gutters .l-distribute.l-distribute--gutter--l {
+  margin: -4.8rem;
+}
+
+.l-distribute.l-distribute--balance-bottom > * {
+  flex-grow: 1;
+}
+
+.l-distribute.l-distribute--basis-15 > * {
+  flex-basis: 15rem;
+  --b: 15rem;
+}
+
+.l-distribute.l-distribute--basis-20 > * {
+  flex-basis: 20rem;
+  --b: 20rem;
+}
+
+.l-distribute.l-distribute--basis-25 > * {
+  flex-basis: 25rem;
+  --b: 25rem;
+}
+
+.l-distribute.l-distribute--basis-30 > * {
+  flex-basis: 30rem;
+  --b: 30rem;
+}
+
+.l-distribute.l-distribute--basis-35 > * {
+  flex-basis: 35rem;
+  --b: 35rem;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .l-distribute > * {
+    flex: 0 0 auto;
+  }
+}
+
+@supports (width: max(1px, 1px)) {
+  .l-distribute {
+    /* 1 or more: */
+    /* 2 or more: */
+    /* 3 or more: - note this should be part of col-to-row*/
+    /*&.l-distribute--balance-top > :nth-last-child(n+3),        &.l-distribute--balance-top > :nth-last-child(n+3) ~ * {            //flex-basis: unquote("max(33%, (var(--bp1) - 100%) * 999)");            flex-basis: unquote("max(33%, ((var(--b) * 3) - 100%) * 999)");        }*/
+    /* 3 or more: */
+    /* 3 or more, different values for the first one: */
+    /* 4 or more: */
+    /*        From here on in there are increasingly more possibilities on how things can be laid out.        More items = more possibilities. I've tried to go for what I consider to be the most balanced option but almost all other possibilities are achievable.        */
+    /* 5 or more: */
+    /* 5 or more, different values for the first two: */
+    /* 5 or more, different values for the first one: */
+    /* 6 or more: */
+    /* 6 or more, different values for the first two: */
+    /*&.l-distribute--balance-top > :nth-last-child(n+6),        &.l-distribute--balance-top > :nth-last-child(n+6) + * {            flex-basis: unquote("min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(50%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999))");        }*/
+    /* 6 or more, different values for the first one: */
+    /*&.l-distribute--balance-top > :nth-last-child(n+6) {            flex-basis: unquote("min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(50%, ((var(--b) * 4) - 100%) * 999), max(100%, ((var(--b) * 5) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999))");        }*/
+    /*            It's worth noting here that things get especially tricky and messy. We've already seen            with 6 we've had to skip some steps, and things like 7 and 11 are quite hard too.            Also with ANY amount, the practicalities of allowing all arrangements up to a single            row become limiting.            If you assume you have items that are quite small - and can therefore fit into a single            row - a small reduction in available width that causes wrapping would leave a very large            item on it's own row. This is the whole reason we want to balance things in the first            place, so that this doesn't happen - we want a reduction in available width that causes            wrapping to lead to MORE items being wrapped and thus creating a better balance.            It's just very hard to know where things SHOULD land.        */
+    /* 7 or more: (1x7 | 1,2x3 | 1,3x2 | 3,4) */
+    /* 7 or more, different values for the second and third: */
+    /* 7 or more, different values for the first one: */
+    /* 8 or more: */
+    /* 9 or more: */
+    /* 9 or more, different values for the first one: */
+    /* 10 or more: */
+    /* 11 or more: */
+    /* 11 or more, different values for the second one: */
+    /* 11 or more, different values for the first one: */
+    /* 11 or more, different values for the next 3 ...: */
+    /*&.l-distribute--balance-top > :nth-last-child(n+11) ~ :nth-child(5),        &.l-distribute--balance-top > :nth-last-child(n+11) ~ :nth-child(5) ~ * {            flex-basis: unquote("max(33%, (var(--bp2) - 100%) * 999)");        }*/
+    /* 11 or more, different values for the last 4 ...: */
+    /*&.l-distribute--balance-top > :nth-last-child(n+11) ~ :nth-child(7),        &.l-distribute--balance-top > :nth-last-child(n+11) ~ :nth-child(7) ~ * {            flex-basis: unquote("max(25%, (var(--bp2) - 100%) * 999)");        }*/
+    /* 12 or more: double class to boost specificity - ugh.*/
+  }
+  .l-distribute.l-distribute--balance-top {
+    --bp1: 90rem;
+    --bp1-2: 110rem;
+    --bp2: 130em;
+  }
+  .l-distribute.l-distribute--balance-top > * {
+    flex-basis: 100%;
+    flex-grow: 1;
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+2),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+2) ~ * {
+    flex-basis: max(50%, ((var(--b) * 2) - 100%) * 999);
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+3),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+3) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+3) {
+    flex-basis: max(33%, ((var(--b) * 3) - 100%) * 999);
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+4),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+4) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5) + * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+5) {
+    flex-basis: min(max(50%, ((var(--b) * 3) - 100%) * 999), max(100%, ((var(--b) * 4) - 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+6),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+6) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7) + *,
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7) + * + * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+7) {
+    flex-basis: min(max(33%, ((var(--b) * 4) - 100%) * 999), max(14%, ((var(--b) * 7) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+8),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+8) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(12%, ((var(--b) * 8) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+9),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+9) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(11%, ((var(--b) * 9) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+9) {
+    flex-basis: min(max(33%, ((var(--b) * 3) - 100%) * 999), max(11%, ((var(--b) * 9) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+10),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+10) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2)- 100%) * 999), max(20%, ((var(--b) * 5) - 100%) * 999), max(10%, ((var(--b) * 10) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11),
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11) + * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
+  }
+  .l-distribute.l-distribute--balance-top > :nth-last-child(n+11) {
+    flex-basis: min(max(50%, ((var(--b) * 3) - 100%) * 999), max(9%, ((var(--b) * 11) - 100%) * 999));
+  }
+  .l-distribute.l-distribute.l-distribute--balance-top > :nth-last-child(n+12),
+  .l-distribute.l-distribute.l-distribute--balance-top > :nth-last-child(n+12) ~ * {
+    flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999), max(8%, ((var(--b) * 12) - 100%) * 999));
+  }
+}
+
 /* ---------------------------------------------------------------------------------------------- */
 /* --| SHAME |----------------------------------------------------------------------------------- */
 .c-utilitext {
@@ -3298,4 +4125,5 @@ a svg:not(:only-child) {
     }
 }
 */
+/* ---------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------- */

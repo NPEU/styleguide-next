@@ -73,6 +73,17 @@
         document.getElementsByTagName('head')[0].appendChild(link);
     }
     </script>
+    <!-- Load IE11 fixes -->
+    <script>
+    if (
+        (!!window.MSInputMethodContext && !!document.documentMode)
+    ) {
+        var script  = document.createElement('script');
+        script.type  = 'text/javascript';
+        script.src = '/js/ie11.min.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+    </script>
 
     {% if head_style != false %}
     <style>
@@ -80,6 +91,11 @@
     
     details {
         margin-top: 1em;
+    }
+    
+    h1 {
+        word-break: break-all;
+        -ms-word-break: break-all;
     }
     
     .u-padding--s {
@@ -141,6 +157,7 @@
         link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     }
+    
     </script>
     <style>
         /* Override hljs styles to reset to StartCSS: */

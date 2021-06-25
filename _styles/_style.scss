@@ -12,10 +12,25 @@ $themes: map-merge($themes, $theme-map);
 $s__base-background-color: #fff;
 $s__main-background-color: #fff;
 
+$s__base-ui-color: map-get($theme, primary-color);
+
 //$s__use-layout: true;
 $s__use-last-child-margin-zero: true;
 //$s__procedural-margins: false;
 //$s__zero-header-hx-margin: true;
+
+$s__body-padding: 0;
+$s__body-max-width: 0;
+
+$max-main-line-length: 0;
+$s__measure: 42em;
+$not-too-small: 18em;
+
+
+$s__main-max-line-length: 0;
+$s__main-padding: 0;
+
+
 $s__space_dl_groups: true;
 
 $s__text_zoom_scales_all: true;
@@ -88,6 +103,39 @@ $fs__include_class_poem:     false;
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-utilities.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
+
+
+
+
+
+/* --| Component Patterns |---------------------------------------------------------------------- */
+
+@import "component-patterns/_badge.scss";
+
+@import "component-patterns/_card.scss";
+
+@import "component-patterns/_page-wrap.scss";
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+
+/* --| Layout Patterns |------------------------------------------------------------------------- */
+
+@import "layout-patterns/_center.scss";
+
+$distribute-spacing-unit: $s__base-rem-space-unit;
+@import "layout-patterns/_distribute.scss";
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+
+/* --| SHAME |----------------------------------------------------------------------------------- */
+
+@import "_shame";
+
+/* ---------------------------------------------------------------------------------------------- */
 
 
 
