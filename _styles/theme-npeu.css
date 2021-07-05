@@ -4043,6 +4043,1136 @@ $card-button--border-color: darken($card--base-color, 20%) !default;
   }
 }
 
+/*
+    Col to Row
+    (Single column to single row)
+
+    The purpose of this pattern is to exhibit the following behaviour:
+
+    * Self contained layout (no media queries so is context independent. Uses Fab Four width for
+      a single breakpoint)
+
+    * Below content breakpoint, there's a single column.
+        [Optional: max-width for content, centered] - the reason for this is that for there to be
+        enough space to adequately display the contents in a row the breakpoint would generally be
+        quite wide - this may be too wide for a single item, so we need the option to restrict it's
+        width.
+
+    * Above content breakpoint, there's a single row. Each item needs to be of adequate width.
+
+    * [Optional: gutter and bottom spacing]
+    
+    After much messing around with IE, the solution is to have an extra wrapper with `display: flex`
+    and `flex-basis: 100%` on the inner wrapper.
+
+*/
+/*
+@mixin col-to-row-size ($width, $breakpoint) {
+
+    .col-to-row
+}
+*/
+/*
+    IE11 needs this wrapper to behave properly.
+    If you're not supporting IE11, you don't need this CSS or the HTML that goes with it.
+*/
+/*
+.l-col-to-row-wrap {
+    display: --webkit-flex;
+    display: -ms-flexbox;
+    display: flex; 
+    
+    width: 100%;
+    
+    & > .l-col-to-row {
+        -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%; 
+    }
+}
+*/
+.l-col-to-row {
+  /*
+        Older webkit browsers also need special treatment.
+        
+        1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
+           breaks IE11 otherwise, so may as well use for all.
+    */
+}
+
+.l-col-to-row.l-col-to-row {
+  /*
+            1. IE11 needs this to calculate widths properly.
+            2. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+        */
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  position: relative;
+  /* [1] */
+  width: 0;
+  /* [2] */
+  min-width: 100%;
+  /* [2] */
+}
+
+.l-col-to-row > * {
+  margin: 0;
+  padding: 0;
+  flex: 1 1 auto;
+  display: inline-block;
+}
+
+_:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
+  display: flex;
+  /* [1] */
+  flex-direction: column;
+}
+
+.l-col-to-row.l-col-to-row--reversed {
+  flex-direction: row-reverse;
+}
+
+.l-col-to-row.l-col-to-row--gutter--s {
+  padding-top: 1.2rem;
+}
+
+.l-col-to-row.l-col-to-row--gutter--s,
+.l-col-to-row.l-col-to-row--gutter--s > * {
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+}
+
+.l-col-to-row.l-col-to-row--gutter--s > * {
+  padding-bottom: 1.2rem;
+}
+
+.l-col-to-row.l-col-to-row--gutter, .l-col-to-row.l-col-to-row--gutter--m {
+  padding-top: 2.4rem;
+}
+
+.l-col-to-row.l-col-to-row--gutter,
+.l-col-to-row.l-col-to-row--gutter > *, .l-col-to-row.l-col-to-row--gutter--m,
+.l-col-to-row.l-col-to-row--gutter--m > * {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+.l-col-to-row.l-col-to-row--gutter > *,
+.l-col-to-row.l-col-to-row--gutter--m > * {
+  padding-bottom: 2.4rem;
+}
+
+.l-col-to-row.l-col-to-row--gutter--l {
+  padding-top: 4.8rem;
+}
+
+.l-col-to-row.l-col-to-row--gutter--l,
+.l-col-to-row.l-col-to-row--gutter--l > * {
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+}
+
+.l-col-to-row.l-col-to-row--gutter--l > * {
+  padding-bottom: 4.8rem;
+}
+
+/*
+            1. This is a hack for IE11, otherwise the container goes as wide as the children in a
+               row.
+            2. Note we ONLY want this on the outermost container, so we need to turn off this hack
+               for the main distribute container.
+        */
+.l-col-to-row--flush-edge-gutters {
+  overflow: hidden;
+  flex-basis: 100%;
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
+}
+
+.l-col-to-row--flush-edge-gutters > .l-col-to-row {
+  width: auto;
+  /* [2] */
+  min-width: none;
+  /* [2] */
+}
+
+.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--s {
+  margin: -1.2rem;
+}
+
+.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter,
+.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--m {
+  margin: -2.4rem;
+}
+
+.l-col-to-row--flush-edge-gutters .l-col-to-row.l-col-to-row--gutter--l {
+  margin: -4.8rem;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --| Special Patterns |------------------------------------------------------------------------ */
+/*
+    Fab Four Widths
+
+    https://medium.freecodecamp.com/the-fab-four-technique-to-create-responsive-emails-without-media-queries-baf11fdfa848#.dtpllw1lf
+    https://www.sitepoint.com/responsive-css-patterns-without-media-queries/
+
+*/
+.ff-width-100--10--20 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--10--25 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--10--33-333 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--10--40 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--10--50 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--10--60 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--10--66-666 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--10--75 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--10--80 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--15--20 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--15--25 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--15--33-333 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--15--40 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--15--50 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--15--60 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--15--66-666 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--15--75 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--15--80 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--20--20 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--20--25 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--20--33-333 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--20--40 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--20--50 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--20--60 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--20--66-666 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--20--75 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--20--80 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--25--20 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--25--25 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--25--33-333 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--25--40 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--25--50 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--25--60 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--25--66-666 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--25--75 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--25--80 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--30--20 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--30--25 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--30--33-333 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--30--40 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--30--50 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--30--60 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--30--66-666 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--30--75 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--30--80 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--35--20 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--35--25 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--35--33-333 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--35--40 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--35--50 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--35--60 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--35--66-666 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--35--75 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--35--80 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--40--20 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--40--25 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--40--33-333 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--40--40 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--40--50 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--40--60 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--40--66-666 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--40--75 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--40--80 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--45--20 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--45--25 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--45--33-333 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--45--40 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--45--50 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--45--60 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--45--66-666 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--45--75 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--45--80 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--50--20 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--50--25 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--50--33-333 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--50--40 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--50--50 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--50--60 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--50--66-666 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--50--75 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--50--80 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--55--20 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--55--25 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--55--33-333 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--55--40 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--55--50 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--55--60 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--55--66-666 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--55--75 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--55--80 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--60--20 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--60--25 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--60--33-333 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--60--40 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--60--50 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--60--60 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--60--66-666 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--60--75 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--60--80 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--65--20 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--65--25 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--65--33-333 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--65--40 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--65--50 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--65--60 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--65--66-666 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--65--75 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--65--80 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--70--20 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--70--25 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--70--33-333 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--70--40 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--70--50 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--70--60 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--70--66-666 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--70--75 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--70--80 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--75--20 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--75--25 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--75--33-333 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--75--40 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--75--50 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--75--60 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--75--66-666 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--75--75 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--75--80 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 80%;
+}
+
+.ff-width-100--80--20 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 20%;
+}
+
+.ff-width-100--80--25 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 25%;
+}
+
+.ff-width-100--80--33-333 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 33.333%;
+}
+
+.ff-width-100--80--40 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 40%;
+}
+
+.ff-width-100--80--50 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 50%;
+}
+
+.ff-width-100--80--60 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 60%;
+}
+
+.ff-width-100--80--66-666 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 66.666%;
+}
+
+.ff-width-100--80--75 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 75%;
+}
+
+.ff-width-100--80--80 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 80%;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --| Utility Patterns |------------------------------------------------------------------------ */
+/*
+    Fill and area with an image.
+*/
+/*
+.u- {
+    margin-left: $sz-s !important;
+}
+*/
+/* Make the image fill the width and be vertically centered: */
+/* (in portrait images this will leave gaps at the sides) */
+/*.u-image-cover {
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}*/
+/*
+    ! NOTE: test this in all non-object-fit-supporting browsers as it may be a fix for those too.
+
+    This only works for landscape containers. If it's portrait it breaks unless the width and
+    // translate are inverted, and that can't be detected if size changes.
+    Will be replying on JS to check for change to portrait and apply portrait class.
+*/
+.u-image-cover {
+  /*
+        &.u-image-cover--min-10 {
+           min-height: 10vmin;
+        }
+
+        &.u-image-cover--min-20 {
+            min-height: 20vmin;
+        }
+
+        &.u-image-cover--min-30 {
+            min-height: 30vmin;
+        }
+
+        &.u-image-cover--min-40 {
+            min-height: 40vmin;
+        }
+
+        &.u-image-cover--min-50 {
+            min-height: 50vmin;
+        }
+        */
+}
+
+.u-image-cover.u-image-cover {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+.u-image-cover .u-image-cover__inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.u-image-cover .u-image-cover__image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  max-width: none;
+  max-height: none;
+}
+
+/* If `object-fit` is supported, use that and override vertical centering: */
+@supports (object-fit: cover) {
+  .u-image-cover .u-image-cover__inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .u-image-cover .u-image-cover__image {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.u-image-cover {
+  min-height: 100%;
+}
+
+.u-image-cover.u-image-cover--min-10 {
+  min-height: 10vh;
+}
+
+.u-image-cover.u-image-cover--min-20 {
+  min-height: 20vh;
+}
+
+.u-image-cover.u-image-cover--min-30 {
+  min-height: 30vh;
+}
+
+.u-image-cover.u-image-cover--min-40 {
+  min-height: 40vh;
+}
+
+.u-image-cover.u-image-cover--min-50 {
+  min-height: 50vh;
+}
+
+/*@media (max-width: $s__breakpoint--enhanced) {
+    .u-image-cover {
+       
+        &--min-10 {
+           min-height: 10vmin;
+        }
+
+        &--min-20 {
+            min-height: 20vmin;
+        }
+
+        &--min-30 {
+            min-height: 30vmin;
+        }
+
+        &--min-40 {
+            min-height: 40vmin;
+        }
+
+        &--min-50 {
+            min-height: 50vmin;
+        }
+    }
+}---*/
 /* ---------------------------------------------------------------------------------------------- */
 /* --| SHAME |----------------------------------------------------------------------------------- */
 .c-utilitext {

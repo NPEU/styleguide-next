@@ -124,8 +124,61 @@ $fs__include_class_poem:     false;
 
 @import "layout-patterns/_center.scss";
 
+
 $distribute-spacing-unit: $s__base-rem-space-unit;
 @import "layout-patterns/_distribute.scss";
+
+
+$col-to-row-spacing-unit: $s__base-rem-space-unit;
+@import "layout-patterns/_col-to-row.scss";
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+
+/* --| Special Patterns |------------------------------------------------------------------------ */
+// Special patterns are intended to be utility patterns that work in isolation from anything else,
+// and/or do not share the u- prefix naming convention.
+
+$ff-breakpoints: (
+    10em,
+    15em,
+    20em,
+    25em,
+    30em,
+    35em,
+    40em,
+    45em,
+    50em,
+    55em,
+    60em,
+    65em,
+    70em,
+    75em,
+    80em
+);
+
+$ff-min-widths: (
+    20%,
+    25%,
+    33.333%,
+    40%,
+    50%,
+    60%,
+    66.666%,
+    75%,
+    80%
+);
+
+@import "special-patterns/_ff-widths.scss";
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+
+/* --| Utility Patterns |------------------------------------------------------------------------ */
+
+@import "utility-patterns/_image-cover.scss";
 
 /* ---------------------------------------------------------------------------------------------- */
 
