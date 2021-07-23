@@ -3,21 +3,26 @@
 // NOTE - Needs an overhaul because of updated StartCSS
 
 //@import "_settings.scss";
-/*@import "_core_themes.scss";
 
-$theme-map: ($theme-name: $theme);
-$themes: map-merge($themes, $theme-map);
-*/
 
-$s__base-background-color: #fff;
-$s__main-background-color: #fff;
+//$theme-map: ($theme-name: $theme);
+//$themes: map-merge($themes, $theme-map);
+/**/
 
 $s__base-ui-color: map-get($theme, primary-color);
 
-//$s__use-layout: true;
-$s__use-last-child-margin-zero: true;
+$s__base-text-color: #111;
+/**/
 //$s__procedural-margins: false;
-//$s__zero-header-hx-margin: true;
+$s__use-last-child-margin-zero: true;
+/**/
+//$s__use-layout: false;
+//$s__zero-header-hx-margin: false;
+//$s__space_dl_groups: false;
+//$s__text_zoom_scales_all: false;
+//$s__figure-scroll: false;
+/**/
+
 
 $s__body-padding: 0;
 $s__body-max-width: 0;
@@ -25,6 +30,8 @@ $s__body-max-width: 0;
 $max-main-line-length: 0;
 $s__measure: 42em;
 $not-too-small: 18em;
+
+
 
 
 $s__main-max-line-length: 0;
@@ -105,14 +112,16 @@ $fs__include_class_poem:     false;
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
 
 
+/* --| THEME |----------------------------------------------------------------------------------- */
 
+@import "_theme.scss";
 
 
 /* --| Component Patterns |---------------------------------------------------------------------- */
 
-@import "component-patterns/_badge.scss";
+//@import "component-patterns/_badge.scss";
 
-@import "component-patterns/_card.scss";
+//@import "component-patterns/_card.scss";
 
 @import "component-patterns/_page-wrap.scss";
 
@@ -178,7 +187,7 @@ $ff-min-widths: (
 
 /* --| Utility Patterns |------------------------------------------------------------------------ */
 
-@import "utility-patterns/_image-cover.scss";
+//@import "utility-patterns/_image-cover.scss";
 
 /* ---------------------------------------------------------------------------------------------- */
 

@@ -1,11 +1,10 @@
 /*! NPEU Theme (c) NPEU */
 /* --| START THEME |----------------------------------------------------------------------------- */
 /* --| SETTINGS |-------------------------------------------------------------------------------- */
-/*@import "_core_themes.scss";
-
-$theme-map: ($theme-name: $theme);
-$themes: map-merge($themes, $theme-map);
-*/
+/**/
+/**/
+/**/
+/**/
 /*
 //@debug $s__base-ui-color;
 
@@ -274,7 +273,7 @@ html {
   /* 2 */
   overflow-y: scroll;
   /* 3 */
-  color: #333;
+  color: #111;
   background-color: #1f1727;
   font-size: 0.625em;
   /* 4 */
@@ -376,7 +375,7 @@ body {
   word-spacing: initial;
   /* 2 */
   background-color: transparent;
-  color: #333;
+  color: #111;
 }
 
 /* IE9-11 */
@@ -556,7 +555,7 @@ aside {
   margin-top: 0;
   padding: 2.4rem;
   background-color: #fff;
-  color: #333;
+  color: #111;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -957,7 +956,7 @@ footer {
   margin-top: 0;
   padding: 2.4rem;
   background-color: #fff;
-  color: #333;
+  color: #111;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -993,7 +992,7 @@ header {
   padding-bottom: 2.4rem;
   padding-bottom: calc(2.4rem - 0);
   background-color: #fff;
-  color: #333;
+  color: #111;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1004,6 +1003,9 @@ header {
 |-------------------------------------------------------------------------------------------------*/
 hgroup {
   display: block;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  padding-bottom: 2.4rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1175,7 +1177,7 @@ input {
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
-  color: #333;
+  color: #111;
   background-color: #fff;
   font-size: inherit;
   font-weight: inherit;
@@ -1528,7 +1530,7 @@ main {
   margin-bottom: 2.4rem;
   margin-top: 0;
   background-color: #fff;
-  color: #333;
+  color: #111;
   position: relative;
 }
 
@@ -1554,6 +1556,9 @@ mark {
 |-------------------------------------------------------------------------------------------------*/
 nav {
   display: block;
+  margin-bottom: 2.4rem;
+  margin-top: 0;
+  padding-bottom: 2.4rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1602,7 +1607,7 @@ ol {
     1. The default cannot safely be changed in Chrome and Safari on OS X. ?? Not sure what this means now.
 */
 optgroup {
-  color: #333;
+  color: #111;
   background-color: #fff;
   font-weight: bold;
   /* 1 */
@@ -1635,7 +1640,7 @@ option {
 
 option:hover {
   background-color: #c4b6d4;
-  color: #333;
+  color: #111;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1767,7 +1772,7 @@ select {
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
-  color: #333;
+  color: #111;
   background-color: #fff;
   font-weight: inherit;
   font-style: inherit;
@@ -2148,7 +2153,7 @@ textarea {
   border-radius: 0.3rem;
   border-color: rgba(0, 0, 0, 0.2);
   border-style: solid;
-  color: #333;
+  color: #111;
   background-color: #fff;
   font-size: inherit;
   font-family: inherit;
@@ -3216,511 +3221,62 @@ _:-o-prefocus, :root .icon {
     1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
        keeping both for now.
 */
+/* --| THEME |----------------------------------------------------------------------------------- */
+/**/
+:root {
+  --t-text-color: #111;
+  --t-text-color-inverse: #fff;
+  --t-light-adjust: 0.7;
+  --t-very-light-adjust: 0.92;
+  --t-dark-adjust: 0.7;
+  --t-very-dark-adjust: 0.5;
+  --t-primary-color: #5F4776;
+  /* hsl(271, 25%, 37%) */
+  --t-primary-color-h: 271deg;
+  --t-primary-color-s: 25%;
+  --t-primary-color-l: 37%;
+  --t-primary-color-l-copy: 37%;
+  /* Declared twice so it can be part of a lightening calculation) */
+  --t-primary-fore-text-color: #fff;
+  /* SASS would generate this from the base colour. */
+  --t-secondary-color: #2c9cdf;
+  /* hsl(202, 74%, 53%) */
+  --t-secondary-color-h: 202;
+  --t-secondary-color-s: 74%;
+  --t-secondary-color-l: 53%;
+  --t-secondary-color-l-copy: 53%;
+  /* Declared twice so it can be part of a lightening calculation) */
+  --t-secondary-fore-text-color: var(--t-text-color);
+  /* SASS would generate this from the base colour. */
+  --t-neutral-color: #8e8279;
+  /* hsl(26, 9%, 52%) */
+  --t-neutral-color-h: 26;
+  --t-neutral-color-s: 9%;
+  --t-neutral-color-l: 52%;
+  --t-neutral-color-l-copy: 52%;
+  /* Declared twice so it can be part of a lightening calculation) */
+  --t-neutral-fore-text-color: var(--t-text-color);
+  /* SASS would generate this from the base colour. */
+  /*
+        Without being able to perform a calc in the hsl function (grrr IE11 even with polyfill) we
+        need to create adjusted -l values in SASS (stylesheet) and/or php (on-page themer)
+    */
+  --t-primary-color-l--very-light: 95%;
+  --t-primary-color-l--light: 81%;
+  --t-primary-color-l--dark: 26%;
+  --t-primary-color-l--very-dark: 18%;
+  --t-secondary-color-l--very-light: 96%;
+  --t-secondary-color-l--light: 86%;
+  --t-secondary-color-l--dark: 37%;
+  --t-secondary-color-l--very-dark: 27%;
+  --t-neutral-color-l--very-light: 96%;
+  --t-neutral-color-l--light: 86%;
+  --t-neutral-color-l--dark: 36%;
+  --t-neutral-color-l--very-dark: 26%;
+  /**/
+}
+
 /* --| Component Patterns |---------------------------------------------------------------------- */
-/*
-
-*/
-.c-badge {
-  /*
-        1. For positioned pseudo elements, e.g. External indicator.
-        2. For IE11
-    */
-  /*
-    &.c-badge--circle {
-        border-radius: 50%;
-        overflow: hidden;
-    }
-
-    &.c-badge--rounded {
-        border-radius: 0.2em;
-        overflow: hidden;
-    }
-    */
-}
-
-.c-badge.c-badge {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  /* [1] */
-  max-width: 100%;
-  /* [2] */
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
-
-.c-badge svg {
-  max-width: 100%;
-}
-
-.c-badge img {
-  /*
-                1. This is to provide positioning context for the ::after pseudo-element.
-                2. This is so a broken image is still 100%.
-                3. -- Center in container. -- don't think this is necessary until find example
-                   breaks IE11 so need to overridide it below if keeping.
-            */
-  position: relative;
-  /* [1] */
-  display: block;
-  /* [2] */
-  width: 100%;
-  max-width: 100%;
-  border-style: none;
-  background-color: transparent;
-  /* margin: 0 auto; /* [3] */
-  margin: 0;
-}
-
-.c-badge.c-badge--limit-height img, .c-badge.c-badge--limit-height--8 img {
-  max-height: 8rem;
-}
-
-.c-badge.c-badge--limit-height--4 img {
-  max-height: 4rem;
-}
-
-.c-badge.c-badge--limit-height--6 img {
-  max-height: 6rem;
-}
-
-.c-badge.c-badge--limit-height--10 img {
-  max-height: 10rem;
-}
-
-.c-badge.c-badge--limit-height--12 img {
-  max-height: 12rem;
-}
-
-.c-badge.c-badge--limit-height--m img {
-  max-height: 2.4rem;
-}
-
-.c-badge.c-badge--limit-height--l img {
-  max-height: 4.8rem;
-}
-
-.c-badge.c-badge--limit-height--xl img {
-  max-height: 9.6rem;
-}
-
-.c-badge.c-badge--limit-height--xxl img {
-  max-height: 19.2rem;
-}
-
-.c-badge.c-badge--small {
-  height: 2em;
-  width: 2em;
-}
-
-.c-badge.c-badge--small img {
-  width: 100%;
-  height: 100%;
-}
-
-.c-badge.c-badge--decorated {
-  position: relative;
-  padding: 2.4rem;
-}
-
-.c-badge.c-badge--decorated::before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.05;
-  background-color: currentColor;
-}
-
-.c-badge.c-badge--decorated::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border-width: 0.3rem;
-  border-style: solid;
-  border-color: currentColor;
-}
-
-.c-badge.c-badge--page-brand img {
-  display: block;
-  margin: 0 auto;
-  max-height: 18rem;
-}
-
-a[href].c-badge:hover, a[href].c-badge:active, a[href].c-badge:focus {
-  border: 0;
-  box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0, 0, 0, 0.2);
-}
-
-a[href].c-badge:hover img, a[href].c-badge:active img, a[href].c-badge:focus img {
-  box-shadow: none;
-}
-
-a[href].c-badge img {
-  border: 0;
-}
-
-a[href][rel~="external"].c-badge::after {
-  display: none;
-}
-
-a[href][rel~="external"].c-badge:hover::after,
-a[href][rel~="external"].c-badge:active::after,
-a[href][rel~="external"].c-badge:focus::after {
-  position: absolute;
-  right: -1em;
-  top: -1em;
-  width: 1.25em;
-  height: 1.25em;
-  display: block;
-  margin: 0;
-}
-
-/*
-    IE10-11
-
-    1. IE11- seems to need this.
-    ... Or, maybe not!?!?! Weird. 03/09/2020 - taken this out.
-    UGGGGH - needs it in the banner badges, but not badge list badges.
-*/
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .c-badge {
-    /*
-            For some reason flex images size differently in IE11, so we need to multiply these
-            values by 1.666 !!! but only in the header. Footer logos behave properly.
-            I can't figure out what's causing the difference, so scoping to the header for now.
-        */
-    /*.c-page-header__affiliate_logos &.c-badge--limit-height,
-        .c-page-header__affiliate_logos &.c-badge--limit-height--8 {
-            img {
-                max-height: 8rem * 1.666;
-            }
-        }
-
-        .c-page-header__affiliate_logos &.c-badge--limit-height--4 {
-            img {
-                max-height: 4rem * 1.666;
-            }
-        }
-
-        .c-page-header__affiliate_logos &.c-badge--limit-height--6 {
-            img {
-                max-height: 6rem * 1.666;
-            }
-        }
-
-        .c-page-header__affiliate_logos &.c-badge--limit-height--10 {
-            img {
-                max-height: 10rem * 1.666;
-            }
-        }
-
-        .c-page-header__affiliate_logos &.c-badge--limit-height--12 {
-            img {
-                max-height: 12rem * 1.666;
-            }
-        }*/
-  }
-  .c-badge svg {
-    width: 100%;
-  }
-  /*
-        Undo rule set above (commented out currently until I'm sure)
-    */
-  /*a[href].c-badge img {
-        margin: 0;
-    }*/
-}
-
-/*
-    The `height: 100%;` in the `.card` class below allows the card to fill it's container (if inside,
-    say, a list-grid). However, it doesn't work in Safari OSX/iOS.
-    Applying a `card-wrap` class to a list item to make those items flex-containers seems to work
-    OK, but perhaps this would be better abstracted as a `fill-height` class or something?
-
-    Note IE10-11 flexbox for card, main and body causes problems when in other flex contexts.
-    For IE10 I'm just leaving off the -ms prefixes - it's still usable without flex.
-*/
-/*
-$card-cta--border-width: 1px !default;
-$card-cta--border-style: solid !default;
-$card-cta--border-radius: 3px !default;
-*/
-/*
-$card--link-color: false !default;
-$card--link-color--alt: false !default;
-$card--link-has-border-bottom: false !default;
-$card--link-border-bottom: false !default;
-$card--link-border-bottom--alt: false !default;
-
-// If we've specified a link color for the card, but not an alt state (e.g. hover)
-// then generate one
-@if $card--link-color != false and $card--link-color--alt == false {
-    $card--link-color--alt: darken($card--link-color, 10%) !default;;
-}
-
-// If we've specified a link color for the card, and we want bottom borders, generate the borders:
-@if $card--link-color != false and $card--link-has-border-bottom != false {
-    $card--link-border-bottom: 1px solid lighten($card--link-color, 20%) !default;
-    $card--link-border-bottom--alt: 2px solid lighten($card--link-color--alt, 30%) !default;
-}
-*/
-/*
-$card-button--text-color: #fff !default;
-$card-button--background-color: $card--base-color !default;
-$card-button--background-color-alt: lighten($card--base-color, 20%) !default;
-$card-button--border-color: darken($card--base-color, 20%) !default;
-*/
-/*
-    .c-card-wrap .c-card {
-
-        //width: 100%;
-    }
-*/
-/*
-        IE10-11 needs this wrapper to behave properly.
-        If you're not supporting IE11, you don't this this CSS or the HTML that goes with it.   
-    */
-/*.c-card-wrap {
-        & {
-            display: flex;
-            height: 100%;
-        }
-
-        & > .c-card {
-            flex-basis: 100%;
-        }
-    }*/
-/*
-        Older webkit browsers also need special treatment.
-        
-        1. Chrome 39-50, Opera 26-37, Safari/iOS 9-10. Using prefixed property as flex-direction
-           breaks IE11 otherwise, so may as well use for all.
-    */
-/*
-        1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
-    */
-.c-card.c-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  flex-grow: 1;
-  margin: 0;
-  color: #333;
-  background-color: #eee;
-  padding: 0;
-  outline: 1px solid #d5d5d5;
-  /*
-                If the 'pull' is > module body content height, it'll protrude below the container,
-                so hide it:
-            */
-  overflow: hidden;
-  width: 0;
-  /* [1] */
-  min-width: 100%;
-  /* [1] */
-}
-
-.c-card > * {
-  flex: 0 0 auto;
-  width: 100%;
-}
-
-.c-card .c-card__image {
-  position: relative;
-  text-align: center;
-}
-
-.c-card .c-card__image img {
-  width: 100%;
-}
-
-.c-card .c-card__image-link,
-.c-card .c-card__image-link:hover {
-  border-bottom: 0;
-  margin-bottom: 0;
-}
-
-.c-card .c-card__full-link {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.c-card .c-card__full-link,
-.c-card .c-card__full-link:hover {
-  border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  background: #eee;
-  position: relative;
-  display: block;
-  min-height: 100%;
-}
-
-.c-card .c-card__full-link:hover::before,
-.c-card .c-card__full-link:active::before,
-.c-card .c-card__full-link:focus::before {
-  border: 0;
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.2;
-  background: #000;
-  z-index: 1;
-}
-
-.c-card .c-card__main {
-  position: relative;
-  color: #333;
-  background-color: #eee;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 2rem;
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.c-card .c-card__title {
-  flex: 0 0 auto;
-  font-size: 3rem;
-  line-height: 1.2;
-  width: 100%;
-  margin-bottom: 2rem;
-}
-
-.c-card .c-card__title a {
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit;
-  font-family: inherit;
-  color: inherit;
-  cursor: pointer;
-}
-
-.c-card .c-card__title:only-child {
-  margin-bottom: 0;
-}
-
-.c-card.c-card--stub .c-card__title {
-  font-size: 2.4rem;
-  line-height: 1;
-}
-
-.c-card .c-card__body {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c-card .c-card__body > * {
-  flex: 0 0 auto;
-}
-
-.c-card .c-card__body > :last-child {
-  margin-bottom: 0;
-}
-
-.c-card .c-card__cta {
-  flex: 1 0 auto;
-  display: flex;
-  justify-content: flex-end;
-  align-content: flex-start;
-}
-
-.c-card .c-card__cta > * {
-  align-self: flex-end;
-}
-
-.c-card .c-card__footer {
-  flex: 0 0 auto;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: auto;
-  margin-bottom: 0;
-  padding-top: 1rem;
-  width: 100%;
-}
-
-.c-card .c-card__body + .c-card__footer {
-  margin-top: 1rem;
-}
-
-.c-card .c-card__footer > * {
-  margin: 0;
-}
-
-.c-card .c-card__info {
-  font-size: 1.4rem;
-  margin-bottom: -1rem;
-  margin-top: -1rem;
-  border-top: 1px solid #999;
-  padding-top: calc((1rem - 1px));
-}
-
-.c-card.c-card--themed-content .c-card__main > * {
-  padding-left: 1rem;
-}
-
-.c-card.c-card--themed-content .c-card__main::before {
-  display: block;
-  content: "";
-  width: 0.75rem;
-  position: absolute;
-  top: 1rem;
-  bottom: 1rem;
-  left: 1rem;
-  background-color: #999;
-}
-
-/*
-        Chrome 39-50, Opera 26-37, Safari/iOS 9-10:
-        1. iOS 9-10 collapses box if using height, so using min-height instead.
-    */
-/*
-    @include card-theme(
-        "",
-        (
-            card-text-color       : $primary-cta--text-color,
-            card-background-color : $primary-cta--background-color
-        )
-    );
-    */
-.c-card--unpublished {
-  opacity: 0.5;
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1);
-}
-
-.c-card--unpublished::after {
-  content: "Unpublished";
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 3px;
-  font-size: 0.75em;
-  color: #fff;
-  background-color: #000;
-}
-
 /*
 */
 .c-page-wrap.c-page-wrap {
@@ -5035,144 +4591,6 @@ _:-webkit-any-link, :root .l-col-to-row__item.l-col-to-row__item {
 
 /* ---------------------------------------------------------------------------------------------- */
 /* --| Utility Patterns |------------------------------------------------------------------------ */
-/*
-    Fill and area with an image.
-*/
-/*
-.u- {
-    margin-left: $sz-s !important;
-}
-*/
-/* Make the image fill the width and be vertically centered: */
-/* (in portrait images this will leave gaps at the sides) */
-/*.u-image-cover {
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-}*/
-/*
-    ! NOTE: test this in all non-object-fit-supporting browsers as it may be a fix for those too.
-
-    This only works for landscape containers. If it's portrait it breaks unless the width and
-    // translate are inverted, and that can't be detected if size changes.
-    Will be replying on JS to check for change to portrait and apply portrait class.
-*/
-.u-image-cover {
-  /*
-        &.u-image-cover--min-10 {
-           min-height: 10vmin;
-        }
-
-        &.u-image-cover--min-20 {
-            min-height: 20vmin;
-        }
-
-        &.u-image-cover--min-30 {
-            min-height: 30vmin;
-        }
-
-        &.u-image-cover--min-40 {
-            min-height: 40vmin;
-        }
-
-        &.u-image-cover--min-50 {
-            min-height: 50vmin;
-        }
-        */
-}
-
-.u-image-cover.u-image-cover {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  flex: 1 0 auto;
-}
-
-.u-image-cover .u-image-cover__inner {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.u-image-cover .u-image-cover__image {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100%;
-  height: auto;
-  transform: translate(-50%, -50%);
-  max-width: none;
-  max-height: none;
-}
-
-/* If `object-fit` is supported, use that and override vertical centering: */
-@supports (object-fit: cover) {
-  .u-image-cover .u-image-cover__inner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  .u-image-cover .u-image-cover__image {
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: none;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-.u-image-cover {
-  min-height: 100%;
-}
-
-.u-image-cover.u-image-cover--min-10 {
-  min-height: 10vh;
-}
-
-.u-image-cover.u-image-cover--min-20 {
-  min-height: 20vh;
-}
-
-.u-image-cover.u-image-cover--min-30 {
-  min-height: 30vh;
-}
-
-.u-image-cover.u-image-cover--min-40 {
-  min-height: 40vh;
-}
-
-.u-image-cover.u-image-cover--min-50 {
-  min-height: 50vh;
-}
-
-/*@media (max-width: $s__breakpoint--enhanced) {
-    .u-image-cover {
-       
-        &--min-10 {
-           min-height: 10vmin;
-        }
-
-        &--min-20 {
-            min-height: 20vmin;
-        }
-
-        &--min-30 {
-            min-height: 30vmin;
-        }
-
-        &--min-40 {
-            min-height: 40vmin;
-        }
-
-        &--min-50 {
-            min-height: 50vmin;
-        }
-    }
-}---*/
 /* ---------------------------------------------------------------------------------------------- */
 /* --| SHAME |----------------------------------------------------------------------------------- */
 .c-utilitext {

@@ -1,0 +1,22 @@
+---
+layout: structure
+---
+<div class="sticky-footer-wrap  c-page-wrap">
+    <header>
+
+        <h1 tabindex="-1">{{ page.title }}</h1>
+        {% if page.url != '/' %}
+        {% include breadcrumbs.html %}
+        {% endif %}
+
+    </header>
+
+    <div class="sticky-footer-expand">
+
+        <main>
+        {{ content }}
+        </main>
+
+    </div>
+
+</div>

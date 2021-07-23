@@ -1,9 +1,10 @@
 ---
-layout: structure--basic
+layout: structure--styleguide
 title: NPEU Styleguide
 project_base_url: styleguide
 ---
 
+* [Tokens](tokens)
 * [Elements](elements)
 * [Pages](pages)
 * [Patterns](patterns)

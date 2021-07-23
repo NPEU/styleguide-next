@@ -37,6 +37,7 @@
         body{font:1em/1.2 sans-serif;padding:1em;margin:0 auto;max-width:50em}article,aside,details,dialog,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;margin-bottom:1em}@supports (list-style-type:disclosure-closed){summary{display:list-item}}mark{background:#ff0;color:# 000}[hidden],template{display:none}fieldset{border:1px solid;padding:16px;border-color:#777}image,img,svg{max-width:100%;-ms-interpolation-mode:bicubic;vertical-align:middle}hr{border-style:solid;border-width:1px 0 0 0;height:0;margin:1em 0;color:#777}pre{width:100%;overflow-x:scroll;overflow-y:auto}button,input,label,select,textarea{vertical-align:middle;vertical-align:middle;min-height:2.2em;margin:.2em 0}button,input[type=checkbox],input[type=radio],label,select,textarea{cursor:pointer}button,input,textarea{padding:0 .5em;line-height:1.5}table{width:100%;border:1px solid #777;border-collapse:collapse}table[role=presentation]{border:0;table-layout:fixed}table[role=presentation] td{border:0}th{background:#eee}caption,td,th{padding:.5em}
     </style>
     
+    
     <!-- From here we're cutting off IE9- to stop all kinds of JS and CSS fails. -->
     <!--[if !IE]><!-->
     
@@ -56,7 +57,7 @@
         Edge 79+, Chrome 58+, Opera 45+, Safari 10+, iOS 10+, Android Webview/Chrome 58+, Samsung Internet
         FF 47+
     -->
-    <link rel="stylesheet" href="/css/theme-npeu.min.{{ site.data.cache_bust_css.date }}.css" media="
+    <link rel="stylesheet" href="/css/style.min.{{ site.data.cache_bust_css.date }}.css" media="
         only print, screen and (min-width: 1vm),
         only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
         only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
@@ -112,29 +113,43 @@
     }
     
     
+    
     /*
-    p[role="list"] {
-        /*display: flex;*
-        /*lex-wrap: wrap;*
-    }
-    
-    span[role="listitem"] {
-        /*flex: none;*
-        display: inline-flex;
-        flex-wrap: wrap;
-    }
-    
-    span[role="listitem"]::after {
-        content: " ";
-        word-spacing: 1em;
-        background-image: linear-gradient(
-            90deg,
-            transparent 0 calc(50% - 0.03em),
-            currentcolor 0 calc(50% + 0.03em),
-            transparent 0
-        );
-    }
+        Groups.
+
+        Attempts to improve where text wraps.
+
     */
+    .u-text-group {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    .u-text-group--center {
+      justify-content: center;
+    }
+
+    .u-text-group--push-apart {
+      justify-content: space-between;
+    }
+
+    .u-text-group > * {
+      margin: 0;
+      flex: 0 1 auto !important;
+    }
+
+    .u-text-group > :not(:last-child) {
+      padding-right: 0.2em !important;
+    }
+
+    .u-text-group--wide-space > :not(:last-child) {
+      padding-right: 1em !important;
+    }
+
+
     </style>
     {% endif %}
 
