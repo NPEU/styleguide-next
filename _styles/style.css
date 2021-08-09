@@ -151,6 +151,16 @@ $fs__include_class_poem:     false;
     Uni-directional margins (bottom) is fine for most cases, but things like figcaptions that may
     contain paragraphs can result in double bottom margins, so flipping that around inside those
     containers.
+* /
+@mixin s__fix_internal_margins($margin-size) {
+    & * {
+        margin-bottom: 0;
+    }
+
+    & * + * {
+        margin-top: $margin-size;
+    }
+}
 */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -204,7 +214,7 @@ $fs__include_class_poem:     false;
 */
 /*
     ANCHOR
-    
+
     1. This size allows 2px on normal fonts, 1px on smaller fonts.
 */
 /* [1] */
@@ -401,7 +411,7 @@ body {
 }
 
 /*
-    This method duplicates [hidden="false"][aria-hidden="false"] in accessibilty.scss, but I'm
+    This method duplicates [hidden="false"][aria-hidden="false"] in accessibility.scss, but I'm
     thinking of maybe deprecating that.
 */
 [data-if-css="visually-hide"] {
@@ -462,7 +472,7 @@ a[href]:hover, a[href]:active {
 
 a[href]:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 @supports (-moz-appearance: none) {
@@ -481,19 +491,16 @@ a[href] svg:not(:only-child) {
   }
 }
 
-a[href][rel~="external"]::after {
-  display: inline;
-  content: "";
-  padding-left: 1.16666666667em;
-  margin: 0 0.5em;
-  background: linear-gradient(45deg, transparent 50%, currentColor 50%);
-  font-size: 0.375em;
-  line-height: 0;
-  vertical-align: super;
+a[href][rel~="external"] {
+  padding-right: 1em;
+  background-image: linear-gradient(45deg, transparent 65%, inherit 65%);
+  background-repeat: no-repeat;
+  background-position: right 0.4em bottom 0.4em;
+  background-size: 0.6em 0.6em;
 }
 
-a[href][rel~="external"]:hover::after {
-  background: linear-gradient(45deg, transparent 50%, currentColor 50%);
+a[href][rel~="external"]:hover {
+  background-image: linear-gradient(45deg, transparent 65%, inherit 65%);
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -526,8 +533,16 @@ abbr[title] {
 
 |-------------------------------------------------------------------------------------------------*/
 address {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+address:first-child {
   margin-top: 0;
+}
+
+address:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -538,9 +553,16 @@ address {
 |-------------------------------------------------------------------------------------------------*/
 article {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+article:first-child {
   margin-top: 0;
-  padding-bottom: 2.4rem;
+}
+
+article:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -551,11 +573,16 @@ article {
 |-------------------------------------------------------------------------------------------------*/
 aside {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+aside:first-child {
   margin-top: 0;
-  padding: 2.4rem;
-  background-color: #fff;
-  color: #111;
+}
+
+aside:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -603,14 +630,23 @@ b {
 
 |-------------------------------------------------------------------------------------------------*/
 blockquote {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   margin-left: 2.4rem;
+  margin-right: 2.4rem;
   font-style: italic;
   /*
         @TODO - set up vars and styles for the most common quote styles.
         I.e. left-border, and enclosing quotes.
     */
+}
+
+blockquote:first-child {
+  margin-top: 0;
+}
+
+blockquote:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -654,16 +690,6 @@ button {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $s__button-focus-outline-width != false {
-        &:hover,
-        &:active,
-        &:focus {
-            outline-width: $s__button-focus-outline-width;
-            outline-style: $s__button-focus-outline-style;
-            outline-color: $s__button-focus-outline-color;
-            outline-offset: $s__button-focus-outline-offset;
-        }
-    }*/
 }
 
 button:hover, button:active {
@@ -672,7 +698,7 @@ button:hover, button:active {
 
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 button svg {
@@ -776,20 +802,42 @@ dd {
 details {
   display: block;
   /* N: IE 10/11 */
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
-  padding-bottom: 2.4rem;
   border-width: 0.1rem;
   border-style: solid;
   border-color: #5d4777;
-  padding-top: 2.4rem;
-  padding-top: calc(2.4rem - 0.1rem);
-  padding-left: 2.4rem;
-  padding-left: calc(2.4rem - 0.1rem);
-  padding-right: 2.4rem;
-  padding-right: calc(2.4rem - 0.1rem);
-  padding-bottom: 2.4rem;
-  padding-bottom: calc(2.4rem - 0.1rem);
+  padding: calc(2.4rem - 0.1rem);
+  /*
+    @if $s__use-last-child-margin-zero {
+        padding-bottom: 2.4rem;
+        //padding-bottom: -moz-calc(2.4rem - 0.1rem);
+        padding-bottom:      calc(2.4rem - 0.1rem);
+    } @else {
+        padding-bottom: 0;
+        &::after {
+            display: block;
+
+            content: "";
+
+            height: 1px;
+
+            margin-top: $padding;
+
+            margin-bottom: -1px;
+            //margin-bottom: -moz-calc(-1px - 0.1rem);
+            margin-bottom:      calc(-1px - 0.1rem);
+        }
+    }
+    */
+}
+
+details:first-child {
+  margin-top: 0;
+}
+
+details:last-child {
+  margin-bottom: 0;
 }
 
 details > * {
@@ -829,10 +877,18 @@ dfn {
 
 */
 dl {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   display: table;
   /* 1b */
+}
+
+dl:first-child {
+  margin-top: 0;
+}
+
+dl:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -877,20 +933,43 @@ em em {
     More info here: https://thatemil.com/blog/2015/01/03/reset-your-fieldset/
 */
 fieldset {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   min-width: 0;
   border-width: 0.1rem;
   border-style: solid;
   border-color: #5d4777;
-  padding-top: 2.4rem;
-  padding-top: calc(2.4rem - 0.1rem);
-  padding-left: 2.4rem;
-  padding-left: calc(2.4rem - 0.1rem);
-  padding-right: 2.4rem;
-  padding-right: calc(2.4rem - 0.1rem);
-  padding-bottom: 2.4rem;
-  padding-bottom: calc(2.4rem - 0.1rem);
+  padding: calc(2.4rem - 0.1rem);
+  /*
+    @if $s__use-last-child-margin-zero {
+        padding-bottom: 2.4rem;
+        //padding-bottom: -moz-calc(2.4rem - 0.1rem);
+        padding-bottom:      calc(2.4rem - 0.1rem);
+    } @else {
+        padding-bottom: 0;
+        &::after {
+            display: block;
+
+            content: "";
+
+            height: 1px;
+
+            margin-top: $padding;
+
+            margin-bottom: -1px;
+            //margin-bottom: -moz-calc(-1px - 0.1rem);
+            margin-bottom:      calc(-1px - 0.1rem);
+        }
+    }
+    */
+}
+
+fieldset:first-child {
+  margin-top: 0;
+}
+
+fieldset:last-child {
+  margin-bottom: 0;
 }
 
 fieldset fieldset {
@@ -913,15 +992,6 @@ figcaption {
   display: block;
   font-size: 0.875em;
   margin-bottom: 0;
-  margin-top: 0;
-}
-
-figcaption * {
-  margin-bottom: 0;
-}
-
-figcaption * + * {
-  margin-top: 1.2rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -932,8 +1002,10 @@ figcaption * + * {
 |-------------------------------------------------------------------------------------------------*/
 figure {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
+  margin-left: 2.4rem;
+  margin-right: 2.4rem;
   max-width: 100%;
   overflow: auto;
   background-image: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, white 60%, white 100%), linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 60%, white 100%), linear-gradient(to right, rgba(0, 0, 20, 0.5), rgba(255, 255, 255, 0)), linear-gradient(to left, rgba(0, 0, 20, 0.5), rgba(255, 255, 255, 0));
@@ -944,6 +1016,14 @@ figure {
   background-attachment: local, local, scroll, scroll;
 }
 
+figure:first-child {
+  margin-top: 0;
+}
+
+figure:last-child {
+  margin-bottom: 0;
+}
+
 /*-------------------------------------------------------------------------------------------------|
 
     START-CSS ELEMENT: footer
@@ -952,11 +1032,16 @@ figure {
 |-------------------------------------------------------------------------------------------------*/
 footer {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+footer:first-child {
   margin-top: 0;
-  padding: 2.4rem;
-  background-color: #fff;
-  color: #111;
+}
+
+footer:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -966,8 +1051,16 @@ footer {
 
 |-------------------------------------------------------------------------------------------------*/
 form {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+form:first-child {
   margin-top: 0;
+}
+
+form:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -978,21 +1071,16 @@ form {
 |-------------------------------------------------------------------------------------------------*/
 header {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+header:first-child {
   margin-top: 0;
-  border-width: 0;
-  border-style: solid;
-  border-color: #5d4777;
-  padding-top: 2.4rem;
-  padding-top: calc(2.4rem - 0);
-  padding-left: 2.4rem;
-  padding-left: calc(2.4rem - 0);
-  padding-right: 2.4rem;
-  padding-right: calc(2.4rem - 0);
-  padding-bottom: 2.4rem;
-  padding-bottom: calc(2.4rem - 0);
-  background-color: #fff;
-  color: #111;
+}
+
+header:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1003,9 +1091,16 @@ header {
 |-------------------------------------------------------------------------------------------------*/
 hgroup {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+hgroup:first-child {
   margin-top: 0;
-  padding-bottom: 2.4rem;
+}
+
+hgroup:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1015,45 +1110,93 @@ hgroup {
 
 |-------------------------------------------------------------------------------------------------*/
 h1 {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   font-size: 3.25em;
   line-height: 6rem;
 }
 
-h2 {
-  margin-bottom: 2.4rem;
+h1:first-child {
   margin-top: 0;
+}
+
+h1:last-child {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 2.5em;
   line-height: 4.8rem;
 }
 
-h3 {
-  margin-bottom: 2.4rem;
+h2:first-child {
   margin-top: 0;
+}
+
+h2:last-child {
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 1.875em;
   line-height: 3.6rem;
 }
 
-h4 {
-  margin-bottom: 2.4rem;
+h3:first-child {
   margin-top: 0;
+}
+
+h3:last-child {
+  margin-bottom: 0;
+}
+
+h4 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 1.375em;
   line-height: 3.6rem;
 }
 
-h5 {
-  margin-bottom: 2.4rem;
+h4:first-child {
   margin-top: 0;
+}
+
+h4:last-child {
+  margin-bottom: 0;
+}
+
+h5 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 1.125em;
   line-height: 2.4rem;
 }
 
-h6 {
-  margin-bottom: 2.4rem;
+h5:first-child {
   margin-top: 0;
+}
+
+h5:last-child {
+  margin-bottom: 0;
+}
+
+h6 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 1em;
   line-height: 2.4rem;
+}
+
+h6:first-child {
+  margin-top: 0;
+}
+
+h6:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1107,6 +1250,8 @@ iframe {
 img {
   max-width: 100%;
   /* 1 */
+  height: auto;
+  /* 1 */
   border-style: none;
   /* 2  */
   font-style: italic;
@@ -1128,25 +1273,24 @@ img .gm-style {
 /*
     Special treatment for images inside links.
 */
-a img {
-  margin-bottom: 0.2em;
+a[href] img {
   border-bottom: 0.2rem solid;
 }
 
-a img:active, a img:hover {
+a[href] img:active, a[href] img:hover {
   border-bottom: 0.2rem dashed;
 }
 
 /*
-    Here's a problem - if the image has a transparent background, the a's bounding box (which is 
+    Here's a problem - if the image has a transparent background, the a's bounding box (which is
     inline and smaller than the image) is visible.
-    Outlines actually work as expected in this case but I can't use them because of the lack of 
+    Outlines actually work as expected in this case but I can't use them because of the lack of
     rounded corners, hence the a > img selector reapplying the focus shadow.
     I guess transparent images like this are an edge case, but it's something to keep an eye on.
 */
 a:focus img {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1211,8 +1355,8 @@ input:not([type]):focus,
 [type="time"]:focus,
 [type="url"]:focus,
 [type="week"]:focus {
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
   outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -1221,8 +1365,8 @@ input:not([type]):focus,
     */
 [type="checkbox"]:focus,
 [type="radio"]:focus {
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
   outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -1280,16 +1424,6 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $s__button-focus-outline-width != false {
-        &:hover,
-        &:active,
-        &:focus {
-            outline-width: $s__button-focus-outline-width;
-            outline-style: $s__button-focus-outline-style;
-            outline-color: $s__button-focus-outline-color;
-            outline-offset: $s__button-focus-outline-offset;
-        }
-    }*/
 }
 
 [type="button"]:hover, [type="button"]:active,
@@ -1304,7 +1438,7 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
 [type="reset"]:focus,
 [type="submit"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -1395,8 +1529,6 @@ _:-ms-input-placeholder, :root [type="file"] {
 [type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  outline-offset: -0.2rem;
-  /* 2 */
 }
 
 /**
@@ -1527,11 +1659,19 @@ main {
   width: 100%;
   min-height: 100%;
   padding: 0;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   background-color: #fff;
   color: #111;
   position: relative;
+}
+
+main:first-child {
+  margin-top: 0;
+}
+
+main:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1556,9 +1696,16 @@ mark {
 |-------------------------------------------------------------------------------------------------*/
 nav {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+nav:first-child {
   margin-top: 0;
-  padding-bottom: 2.4rem;
+}
+
+nav:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1591,10 +1738,18 @@ object {
 
 */
 ol {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   display: table;
   /* 1b */
+}
+
+ol:first-child {
+  margin-top: 0;
+}
+
+ol:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1650,8 +1805,16 @@ option:hover {
 
 |-------------------------------------------------------------------------------------------------*/
 p {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+p:first-child {
   margin-top: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1676,6 +1839,8 @@ pre {
   /* 1 */
   overflow-y: auto;
   /* 1 */
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   margin-bottom: 3.1rem;
   /* 1 */
   background-color: #ebe6f0;
@@ -1684,6 +1849,14 @@ pre {
   /* 2 */
   font-family: monospace, monospace;
   /* 3 */
+}
+
+pre:first-child {
+  margin-top: 0;
+}
+
+pre:last-child {
+  margin-bottom: 0;
 }
 
 @supports (-ms-ime-align: auto) {
@@ -1748,9 +1921,16 @@ samp {
 |-------------------------------------------------------------------------------------------------*/
 section {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+section:first-child {
   margin-top: 0;
-  padding-bottom: 2.4rem;
+}
+
+section:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1856,8 +2036,8 @@ _:-moz-tree-row(hover), select:not([multiple]) {
 }
 
 select:focus {
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
   outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -1977,6 +2157,8 @@ sub {
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct display in unsupported browsers (https://caniuse.com/#feat=details).
+       Update: correct display is now list-item, which adds the marker, but we're adding our own
+       anyway.
     2. Remove the tapping delay from clickable elements.
 */
 summary {
@@ -1987,13 +2169,11 @@ summary {
   touch-action: manipulation;
   /* 2 */
   cursor: pointer;
-  margin-bottom: 0;
-  margin-top: 0;
 }
 
 summary:focus {
-  outline: 0.2rem solid rgba(93, 71, 119, 0.6);
-  outline-offset: 0.2rem;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /* Hide the details marker as we're supplying our own. */
@@ -2013,8 +2193,16 @@ details > summary::before {
 }
 
 details[open] > summary {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+details[open] > summary:first-child {
   margin-top: 0;
+}
+
+details[open] > summary:last-child {
+  margin-bottom: 0;
 }
 
 details[open] > summary::before {
@@ -2077,16 +2265,21 @@ svg:not(:root) {
 */
 table {
   width: 100%;
-  /* @TODO - possibly make this configurable to be 'natural' width but centered instead. (http://alistapart.com/article/web-typography-tables) */
-  border-collapse: collapse;
+  /* @TODO - possibly make this configurable to be 'natural' width but cantered instead. (http://alistapart.com/article/web-typography-tables) */
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  /* 1 */
-  margin-bottom: calc(2.4rem - 0.1rem);
-  /* 2 */
-  margin-top: 0;
-  border: 0.1rem solid #5d4777;
   background-color: transparent;
+  border: 0.1rem solid #5d4777;
+  border-collapse: collapse;
   border-spacing: 0;
+}
+
+table:first-child {
+  margin-top: 0;
+}
+
+table:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2101,14 +2294,25 @@ table {
 */
 td {
   padding-top: 1.2rem;
+  /* 1 */
+  padding-top: calc(1.2rem - 0.1rem);
+  /* 2 */
   padding-right: 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-left: 1.2rem;
+  border: 0.1rem solid #5d4777;
+  background-color: transparent;
+}
+
+/*
+    Reduce last row table cell padding to counteract the table border to preserve the vertical 
+    rhythm.
+*/
+tbody tr:last-child td {
   padding-bottom: 1.2rem;
   /* 1 */
   padding-bottom: calc(1.2rem - 0.1rem);
   /* 2 */
-  padding-left: 1.2rem;
-  border: 0.1rem solid #5d4777;
-  background-color: transparent;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2169,8 +2373,8 @@ textarea {
 }
 
 textarea:focus {
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
   outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2185,14 +2389,25 @@ textarea:focus {
 */
 th {
   padding-top: 1.2rem;
+  /* 1 */
+  padding-top: calc(1.2rem - 0.1rem);
+  /* 2 */
   padding-right: 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-left: 1.2rem;
+  border: 0.1rem solid #5d4777;
+  background-color: rgba(93, 71, 119, 0.3);
+}
+
+/*
+    Reduce last row table cell padding to counteract the table border to preserve the vertical 
+    rhythm.
+*/
+tbody tr:last-child th {
   padding-bottom: 1.2rem;
   /* 1 */
   padding-bottom: calc(1.2rem - 0.1rem);
   /* 2 */
-  padding-left: 1.2rem;
-  border: 0.1rem solid #5d4777;
-  background-color: rgba(93, 71, 119, 0.3);
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2215,10 +2430,18 @@ th {
 
 */
 ul {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   display: table;
   /* 1b */
+}
+
+ul:first-child {
+  margin-top: 0;
+}
+
+ul:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2238,6 +2461,11 @@ video {
   margin: 0 auto;
   /* 1 */
   background-color: #333;
+}
+
+video:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -2314,98 +2542,6 @@ main :target {
   scroll-margin-top: 4.8rem;
 }
 
-/*
-        Some inline elements have margin deliberately to help with size/position.
-        We don't want to zero-out those.
-    */
-:last-child:not(a):not(button):not(img):not(input):not(select) {
-  margin-bottom: 0;
-}
-
-/* Alt margins */
-/*
-Shelving this for now
-@if $s__procedural-margins == false {
-    /* this is too generic 
-    * + * {
-        margin-top: $s__base-rem-space-unit;
-    }
-    /
-    
-    /* This is the full list but it's not exactly what we want:
-    * + address,
-    * + article,
-    * + aside,
-    * + blockquote,
-    * + details,
-    * + dialog,
-    * + dd,
-    * + div,
-    * + dl,
-    * + dt,
-    * + fieldset,
-    * + figcaption,
-    * + figure,
-    * + footer,
-    * + form,
-    * + h1,
-    * + h2,
-    * + h3,
-    * + h4,
-    * + h5,
-    * + h6,
-    * + header,
-    * + hgroup,
-    * + hr,
-    * + li,
-    * + main,
-    * + nav,
-    * + ol,
-    * + p,
-    * + pre,
-    * + section,
-    * + table,
-    * + ul
-    /
-    
-    /*
-        Taking out list items, hr and div:
-    /
-    *:not(legend):not(figcaption) + address,
-    *:not(legend):not(figcaption) + article,
-    *:not(legend):not(figcaption) + aside,
-    *:not(legend):not(figcaption) + blockquote,
-    *:not(legend):not(figcaption) + details,
-    *:not(legend):not(figcaption) + dialog,
-    *:not(legend):not(figcaption) + dl,
-    *:not(legend):not(figcaption) + fieldset,
-    *:not(legend):not(figcaption) + figure,
-    *:not(legend):not(figcaption) + footer,
-    *:not(legend):not(figcaption) + form,
-    *:not(legend):not(figcaption) + h1,
-    *:not(legend):not(figcaption) + h2,
-    *:not(legend):not(figcaption) + h3,
-    *:not(legend):not(figcaption) + h4,
-    *:not(legend):not(figcaption) + h5,
-    *:not(legend):not(figcaption) + h6,
-    *:not(legend):not(figcaption) + header,
-    *:not(legend):not(figcaption) + hgroup,
-    *:not(legend):not(figcaption) + main,
-    *:not(legend):not(figcaption) + nav,
-    *:not(legend):not(figcaption) + ol,
-    *:not(legend):not(figcaption) + p,
-    *:not(legend):not(figcaption) + pre,
-    *:not(legend):not(figcaption) + section,
-    *:not(legend):not(figcaption) + table,
-    *:not(legend):not(figcaption) + ul {
-        margin-top: $s__base-rem-space-unit;
-    }
-    
-    hr {
-        margin-top: calc(2.4rem - 0.1rem;
-    }
-} 
-*/
 /*! Start-CSS Accessibility. See SCSS file for documentation. */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -2502,435 +2638,6 @@ a[hidden="false"][aria-hidden="false"]:active {
        keeping both for now.
 */
 /*! End Start-CSS */
-/*! Start CSS Classes. See SCSS file for documentation. */
-/*------------------------------------------------------------------------------------------------*\
-
-    Classes
-
-\*------------------------------------------------------------------------------------------------*/
-/*
-    Resources:
-    *
-*/
-/*
-        "Buttons" or "CTAs" that are really links should be distinguished from real buttons, so by
-        default we're swapping the foreground and background colors:
-    */
-a[href].button,
-a[href].cta {
-  display: inline-block;
-  /* AK. IE9 needs this. Hmmm, for what exactly?*/
-  min-height: 3rem;
-  overflow: visible;
-  /* S: Internet Explorer 11-, N: Show the overflow in Edge, Firefox, and IE. */
-  margin: 0.3rem 0;
-  padding-top: 0.3rem;
-  padding-top: -moz-calc(0);
-  padding-top: calc(0.3rem - 0.1rem);
-  padding-right: 0.6rem;
-  padding-bottom: 0.3rem;
-  padding-bottom: -moz-calc(0);
-  padding-bottom: calc(0.3rem - 0.1rem);
-  padding-left: 0.6rem;
-  border-color: #5d4777;
-  border-style: solid;
-  border-width: 0.1rem;
-  border-radius: 0.3rem;
-  color: #5d4777;
-  background-color: #fff;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: 2.4rem;
-  vertical-align: middle;
-  text-transform: none;
-  /* [N0], N: Remove the inheritance of text transform in Edge, Firefox, and IE. */
-  cursor: pointer;
-  -ms-touch-action: manipulation;
-  /* 1 (IE10) */
-  touch-action: manipulation;
-  /* 1 */
-  -webkit-appearance: none;
-  /*@if $s__button-focus-outline-width != false {
-        &:hover,
-        &:active,
-        &:focus {
-            outline-width: $s__button-focus-outline-width;
-            outline-style: $s__button-focus-outline-style;
-            outline-color: $s__button-focus-outline-color;
-            outline-offset: $s__button-focus-outline-offset;
-        }
-    }*/
-}
-
-a[href].button:hover, a[href].button:active,
-a[href].cta:hover,
-a[href].cta:active {
-  background-color: white;
-}
-
-a[href].button:focus,
-a[href].cta:focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(255, 255, 255, 0.5);
-}
-
-a[href].button:hover, a[href].button:active, a[href].button:focus,
-a[href].cta:hover,
-a[href].cta:active,
-a[href].cta:focus {
-  background-color: #ebe6f0;
-}
-
-a[href].button--has-icon,
-a[href].cta--has-icon {
-  position: relative;
-}
-
-a[href].button--has-icon::after,
-a[href].cta--has-icon::after {
-  content: "";
-  display: inline;
-  padding-left: 1.25em;
-  line-height: 0;
-}
-
-a[href].button--has-icon .icon,
-a[href].cta--has-icon .icon {
-  position: absolute;
-  bottom: 0;
-  transform: translateY(-15%);
-}
-
-.button[data-text][aria-hidden="true"] {
-  display: inline-block;
-  /* AK. IE9 needs this. Hmmm, for what exactly?*/
-  min-height: 3rem;
-  overflow: visible;
-  /* S: Internet Explorer 11-, N: Show the overflow in Edge, Firefox, and IE. */
-  margin: 0.3rem 0;
-  padding-top: 0.3rem;
-  padding-top: -moz-calc(0);
-  padding-top: calc(0.3rem - 0.1rem);
-  padding-right: 0.6rem;
-  padding-bottom: 0.3rem;
-  padding-bottom: -moz-calc(0);
-  padding-bottom: calc(0.3rem - 0.1rem);
-  padding-left: 0.6rem;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: solid;
-  border-width: 0.1rem;
-  border-radius: 0.3rem;
-  color: #fff;
-  background-color: #5d4777;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: 2.4rem;
-  vertical-align: middle;
-  text-transform: none;
-  /* [N0], N: Remove the inheritance of text transform in Edge, Firefox, and IE. */
-  cursor: pointer;
-  -ms-touch-action: manipulation;
-  /* 1 (IE10) */
-  touch-action: manipulation;
-  /* 1 */
-  -webkit-appearance: none;
-  /*@if $s__button-focus-outline-width != false {
-        &:hover,
-        &:active,
-        &:focus {
-            outline-width: $s__button-focus-outline-width;
-            outline-style: $s__button-focus-outline-style;
-            outline-color: $s__button-focus-outline-color;
-            outline-offset: $s__button-focus-outline-offset;
-        }
-    }*/
-}
-
-.button[data-text][aria-hidden="true"]:hover, .button[data-text][aria-hidden="true"]:active {
-  background-color: #443457;
-}
-
-.button[data-text][aria-hidden="true"]:focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.3rem rgba(93, 71, 119, 0.5);
-}
-
-.button[data-text][aria-hidden="true"]::before {
-  content: attr(data-text);
-}
-
-.bordered {
-  border-width: 6px;
-  border-style: solid;
-  border-color: #5d4777;
-  padding-top: 24px;
-  padding-top: calc(24px - 6px);
-  padding-left: 24px;
-  padding-left: calc(24px - 6px);
-  padding-right: 24px;
-  padding-right: calc(24px - 6px);
-  padding-bottom: 24px;
-  padding-bottom: calc(24px - 6px);
-}
-
-.padded {
-  border-width: 0px;
-  border-style: solid;
-  border-color: #5d4777;
-  padding-top: 2.4rem;
-  padding-top: calc(2.4rem - 0px);
-  padding-left: 2.4rem;
-  padding-left: calc(2.4rem - 0px);
-  padding-right: 2.4rem;
-  padding-right: calc(2.4rem - 0px);
-  padding-bottom: 2.4rem;
-  padding-bottom: calc(2.4rem - 0px);
-}
-
-/*
-        1. Prevent element increasing height of parent.
-    */
-b.subtitle {
-  font-size: 0.8em;
-  font-weight: inherit;
-  font-style: normal;
-  line-height: 1;
-  /* 1 */
-}
-
-/*
-        1. Negate heading margin.
-    */
-p.subtitle {
-  font-size: 1.5em;
-  font-weight: inherit;
-  margin-top: -1.2rem;
-  /* 1 */
-}
-
-/*
-        1. Negate heading margin.
-    */
-.tagline {
-  font-size: 1.14285714286em;
-  margin-top: -1.2rem;
-  /* 1 */
-}
-
-/*
-        1. Collapse whitespace.
-        2. Prevent extra height being added.
-    */
-.composite {
-  display: -webkit-inline-box;
-  /* 1 */
-  display: -ms-inline-flexbox;
-  /* 1 */
-  display: inline-flex;
-  /* 1 */
-  vertical-align: middle;
-  /* 2 */
-  max-width: 100%;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-/*
-        1. Prevent extra height being added.
-    */
-.composite > * {
-  vertical-align: top;
-  /* 1 */
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-}
-
-/*
-        IE9
-
-        1. Make sure there are no spaces between elements in the markup as the as the white space won't
-           collapse.
-
-        2. Hide button.
-    */
-@media screen and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
-  .composite {
-    display: inline-block;
-    /* 1 */
-    white-space: nowrap;
-    /* 1 */
-    overflow: hidden;
-    /* 2 */
-  }
-  .composite > * {
-    vertical-align: top;
-    display: inline-block;
-  }
-}
-
-.composite > *:not(:first-child) {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-
-.composite > *:not(:last-child) {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-right: 0 !important;
-}
-
-/* CUSTOM INPUTS: RADIOS AND CHECKBOXES */
-/* Hide the real inputs: */
-/* (note this method is important to persist accessibility and keyboard navigation) */
-.custom-input[type="checkbox"],
-.custom-input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-}
-
-/* Prepare for positioning the pseudo-elements: */
-.custom-input-label {
-  position: relative;
-  vertical-align: top;
-  /*display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        -webkit-align-items: center;
-             -ms-flex-align: center;
-               align-items: center;*/
-  padding-left: 1.5em;
-}
-
-.custom-input:focus + .custom-input-label::before {
-  box-shadow: 0 0 0 2px #9076ae;
-  outline: 0;
-}
-
-/* Common psuedo-element styles: */
-.custom-input[type="checkbox"] + .custom-input-label::before,
-.custom-input[type="radio"] + .custom-input-label::before {
-  display: inline-block;
-  content: "";
-  width: 1em;
-  height: 1em;
-  background: #ccc;
-  border-radius: 2px;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translate(0px, -53%);
-  -ms-transform: translate(0px, -53%);
-  transform: translate(0px, -53%);
-}
-
-/* Make the radio elements circular: */
-.custom-input[type="radio"] + .custom-input-label::before {
-  border-radius: 50%;
-}
-
-/* Define the checkbox :checked state: */
-.custom-input[type="checkbox"]:checked + .custom-input-label::before {
-  background: #5d4777;
-}
-
-/* Define the checkbox 'tick': */
-.custom-input[type="checkbox"]:checked + .custom-input-label::after {
-  content: "";
-  display: inline-block;
-  width: 0.6em;
-  height: 0.3em;
-  border: solid #fff;
-  border-width: 0 0 0.2em 0.2em;
-  position: absolute;
-  left: 0.22em;
-  top: 50%;
-  -webkit-transform: translate(0px, -80%) rotate(-50deg);
-  -ms-transform: translate(0px, -80%) rotate(-50deg);
-  transform: translate(0px, -80%) rotate(-50deg);
-}
-
-/* Define the radio 'dot': */
-.custom-input[type="radio"]:checked + .custom-input-label::before {
-  background: #fff;
-  border-color: #5d4777;
-  border-width: 0.25em;
-  border-style: solid;
-}
-
-/* Adjustments for end (right) alignment: */
-.custom-input--align-end[type="checkbox"] + .custom-input-label,
-.custom-input--align-end[type="radio"] + .custom-input-label {
-  padding-left: 0;
-  padding-right: 1.5em;
-}
-
-.custom-input--align-end[type="checkbox"] + .custom-input-label::before,
-.custom-input--align-end[type="radio"] + .custom-input-label::before {
-  left: auto;
-  right: 0;
-}
-
-.custom-input--align-end[type="checkbox"]:checked + .custom-input-label::after {
-  left: auto;
-  right: 0.16em;
-}
-
-/* CUSTOM INPUTS: FILE */
-/* -webkit hide the button: */
-.custom-input[type="file"]::-webkit-file-upload-button {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  width: 0;
-  background: transparent;
-}
-
-/* Firefox hide the button: */
-@supports (-moz-appearance: meterbar) {
-  .custom-input[type=file] {
-    text-indent: -5.6em;
-    padding-right: 0.375rem;
-  }
-}
-
-/* IE10-11, Edge hide the button: */
-.custom-input[type=file]::-ms-browse {
-  padding: 0;
-  margin: -1px;
-  width: 0;
-  border: 0;
-  background: transparent;
-}
-
-/* IE9 hide the button: (https://jeffclayton.wordpress.com/2014/07/22/internet-explorer-css-hacks-collection/) */
-@media screen and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
-  /*
-                So far I haven't managed to get this arrangement working properly in IE9, so hiding it:
-            */
-  .button + .custom-input[type=file] {
-    margin-left: -5.35em;
-  }
-  .custom-input[type="file"] + .button {
-    min-width: 7em;
-    margin-left: -7em;
-    text-align: center;
-  }
-}
-
-.poem {
-  font-family: cursive;
-  background: #fff;
-  overflow: auto;
-  margin-top: 0;
-  margin-bottom: 2.4rem;
-}
-
 /*! Start-CSS Accessibility. See SCSS file for documentation. */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -3237,7 +2944,7 @@ _:-o-prefocus, :root .icon {
   --t-primary-color-l: 37%;
   --t-primary-color-l-copy: 37%;
   /* Declared twice so it can be part of a lightening calculation) */
-  --t-primary-fore-text-color: #fff;
+  --t-primary-fore-text-color: s__set_color_for_background(#5F4776, #fff, #111);
   /* SASS would generate this from the base colour. */
   --t-secondary-color: #2c9cdf;
   /* hsl(202, 74%, 53%) */

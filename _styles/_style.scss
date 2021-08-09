@@ -34,6 +34,7 @@ $not-too-small: 18em;
 
 
 
+
 $s__main-max-line-length: 0;
 $s__main-padding: 0;
 
@@ -46,19 +47,19 @@ $s__text_zoom_scales_all: true;
 $s__border-width: 0.1rem;
 $s__border-radius: 0.3rem;
 
-$s__focus-outline-width: 0.2rem;
-$s__focus-outline-offset: 0.2rem;
+//$s__focus-outline-width: 0.2rem;
+//$s__focus-outline-offset: 0.2rem;
 
 $s__anchor-border-bottom-width: 0.2rem;
-$s__anchor-focus-shadow-width: 0.3rem;
+//$s__anchor-focus-shadow-width: 0.3rem;
 
-$s__button-focus-shadow-width: 0.3rem;
+//$s__button-focus-shadow-width: 0.3rem;
 
-$s__input-focus-shadow-width: 0.3rem;
+//$s__input-focus-shadow-width: 0.3rem;
 
-$s__select-focus-shadow-width: 0.3rem;
+//$s__select-focus-shadow-width: 0.3rem;
 
-$s__textarea-focus-shadow-width: 0.3rem;
+//$s__textarea-focus-shadow-width: 0.3rem;
 
 $s__figure-scroll: true;
 
@@ -105,7 +106,7 @@ $fs__include_class_poem:     false;
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
+//@import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start-accessibility.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-utilities.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
