@@ -878,9 +878,10 @@ Copyright © 2019 Javan Makhmali
     toggle: "ontoggle" in element
   };
   //var styles = '\ndetails, summary {\n  display: block;\n}\ndetails:not([open]) > *:not(summary) {\n  display: none;\n}\nsummary::before {\n  content: "►";\n  padding-right: 0.3rem;\n  font-size: 0.6rem;\n  cursor: default;\n}\n[open] > summary::before {\n  content: "▼";\n}\n';
+  var styles = '\ndetails, summary {\n  display: block;\n}\ndetails:not([open]) > *:not(summary) {\n  display: none;\n}\n';
   var _ref = [], forEach = _ref.forEach, slice = _ref.slice;
   if (!support.open) {
-    //polyfillStyles();
+    polyfillStyles();
     polyfillProperties();
     polyfillToggle();
     polyfillAccessibility();

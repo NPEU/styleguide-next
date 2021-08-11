@@ -21,16 +21,30 @@
 
         Array.prototype.forEach.call(elements, function(el, i) {
 
-            var svg = el.querySelector('svg');
-            var view_box = svg.getAttribute('viewBox');
+            var svg    = el.querySelector('svg');
             var height = parseInt(svg.getAttribute('height'), 10);
-            var view_box_array = view_box.split(' ');
-            var ratio = view_box_array[2] / view_box_array[3];
-            var max_width = height * ratio;
+            var width  = parseInt(svg.getAttribute('width'), 10);
+            var ratio  = height / width * 100;
 
             set_style(el, {
+                'width': width + 'px',
+                'position': 'relative'
+            });
+
+            var after = document.createElement('div');
+            set_style(after, {
                 'width': '100%',
-                'max-width': max_width + 'px'
+                'padding-bottom': ratio + '%'
+            });
+            
+            el.appendChild(after);
+
+            set_style(svg, {
+                'position': 'absolute',
+                'width': '100%',
+                'height': '100%',
+                'top': '0',
+                'left': '0'
             });
         });
     }

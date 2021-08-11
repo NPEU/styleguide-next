@@ -10,6 +10,22 @@ title: NPEU Layout Patterns - Distribute
 <hr />
 <p class="u-padding--sides">Items in rows</p>
 
+<h2 class="u-padding--sides">Default</h2>
+
+
+{% include layout/distribute.html classes="l-distribute" prefix="a" %}
+
+
+<h2 class="u-padding--sides" id="balance-top">Balance top (top-heavy)</h2>
+
+{% include layout/distribute.html classes="l-distribute  l-distribute--balance-top" prefix="b" %}
+
+
+<h2 class="u-padding--sides" id="balance-top">Balance bottom (bottom-heavy)</h2>
+
+{% include layout/distribute.html classes="l-distribute  l-distribute--balance-bottom" prefix="c" %}
+
+<!--
 <h2 class="u-padding--sides">1.</h2>
 
 <div class="l-distribute-wrap u-space--below">
@@ -2622,6 +2638,6 @@ title: NPEU Layout Patterns - Distribute
     </div>
 </div>
 
-
+-->
 <hr />
 <hr />

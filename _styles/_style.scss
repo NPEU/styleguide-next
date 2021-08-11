@@ -120,7 +120,7 @@ $fs__include_class_poem:     false;
 
 /* --| Component Patterns |---------------------------------------------------------------------- */
 
-//@import "component-patterns/_badge.scss";
+@import "component-patterns/_badge.scss";
 
 //@import "component-patterns/_card.scss";
 
@@ -132,15 +132,14 @@ $fs__include_class_poem:     false;
 
 /* --| Layout Patterns |------------------------------------------------------------------------- */
 
-@import "layout-patterns/_center.scss";
 
+$layout-spacing-unit: $s__base-rem-space-unit / 2;
+@import "layout-patterns/_base.scss";
 
-$distribute-spacing-unit: $s__base-rem-space-unit;
 @import "layout-patterns/_distribute.scss";
 
 
-$col-to-row-spacing-unit: $s__base-rem-space-unit;
-@import "layout-patterns/_col-to-row.scss";
+//@import "layout-patterns/_col-to-row.scss";
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -188,7 +187,14 @@ $ff-min-widths: (
 
 /* --| Utility Patterns |------------------------------------------------------------------------ */
 
+@import "utility-patterns/_block-center.scss";
+@import "utility-patterns/_fill-height.scss";
+@import "utility-patterns/_fill-width.scss";
+
 //@import "utility-patterns/_image-cover.scss";
+
+
+
 
 /* ---------------------------------------------------------------------------------------------- */
 

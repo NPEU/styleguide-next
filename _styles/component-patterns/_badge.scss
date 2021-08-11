@@ -145,6 +145,8 @@ $content-breakpoint: 60em !default;
         position: relative; 
 
         padding: $s__sz-m;
+        
+        height: 100%;
 
 
         &::before {
@@ -178,7 +180,11 @@ $content-breakpoint: 60em !default;
     &#{&}--page-brand img {
         display: block;
         margin: 0 auto;
-        max-height: 18rem;
+        max-height: 8.4rem;
+    }
+    
+    &#{&}--primary-logo {
+        // Nothing needed.
     }
 }
 
