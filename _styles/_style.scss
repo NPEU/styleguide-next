@@ -9,7 +9,12 @@
 //$themes: map-merge($themes, $theme-map);
 /**/
 
-$s__base-ui-color: map-get($theme, primary-color);
+$primary-color   : #5F4776;
+$secondary-color : #BC955C;
+$neutral-color   : #8e8279;
+
+
+$s__base-ui-color: $primary-color;
 
 $s__base-text-color: #111;
 /**/
@@ -102,21 +107,29 @@ $fs__include_class_bordered: false;
 $fs__include_class_padded:   false;
 $fs__include_class_poem:     false;
 */
+/* ---------------------------------------------------------------------------------------------- */
+
+/* --| STARTCSS |-------------------------------------------------------------------------------- */
+
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_settings.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-accessibility.scss';
+///@import '../bower_components/Fall-Back-Start-CSS/scss/_start-accessibility.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-utilities.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
-@import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
+///@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
+///@import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
 
+/* ---------------------------------------------------------------------------------------------- */
 
 /* --| THEME |----------------------------------------------------------------------------------- */
 
-@import "_theme.scss";
+@import "_themer.scss";
 
+/* ---------------------------------------------------------------------------------------------- */
+
+/* --| PATTERNS |-------------------------------------------------------------------------------- */
 
 /* --| Component Patterns |---------------------------------------------------------------------- */
 

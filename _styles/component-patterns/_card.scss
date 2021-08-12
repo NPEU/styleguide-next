@@ -1,4 +1,7 @@
 /*
+    Card
+    ====
+
     The `height: 100%;` in the `.card` class below allows the card to fill it's container (if inside,
     say, a list-grid). However, it doesn't work in Safari OSX/iOS.
     Applying a `card-wrap` class to a list item to make those items flex-containers seems to work

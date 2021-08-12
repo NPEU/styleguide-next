@@ -33,6 +33,8 @@ $fs__include_class_bordered: false;
 $fs__include_class_padded:   false;
 $fs__include_class_poem:     false;
 */
+/* ---------------------------------------------------------------------------------------------- */
+/* --| STARTCSS |-------------------------------------------------------------------------------- */
 /*! Start-CSS. See SCSS file for documentation. */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -151,6 +153,16 @@ $fs__include_class_poem:     false;
     Uni-directional margins (bottom) is fine for most cases, but things like figcaptions that may
     contain paragraphs can result in double bottom margins, so flipping that around inside those
     containers.
+* /
+@mixin s__fix_internal_margins($margin-size) {
+    & * {
+        margin-bottom: 0;
+    }
+
+    & * + * {
+        margin-top: $margin-size;
+    }
+}
 */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -204,7 +216,7 @@ $fs__include_class_poem:     false;
 */
 /*
     ANCHOR
-    
+
     1. This size allows 2px on normal fonts, 1px on smaller fonts.
 */
 /* [1] */
@@ -274,7 +286,7 @@ html {
   overflow-y: scroll;
   /* 3 */
   color: #111;
-  background-color: #1f1727;
+  background-color: #1f1726;
   font-size: 0.625em;
   /* 4 */
   -ms-text-size-adjust: 100%;
@@ -401,7 +413,7 @@ body {
 }
 
 /*
-    This method duplicates [hidden="false"][aria-hidden="false"] in accessibilty.scss, but I'm
+    This method duplicates [hidden="false"][aria-hidden="false"] in accessibility.scss, but I'm
     thinking of maybe deprecating that.
 */
 [data-if-css="visually-hide"] {
@@ -462,7 +474,7 @@ a[href]:hover, a[href]:active {
 
 a[href]:focus {
   outline: 0;
-  box-shadow: 0 0 0 3px rgba(93, 71, 119, 0.5);
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 @supports (-moz-appearance: none) {
@@ -481,19 +493,16 @@ a[href] svg:not(:only-child) {
   }
 }
 
-a[href][rel~="external"]::after {
-  display: inline;
-  content: "";
-  padding-left: 1.16666666667em;
-  margin: 0 0.5em;
-  background: linear-gradient(45deg, transparent 50%, currentColor 50%);
-  font-size: 0.375em;
-  line-height: 0;
-  vertical-align: super;
+a[href][rel~="external"] {
+  padding-right: 1em;
+  background-image: linear-gradient(45deg, transparent 65%, inherit 65%);
+  background-repeat: no-repeat;
+  background-position: right 0.4em bottom 0.4em;
+  background-size: 0.6em 0.6em;
 }
 
-a[href][rel~="external"]:hover::after {
-  background: linear-gradient(45deg, transparent 50%, currentColor 50%);
+a[href][rel~="external"]:hover {
+  background-image: linear-gradient(45deg, transparent 65%, inherit 65%);
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -526,8 +535,16 @@ abbr[title] {
 
 |-------------------------------------------------------------------------------------------------*/
 address {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+address:first-child {
   margin-top: 0;
+}
+
+address:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -538,9 +555,16 @@ address {
 |-------------------------------------------------------------------------------------------------*/
 article {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+article:first-child {
   margin-top: 0;
-  padding-bottom: 2.4rem;
+}
+
+article:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -551,11 +575,16 @@ article {
 |-------------------------------------------------------------------------------------------------*/
 aside {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+aside:first-child {
   margin-top: 0;
-  padding: 2.4rem;
-  background-color: #fff;
-  color: #111;
+}
+
+aside:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -603,14 +632,23 @@ b {
 
 |-------------------------------------------------------------------------------------------------*/
 blockquote {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   margin-left: 2.4rem;
+  margin-right: 2.4rem;
   font-style: italic;
   /*
         @TODO - set up vars and styles for the most common quote styles.
         I.e. left-border, and enclosing quotes.
     */
+}
+
+blockquote:first-child {
+  margin-top: 0;
+}
+
+blockquote:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -639,7 +677,7 @@ button {
   border-width: 0.1rem;
   border-radius: 0.3rem;
   color: #fff;
-  background-color: #5d4777;
+  background-color: #5F4776;
   font-weight: inherit;
   font-style: inherit;
   font-size: inherit;
@@ -654,25 +692,15 @@ button {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $s__button-focus-outline-width != false {
-        &:hover,
-        &:active,
-        &:focus {
-            outline-width: $s__button-focus-outline-width;
-            outline-style: $s__button-focus-outline-style;
-            outline-color: $s__button-focus-outline-color;
-            outline-offset: $s__button-focus-outline-offset;
-        }
-    }*/
 }
 
 button:hover, button:active {
-  background-color: #443457;
+  background-color: #453456;
 }
 
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 3px rgba(93, 71, 119, 0.5);
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 button svg {
@@ -733,7 +761,7 @@ caption {
   padding-bottom: 1.2rem;
   padding-left: 1.2rem;
   color: #fff;
-  background-color: rgba(93, 71, 119, 0.7);
+  background-color: rgba(95, 71, 118, 0.7);
   font-weight: bold;
 }
 
@@ -776,20 +804,42 @@ dd {
 details {
   display: block;
   /* N: IE 10/11 */
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
-  padding-bottom: 2.4rem;
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #5d4777;
-  padding-top: 2.4rem;
-  padding-top: calc(2.4rem - 0.1rem);
-  padding-left: 2.4rem;
-  padding-left: calc(2.4rem - 0.1rem);
-  padding-right: 2.4rem;
-  padding-right: calc(2.4rem - 0.1rem);
-  padding-bottom: 2.4rem;
-  padding-bottom: calc(2.4rem - 0.1rem);
+  border-color: #5F4776;
+  padding: calc(2.4rem - 0.1rem);
+  /*
+    @if $s__use-last-child-margin-zero {
+        padding-bottom: 2.4rem;
+        //padding-bottom: -moz-calc(2.4rem - 0.1rem);
+        padding-bottom:      calc(2.4rem - 0.1rem);
+    } @else {
+        padding-bottom: 0;
+        &::after {
+            display: block;
+
+            content: "";
+
+            height: 1px;
+
+            margin-top: $padding;
+
+            margin-bottom: -1px;
+            //margin-bottom: -moz-calc(-1px - 0.1rem);
+            margin-bottom:      calc(-1px - 0.1rem);
+        }
+    }
+    */
+}
+
+details:first-child {
+  margin-top: 0;
+}
+
+details:last-child {
+  margin-bottom: 0;
 }
 
 details > * {
@@ -829,10 +879,18 @@ dfn {
 
 */
 dl {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   display: table;
   /* 1b */
+}
+
+dl:first-child {
+  margin-top: 0;
+}
+
+dl:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -877,20 +935,43 @@ em em {
     More info here: https://thatemil.com/blog/2015/01/03/reset-your-fieldset/
 */
 fieldset {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   min-width: 0;
   border-width: 0.1rem;
   border-style: solid;
-  border-color: #5d4777;
-  padding-top: 2.4rem;
-  padding-top: calc(2.4rem - 0.1rem);
-  padding-left: 2.4rem;
-  padding-left: calc(2.4rem - 0.1rem);
-  padding-right: 2.4rem;
-  padding-right: calc(2.4rem - 0.1rem);
-  padding-bottom: 2.4rem;
-  padding-bottom: calc(2.4rem - 0.1rem);
+  border-color: #5F4776;
+  padding: calc(2.4rem - 0.1rem);
+  /*
+    @if $s__use-last-child-margin-zero {
+        padding-bottom: 2.4rem;
+        //padding-bottom: -moz-calc(2.4rem - 0.1rem);
+        padding-bottom:      calc(2.4rem - 0.1rem);
+    } @else {
+        padding-bottom: 0;
+        &::after {
+            display: block;
+
+            content: "";
+
+            height: 1px;
+
+            margin-top: $padding;
+
+            margin-bottom: -1px;
+            //margin-bottom: -moz-calc(-1px - 0.1rem);
+            margin-bottom:      calc(-1px - 0.1rem);
+        }
+    }
+    */
+}
+
+fieldset:first-child {
+  margin-top: 0;
+}
+
+fieldset:last-child {
+  margin-bottom: 0;
 }
 
 fieldset fieldset {
@@ -913,15 +994,6 @@ figcaption {
   display: block;
   font-size: 0.875em;
   margin-bottom: 0;
-  margin-top: 0;
-}
-
-figcaption * {
-  margin-bottom: 0;
-}
-
-figcaption * + * {
-  margin-top: 1.2rem;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -932,8 +1004,10 @@ figcaption * + * {
 |-------------------------------------------------------------------------------------------------*/
 figure {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
+  margin-left: 2.4rem;
+  margin-right: 2.4rem;
   max-width: 100%;
   overflow: auto;
   background-image: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, white 60%, white 100%), linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 60%, white 100%), linear-gradient(to right, rgba(0, 0, 20, 0.5), rgba(255, 255, 255, 0)), linear-gradient(to left, rgba(0, 0, 20, 0.5), rgba(255, 255, 255, 0));
@@ -944,6 +1018,14 @@ figure {
   background-attachment: local, local, scroll, scroll;
 }
 
+figure:first-child {
+  margin-top: 0;
+}
+
+figure:last-child {
+  margin-bottom: 0;
+}
+
 /*-------------------------------------------------------------------------------------------------|
 
     START-CSS ELEMENT: footer
@@ -952,11 +1034,16 @@ figure {
 |-------------------------------------------------------------------------------------------------*/
 footer {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+footer:first-child {
   margin-top: 0;
-  padding: 2.4rem;
-  background-color: #fff;
-  color: #111;
+}
+
+footer:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -966,8 +1053,16 @@ footer {
 
 |-------------------------------------------------------------------------------------------------*/
 form {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+form:first-child {
   margin-top: 0;
+}
+
+form:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -978,21 +1073,16 @@ form {
 |-------------------------------------------------------------------------------------------------*/
 header {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+header:first-child {
   margin-top: 0;
-  border-width: 0;
-  border-style: solid;
-  border-color: #5d4777;
-  padding-top: 2.4rem;
-  padding-top: calc(2.4rem - 0);
-  padding-left: 2.4rem;
-  padding-left: calc(2.4rem - 0);
-  padding-right: 2.4rem;
-  padding-right: calc(2.4rem - 0);
-  padding-bottom: 2.4rem;
-  padding-bottom: calc(2.4rem - 0);
-  background-color: #fff;
-  color: #111;
+}
+
+header:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1003,9 +1093,16 @@ header {
 |-------------------------------------------------------------------------------------------------*/
 hgroup {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+hgroup:first-child {
   margin-top: 0;
-  padding-bottom: 2.4rem;
+}
+
+hgroup:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1015,45 +1112,93 @@ hgroup {
 
 |-------------------------------------------------------------------------------------------------*/
 h1 {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   font-size: 3.25em;
   line-height: 6rem;
 }
 
-h2 {
-  margin-bottom: 2.4rem;
+h1:first-child {
   margin-top: 0;
+}
+
+h1:last-child {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 2.5em;
   line-height: 4.8rem;
 }
 
-h3 {
-  margin-bottom: 2.4rem;
+h2:first-child {
   margin-top: 0;
+}
+
+h2:last-child {
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 1.875em;
   line-height: 3.6rem;
 }
 
-h4 {
-  margin-bottom: 2.4rem;
+h3:first-child {
   margin-top: 0;
+}
+
+h3:last-child {
+  margin-bottom: 0;
+}
+
+h4 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 1.375em;
   line-height: 3.6rem;
 }
 
-h5 {
-  margin-bottom: 2.4rem;
+h4:first-child {
   margin-top: 0;
+}
+
+h4:last-child {
+  margin-bottom: 0;
+}
+
+h5 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 1.125em;
   line-height: 2.4rem;
 }
 
-h6 {
-  margin-bottom: 2.4rem;
+h5:first-child {
   margin-top: 0;
+}
+
+h5:last-child {
+  margin-bottom: 0;
+}
+
+h6 {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   font-size: 1em;
   line-height: 2.4rem;
+}
+
+h6:first-child {
+  margin-top: 0;
+}
+
+h6:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1073,7 +1218,7 @@ hr {
   margin-bottom: 2.4rem;
   border-top: none;
   border-right: none;
-  border-bottom: 0.1rem solid #5d4777;
+  border-bottom: 0.1rem solid #5F4776;
   border-left: none;
 }
 
@@ -1107,6 +1252,8 @@ iframe {
 img {
   max-width: 100%;
   /* 1 */
+  height: auto;
+  /* 1 */
   border-style: none;
   /* 2  */
   font-style: italic;
@@ -1128,25 +1275,24 @@ img .gm-style {
 /*
     Special treatment for images inside links.
 */
-a img {
-  margin-bottom: 0.2em;
+a[href] img {
   border-bottom: 0.2rem solid;
 }
 
-a img:active, a img:hover {
+a[href] img:active, a[href] img:hover {
   border-bottom: 0.2rem dashed;
 }
 
 /*
-    Here's a problem - if the image has a transparent background, the a's bounding box (which is 
+    Here's a problem - if the image has a transparent background, the a's bounding box (which is
     inline and smaller than the image) is visible.
-    Outlines actually work as expected in this case but I can't use them because of the lack of 
+    Outlines actually work as expected in this case but I can't use them because of the lack of
     rounded corners, hence the a > img selector reapplying the focus shadow.
     I guess transparent images like this are an edge case, but it's something to keep an eye on.
 */
 a:focus img {
   outline: 0;
-  box-shadow: 0 0 0 3px rgba(93, 71, 119, 0.5);
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1211,8 +1357,8 @@ input:not([type]):focus,
 [type="time"]:focus,
 [type="url"]:focus,
 [type="week"]:focus {
-  box-shadow: 0 0 0 3px rgba(93, 71, 119, 0.5);
   outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -1221,8 +1367,8 @@ input:not([type]):focus,
     */
 [type="checkbox"]:focus,
 [type="radio"]:focus {
-  box-shadow: 0 0 0 3px rgba(93, 71, 119, 0.5);
   outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -1265,7 +1411,7 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
   border-width: 0.1rem;
   border-radius: 0.3rem;
   color: #fff;
-  background-color: #5d4777;
+  background-color: #5F4776;
   font-weight: inherit;
   font-style: inherit;
   font-size: inherit;
@@ -1280,16 +1426,6 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
   touch-action: manipulation;
   /* 1 */
   -webkit-appearance: none;
-  /*@if $s__button-focus-outline-width != false {
-        &:hover,
-        &:active,
-        &:focus {
-            outline-width: $s__button-focus-outline-width;
-            outline-style: $s__button-focus-outline-style;
-            outline-color: $s__button-focus-outline-color;
-            outline-offset: $s__button-focus-outline-offset;
-        }
-    }*/
 }
 
 [type="button"]:hover, [type="button"]:active,
@@ -1297,14 +1433,14 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
 [type="reset"]:active,
 [type="submit"]:hover,
 [type="submit"]:active {
-  background-color: #443457;
+  background-color: #453456;
 }
 
 [type="button"]:focus,
 [type="reset"]:focus,
 [type="submit"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 3px rgba(93, 71, 119, 0.5);
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -1344,7 +1480,7 @@ _:-moz-any-link, :root [type="file"] {
 }
 
 _:-ms-input-placeholder, :root [type="file"] {
-  background-color: #5d4777;
+  background-color: #5F4776;
 }
 
 @media screen and (min-width: 0\0) and (min-resolution: 72dpi) {
@@ -1395,8 +1531,6 @@ _:-ms-input-placeholder, :root [type="file"] {
 [type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  outline-offset: -2px;
-  /* 2 */
 }
 
 /**
@@ -1527,11 +1661,19 @@ main {
   width: 100%;
   min-height: 100%;
   padding: 0;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   background-color: #fff;
   color: #111;
   position: relative;
+}
+
+main:first-child {
+  margin-top: 0;
+}
+
+main:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1556,9 +1698,16 @@ mark {
 |-------------------------------------------------------------------------------------------------*/
 nav {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+nav:first-child {
   margin-top: 0;
-  padding-bottom: 2.4rem;
+}
+
+nav:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1591,10 +1740,18 @@ object {
 
 */
 ol {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   display: table;
   /* 1b */
+}
+
+ol:first-child {
+  margin-top: 0;
+}
+
+ol:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1639,7 +1796,7 @@ option {
 }
 
 option:hover {
-  background-color: #c4b6d4;
+  background-color: #c5b6d3;
   color: #111;
 }
 
@@ -1650,8 +1807,16 @@ option:hover {
 
 |-------------------------------------------------------------------------------------------------*/
 p {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+p:first-child {
   margin-top: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1676,6 +1841,8 @@ pre {
   /* 1 */
   overflow-y: auto;
   /* 1 */
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
   margin-bottom: 3.1rem;
   /* 1 */
   background-color: #ebe6f0;
@@ -1684,6 +1851,14 @@ pre {
   /* 2 */
   font-family: monospace, monospace;
   /* 3 */
+}
+
+pre:first-child {
+  margin-top: 0;
+}
+
+pre:last-child {
+  margin-bottom: 0;
 }
 
 @supports (-ms-ime-align: auto) {
@@ -1748,9 +1923,16 @@ samp {
 |-------------------------------------------------------------------------------------------------*/
 section {
   display: block;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+section:first-child {
   margin-top: 0;
-  padding-bottom: 2.4rem;
+}
+
+section:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1856,8 +2038,8 @@ _:-moz-tree-row(hover), select:not([multiple]) {
 }
 
 select:focus {
-  box-shadow: 0 0 0 3px rgba(93, 71, 119, 0.5);
   outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*
@@ -1977,6 +2159,8 @@ sub {
 |-------------------------------------------------------------------------------------------------*/
 /*
     1. Correct display in unsupported browsers (https://caniuse.com/#feat=details).
+       Update: correct display is now list-item, which adds the marker, but we're adding our own
+       anyway.
     2. Remove the tapping delay from clickable elements.
 */
 summary {
@@ -1987,13 +2171,11 @@ summary {
   touch-action: manipulation;
   /* 2 */
   cursor: pointer;
-  margin-bottom: 0;
-  margin-top: 0;
 }
 
 summary:focus {
-  outline: 2px solid rgba(93, 71, 119, 0.6);
-  outline-offset: 2px;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /* Hide the details marker as we're supplying our own. */
@@ -2013,8 +2195,16 @@ details > summary::before {
 }
 
 details[open] > summary {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+details[open] > summary:first-child {
   margin-top: 0;
+}
+
+details[open] > summary:last-child {
+  margin-bottom: 0;
 }
 
 details[open] > summary::before {
@@ -2077,16 +2267,21 @@ svg:not(:root) {
 */
 table {
   width: 100%;
-  /* @TODO - possibly make this configurable to be 'natural' width but centered instead. (http://alistapart.com/article/web-typography-tables) */
-  border-collapse: collapse;
+  /* @TODO - possibly make this configurable to be 'natural' width but cantered instead. (http://alistapart.com/article/web-typography-tables) */
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  /* 1 */
-  margin-bottom: calc(2.4rem - 0.1rem);
-  /* 2 */
-  margin-top: 0;
-  border: 0.1rem solid #5d4777;
   background-color: transparent;
+  border: 0.1rem solid #5F4776;
+  border-collapse: collapse;
   border-spacing: 0;
+}
+
+table:first-child {
+  margin-top: 0;
+}
+
+table:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2101,14 +2296,25 @@ table {
 */
 td {
   padding-top: 1.2rem;
+  /* 1 */
+  padding-top: calc(1.2rem - 0.1rem);
+  /* 2 */
   padding-right: 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-left: 1.2rem;
+  border: 0.1rem solid #5F4776;
+  background-color: transparent;
+}
+
+/*
+    Reduce last row table cell padding to counteract the table border to preserve the vertical 
+    rhythm.
+*/
+tbody tr:last-child td {
   padding-bottom: 1.2rem;
   /* 1 */
   padding-bottom: calc(1.2rem - 0.1rem);
   /* 2 */
-  padding-left: 1.2rem;
-  border: 0.1rem solid #5d4777;
-  background-color: transparent;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2169,8 +2375,8 @@ textarea {
 }
 
 textarea:focus {
-  box-shadow: 0 0 0 3px rgba(93, 71, 119, 0.5);
   outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2185,14 +2391,25 @@ textarea:focus {
 */
 th {
   padding-top: 1.2rem;
+  /* 1 */
+  padding-top: calc(1.2rem - 0.1rem);
+  /* 2 */
   padding-right: 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-left: 1.2rem;
+  border: 0.1rem solid #5F4776;
+  background-color: rgba(95, 71, 118, 0.3);
+}
+
+/*
+    Reduce last row table cell padding to counteract the table border to preserve the vertical 
+    rhythm.
+*/
+tbody tr:last-child th {
   padding-bottom: 1.2rem;
   /* 1 */
   padding-bottom: calc(1.2rem - 0.1rem);
   /* 2 */
-  padding-left: 1.2rem;
-  border: 0.1rem solid #5d4777;
-  background-color: rgba(93, 71, 119, 0.3);
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2215,10 +2432,18 @@ th {
 
 */
 ul {
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  margin-top: 0;
   display: table;
   /* 1b */
+}
+
+ul:first-child {
+  margin-top: 0;
+}
+
+ul:last-child {
+  margin-bottom: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2240,6 +2465,11 @@ video {
   background-color: #333;
 }
 
+video:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+}
+
 /*
     Utilities and other miscellaneous bits:
 */
@@ -2259,7 +2489,7 @@ video {
 ::-moz-selection,
 ::selection {
   color: #fff;
-  background-color: #aa96c1;
+  background-color: #ab96c0;
   text-shadow: none;
 }
 
@@ -2276,34 +2506,34 @@ main :target {
 
 @-moz-keyframes target-fade {
   0% {
-    background-color: rgba(170, 150, 193, 0.4);
-    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0.4);
+    background-color: rgba(171, 150, 192, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(171, 150, 192, 0.4);
   }
   100% {
-    background-color: rgba(170, 150, 193, 0);
-    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0);
+    background-color: rgba(171, 150, 192, 0);
+    box-shadow: 0 0 0 1.2rem rgba(171, 150, 192, 0);
   }
 }
 
 @-webkit-keyframes target-fade {
   0% {
-    background-color: rgba(170, 150, 193, 0.4);
-    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0.4);
+    background-color: rgba(171, 150, 192, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(171, 150, 192, 0.4);
   }
   100% {
-    background-color: rgba(170, 150, 193, 0);
-    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0);
+    background-color: rgba(171, 150, 192, 0);
+    box-shadow: 0 0 0 1.2rem rgba(171, 150, 192, 0);
   }
 }
 
 @keyframes target-fade {
   0% {
-    background-color: rgba(170, 150, 193, 0.4);
-    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0.4);
+    background-color: rgba(171, 150, 192, 0.4);
+    box-shadow: 0 0 0 1.2rem rgba(171, 150, 192, 0.4);
   }
   100% {
-    background-color: rgba(170, 150, 193, 0);
-    box-shadow: 0 0 0 1.2rem rgba(170, 150, 193, 0);
+    background-color: rgba(171, 150, 192, 0);
+    box-shadow: 0 0 0 1.2rem rgba(171, 150, 192, 0);
   }
 }
 
@@ -2314,98 +2544,6 @@ main :target {
   scroll-margin-top: 4.8rem;
 }
 
-/*
-        Some inline elements have margin deliberately to help with size/position.
-        We don't want to zero-out those.
-    */
-:last-child:not(a):not(button):not(img):not(input):not(select) {
-  margin-bottom: 0;
-}
-
-/* Alt margins */
-/*
-Shelving this for now
-@if $s__procedural-margins == false {
-    /* this is too generic 
-    * + * {
-        margin-top: $s__base-rem-space-unit;
-    }
-    /
-    
-    /* This is the full list but it's not exactly what we want:
-    * + address,
-    * + article,
-    * + aside,
-    * + blockquote,
-    * + details,
-    * + dialog,
-    * + dd,
-    * + div,
-    * + dl,
-    * + dt,
-    * + fieldset,
-    * + figcaption,
-    * + figure,
-    * + footer,
-    * + form,
-    * + h1,
-    * + h2,
-    * + h3,
-    * + h4,
-    * + h5,
-    * + h6,
-    * + header,
-    * + hgroup,
-    * + hr,
-    * + li,
-    * + main,
-    * + nav,
-    * + ol,
-    * + p,
-    * + pre,
-    * + section,
-    * + table,
-    * + ul
-    /
-    
-    /*
-        Taking out list items, hr and div:
-    /
-    *:not(legend):not(figcaption) + address,
-    *:not(legend):not(figcaption) + article,
-    *:not(legend):not(figcaption) + aside,
-    *:not(legend):not(figcaption) + blockquote,
-    *:not(legend):not(figcaption) + details,
-    *:not(legend):not(figcaption) + dialog,
-    *:not(legend):not(figcaption) + dl,
-    *:not(legend):not(figcaption) + fieldset,
-    *:not(legend):not(figcaption) + figure,
-    *:not(legend):not(figcaption) + footer,
-    *:not(legend):not(figcaption) + form,
-    *:not(legend):not(figcaption) + h1,
-    *:not(legend):not(figcaption) + h2,
-    *:not(legend):not(figcaption) + h3,
-    *:not(legend):not(figcaption) + h4,
-    *:not(legend):not(figcaption) + h5,
-    *:not(legend):not(figcaption) + h6,
-    *:not(legend):not(figcaption) + header,
-    *:not(legend):not(figcaption) + hgroup,
-    *:not(legend):not(figcaption) + main,
-    *:not(legend):not(figcaption) + nav,
-    *:not(legend):not(figcaption) + ol,
-    *:not(legend):not(figcaption) + p,
-    *:not(legend):not(figcaption) + pre,
-    *:not(legend):not(figcaption) + section,
-    *:not(legend):not(figcaption) + table,
-    *:not(legend):not(figcaption) + ul {
-        margin-top: $s__base-rem-space-unit;
-    }
-    
-    hr {
-        margin-top: calc(2.4rem - 0.1rem;
-    }
-} 
-*/
 /*! Start-CSS Accessibility. See SCSS file for documentation. */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -2502,296 +2640,7 @@ a[hidden="false"][aria-hidden="false"]:active {
        keeping both for now.
 */
 /*! End Start-CSS */
-/*! Start-CSS Accessibility. See SCSS file for documentation. */
-/*-------------------------------------------------------------------------------------------------|
-
-    ACCESSIBILITY / ARIA
-    ============================================================================================
-
-|-------------------------------------------------------------------------------------------------*/
-[aria-busy="true"] {
-  cursor: progress;
-}
-
-/*
-    Specify the pointer cursor of trigger elements. (S)
-*/
-[aria-controls] {
-  cursor: pointer;
-}
-
-/*
-    Specify the un-styled cursor of disabled, not-editable, or otherwise inoperable elements. (S)
-*/
-[disabled],
-[aria-disabled] {
-  cursor: default;
-}
-
-/*
-    Address `[hidden]` styling not present in IE 8/9/10. (N)
-*/
-[hidden] {
-  display: none;
-}
-
-/*
-    Specify the style of visually hidden yet accessible elements. (S)
-*/
-[hidden="false"][aria-hidden="false"] {
-  clip: rect(0 0 0 0);
-  position: absolute;
-  display: inline;
-  /*border: 0;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    width: 1px;*/
-}
-
-a[hidden="false"][aria-hidden="false"]:focus,
-a[hidden="false"][aria-hidden="false"]:active {
-  clip: auto;
-  position: static;
-  /*height: auto;
-        margin: 0;
-        overflow: visible;
-        width: auto;*/
-}
-
-/*
-    Elements with tabindex="-1" are NOT user focussable, but CAN be focussed via JS.
-    In this case elements focussed in such a way should not receive focus styles to avoid confusion.
-    (https://inclusive-components.design/a-todo-list#focusmanagement)
-*/
-[tabindex="-1"] {
-  outline: none;
-}
-
-/*
-    A blanket attempt to respect prefers-reduced-motion.
-    (https://dev.to/alvaromontoro/consider-reducing-motions-1a13)
-*/
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/*! Start CSS Icons. See SCSS file for documentation. */
-/*------------------------------------------------------------------------------------------------*\
-
-    Icons
-
-\*------------------------------------------------------------------------------------------------*/
-/*
-
-    This default icon set used Feather Icons (https://feathericons.com/)
-    If you want to use a different icon set, omit the @import declaration for this file and replace
-    it with a custom one.
-    
-    The markup here is based on this article:
-    [Accessible SVG Icons with Inline Sprites](https://www.24a11y.com/2018/accessible-svg-icons-with-inline-sprites/)
-
-    <!-- At the top of each page: -->
-    <svg xmlns="http://www.w3.org/2000/svg" display="none">
-        <style>
-            svg[focusable="false"][role="img"][aria-labelledby],
-            svg[focusable="false"][aria-hidden="true"] {
-                fill: none;
-                fill-opacity: 0;
-                stroke: currentColor;
-                stroke-width: 2;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-                width: 1.25em;
-                height: 1.25em;
-                margin: 0;
-                padding: 0;
-                vertical-align: text-bottom;
-            }
-        </style>
-        <symbol id="icon-building" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-        </symbol>
-        <symbol id="icon-calendar" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/>
-            <line x1="8" y1="2" x2="8" y2="6"/>
-            <line x1="3" y1="10" x2="21" y2="10"/>
-        </symbol>
-        <symbol id="icon-chevron-down" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <polyline points="6 9 12 15 18 9"/>
-        </symbol>
-        <symbol id="icon-chevron-up" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <polyline points="18 15 12 9 6 15"/>
-        </symbol>
-        <symbol id="icon-chevron-left" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <polyline points="15 18 9 12 15 6"/>
-        </symbol>
-        <symbol id="icon-chevron-right" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <polyline points="9 18 15 12 9 6"/>
-        </symbol>
-        <symbol id="icon-cross" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
-        </symbol>
-        <symbol id="icon-edit" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
-        </symbol>
-        <symbol id="icon-email" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
-        </symbol>
-        <symbol id="icon-facebook" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-        </symbol>
-        <symbol id="icon-fax" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path class="st0" d="M6,18H4c-1.1,0-2-0.7-2-1.6v-4c0-0.9,0.9-1.6,2-1.6h16c1.1,0,2,0.7,2,1.6v4c0,0.9-0.9,1.6-2,1.6h-2"/>
-            <rect x="6" y="14" class="st0" width="12" height="8"/>
-            <path class="st0" d="M6,7.4L4.8,6.2C4.4,5.7,4.4,5,4.8,4.6c0,0,0.1,0,0.1-0.1c1.4-1.1,3-1.9,4.7-2.2c1.6-0.4,3.2-0.4,4.8,0 c1.7,0.4,3.3,1.1,4.7,2.2c0.5,0.4,0.5,1.1,0.1,1.6c0,0,0,0.1-0.1,0.1L18,7.4c-0.4,0.4-1,0.5-1.5,0.1c-0.4-0.3-0.9-0.6-1.4-0.8 c-0.4-0.2-0.7-0.6-0.7-1v-1c-1.6-0.4-3.2-0.4-4.8,0v1c0,0.4-0.3,0.8-0.7,1C8.4,6.9,8,7.2,7.5,7.5C7.1,7.8,6.4,7.8,6,7.4z"/>
-        </symbol>
-        <symbol id="icon-file" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-            <polyline points="13 2 13 9 20 9"/>
-        </symbol>
-        <symbol id="icon-info" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="16" x2="12" y2="12"/>
-            <line x1="12" y1="8" x2="12.01" y2="8"/>
-        </symbol>
-        <symbol id="icon-linkedin" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >            
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-        </symbol>
-        <symbol id="icon-menu" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-        </symbol>
-        <symbol id="icon-person" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-        </symbol>
-        <symbol id="icon-phone" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </symbol>
-        <symbol id="icon-rss" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path class="st0" d="M5.6,9.1c4,0,7.2,3.2,7.2,7.2"/><path class="st0" d="M5.6,3.5c7,0,12.8,5.7,12.8,12.8"/><circle class="st0" cx="6.4" cy="15.5" r="0.8"/>
-        </symbol>
-        <symbol id="icon-search" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <circle cx="10.5" cy="10.5" r="7.5"/>
-            <line x1="21" y1="21" x2="15.8" y2="15.8"/>
-        </symbol>
-        <symbol id="icon-twitter" viewBox="0 0 24 24"
-            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
-        >
-            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-        </symbol>
-     </svg>
-
-
-
-    <!-- Where it's needed: -->
-    <svg display="none" class="icon" aria-label="Spoken label"><use xlink:href="#icon-triangle-down"></use></svg>
-    <!-- Note the aria-label can be removed if equivalent text is already present or the icon is visual only -->
-
-*/
-/*
-        1. Override display attribute.
-        2. FF55- otherwise fill is applied.
-    */
-.icon {
-  display: inline;
-  /* [1] */
-  fill: none;
-  fill-opacity: 0;
-  /* [2] */
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  width: 1.25em;
-  height: 1.25em;
-  margin: 0;
-  padding: 0;
-}
-
-_:-o-prefocus, :root .icon {
-  vertical-align: middle;
-}
-
-.icon-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-/*! Start-CSS Experimental. See SCSS file for documentation. */
-/*-------------------------------------------------------------------------------------------------|
-
-    EXPERIMENTAL
-    ============================================================================================
-
-|-------------------------------------------------------------------------------------------------*/
-/*
-    These may be experimental, but they actually make Safari usable with a keyboard, so long as
-    you enable an "Accessibility" setting located in the advanced tab of Safari preferences.
-    ("Press TAB to highlight each item on a web page.)
-    That is - the default outline focus style works, but shadows don't unless appearance: none
-    is used.
-    
-    1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
-       keeping both for now.
-*/
+/* ---------------------------------------------------------------------------------------------- */
 /* --| THEME |----------------------------------------------------------------------------------- */
 /**/
 :root {
@@ -2808,7 +2657,7 @@ _:-o-prefocus, :root .icon {
   --t-primary-color-l: 37%;
   --t-primary-color-l-copy: 37%;
   /* Declared twice so it can be part of a lightening calculation) */
-  --t-primary-fore-text-color: #fff;
+  --t-primary-fore-text-color: s__set_color_for_background(#5F4776, #fff, #111);
   /* SASS would generate this from the base colour. */
   --t-secondary-color: #2c9cdf;
   /* hsl(202, 74%, 53%) */
@@ -2847,9 +2696,12 @@ _:-o-prefocus, :root .icon {
   /**/
 }
 
+/* ---------------------------------------------------------------------------------------------- */
+/* --| PATTERNS |-------------------------------------------------------------------------------- */
 /* --| Component Patterns |---------------------------------------------------------------------- */
 /*
-
+    Badge
+    =====
 */
 .c-badge {
   /*
@@ -3073,6 +2925,8 @@ a[href][rel~="external"].c-badge:focus::after {
 }
 
 /*
+    Page Wrap
+    ========
 */
 .c-page-wrap.c-page-wrap {
   max-width: 1600px;
