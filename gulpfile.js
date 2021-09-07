@@ -195,7 +195,8 @@ function do_concat_js(cb) {
         './bower_components/Fall-Back-Patterns/Content Min Row/js/content-min-row-v1.js',
         './bower_components/Fall-Back-Patterns/Dropdown/js/dropdown-v2.js',
         './bower_components/Fall-Back-Patterns/Over Panel/js/over-panel-v2.js',
-        './bower_components/Details-Polyfill/dist/details-element-polyfill.js'
+        './bower_components/Details-Polyfill/dist/details-element-polyfill.js',
+        './bower_components/picturefill/dist/picturefill.js'
     ])
     .pipe(concat(js_filename))
     .pipe(gulp.dest(js_src));

@@ -52,20 +52,17 @@
     -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
 
-    <!-- https://github.com/Fall-Back/CSS-Mustard-Cut#tng-cut-the-next-generation
-        Print, Edge 12? - 18
-        Edge 79+, Chrome 58+, Opera 45+, Safari 10+, iOS 10+, Android Webview/Chrome 58+, Samsung Internet
-        FF 47+
+    <!--
+        Print (Edge doesn't apply to print otherwise)
+        Edge 79+, Chrome 74+, Firefox 63+, Opera 64+, Safari 10.1+, iOS 10.3+, Android 81+  
     -->
     <link rel="stylesheet" href="/css/style.min.{{ site.data.cache_bust_css.date }}.css" media="
-        only print, screen and (min-width: 1vm),
-        only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
-        only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+        only print,
+        only all and (prefers-reduced-motion: no-preference), only all and (prefers-reduced-motion: reduce)
     ">
     <link rel="stylesheet" href="/css/testing.min.{{ site.data.cache_bust_css.date }}.css" media="
-        only print, screen and (min-width: 1vm),
-        only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
-        only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+        only print,
+        only all and (prefers-reduced-motion: no-preference), only all and (prefers-reduced-motion: reduce)
     ">
     <!-- Load styles for IE11, UC -->
     <script>
@@ -110,9 +107,8 @@
 
     {% if page.load_highlighter != false %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" media="
-        only print, screen and (min-width: 1vm),
-        only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
-        only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+        only print,
+        only all and (prefers-reduced-motion: no-preference), only all and (prefers-reduced-motion: reduce)
     ">
     <!-- Load styles for IE11, UC -->
     <script>
@@ -143,12 +139,11 @@
     {% endcomment %}
 
     {% if page.has_map %}
-        <link href="/css/map.min.css" rel="stylesheet" media="
-            only print, screen and (min-width: 1vm),
-            only all and (color-gamut: srgb), only all and (color-gamut: p3), only all and (color-gamut: rec2020),
-            only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
-        ">
-        <script src="/js/map.min.js"></script>
+    <link rel="stylesheet" href="/css/map.min.css" media="
+        only print,
+        only all and (prefers-reduced-motion: no-preference), only all and (prefers-reduced-motion: reduce)
+    ">
+    <script src="/js/map.min.js"></script>
     {% endif %}
 
     {% if page.has_highcharts %}

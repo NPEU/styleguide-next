@@ -41,21 +41,39 @@ $layout-bases: (
 }
 
 
+/*
+    1. This allows for --expand to work.
+*/
 .#{$layout-namespace}layout__inner {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: stretch;
+    flex-direction: column;
+    height: 100%; /* 1 */
 }
 
 .#{$layout-namespace}box {
-    flex-grow: 1;
+    flex-grow: 0;
     flex-shrink: 1;
     flex-basis: auto;
     min-width: 100%;
 }
 
+.#{$layout-namespace}box--expand {
+    flex-grow: 1;
+}
+
+
+// Switch to row:
+.#{$layout-namespace}row .#{$layout-namespace}layout__inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+
+    .#{$layout-namespace}box {
+        min-width: auto;
+        flex-grow: 1;
+    }
+}
 
 // Add gutters:
 

@@ -5,12 +5,12 @@
 -->
 
 
-<h2 class="u-padding--sides" id="badge">Badge</h2>
+<h2 id="badge">Badge</h2>
 
-<p class="u-padding--sides">The badge is used for any image that represents a brand, identity, accolade, status or similar marking.</p>
+<p>The badge is used for any image that represents a brand, identity, accolade, status or similar marking.</p>
 
 
-<h3 class="u-padding--sides">Badge - standard</h3>
+<h3>Badge - standard</h3>
 
 <p class="u-padding--s  u-block-center">
     <a href="https://www.npeu.ox.ac.uk/ctu" class="c-badge  c-badge--limit-height--xl">
@@ -18,7 +18,7 @@
     </a>
 </p>
 
-<div class="u-padding--s">
+<div>
     <details class="u-padding  d-background--light">
         <summary>Show code:</summary>
 <pre><code class="html">&lt;a href=&quot;https://www.npeu.ox.ac.uk/ctu&quot; class=&quot;c-badge  c-badge--limit-height--xl&quot;&gt;
@@ -31,18 +31,18 @@
     </details>
 </div>
 
-<p class="u-padding--sides">Every effort should be made to provide a badge as an SVG. The build process will generate a fallback PNG. So that this PNG is of a reasonable quality, SVG's should be around 300px high and include width and height attributes <em>initially</em>.
+<p>Every effort should be made to provide a badge as an SVG. The build process will generate a fallback PNG. So that this PNG is of a reasonable quality, SVG's should be around 300px high and include width and height attributes <em>initially</em>.
 SVGO removes these attributes for the final SVG output, but svg2png requires that they're present when it runs.</p>
 
-<p class="u-padding--sides">By default, badges are <em>intrinsically</em> sized, meaning they'll be a <em>small</em> as possible. Without a <code>height</code> attribute on the <code>img</code> tag, or a CSS (min-)height, the badges will collapse to nothing, so make sure one of those is in place.</p>
+<p>By default, badges are <em>intrinsically</em> sized, meaning they'll be a <em>small</em> as possible. Without a <code>height</code> attribute on the <code>img</code> tag, or a CSS (min-)height, the badges will collapse to nothing, so make sure one of those is in place.</p>
 
-<p class="u-padding--sides">^ I need to check that this is still true.</p>
-<p class="u-padding--sides">Badges that are part of lists or other layout should probably try to fill the container (possibly with some max-height cap). WIP: it's probably up to the layout to force it's contents to fill it's space but this is tricky. Separation of concerns etc. May opt for a c-badge-fill-container class?</p>
+<p>^ I need to check that this is still true.</p>
+<p>Badges that are part of lists or other layout should probably try to fill the container (possibly with some max-height cap). WIP: it's probably up to the layout to force it's contents to fill it's space but this is tricky. Separation of concerns etc. May opt for a c-badge-fill-container class?</p>
 
-<p class="u-padding--sides">Also note that as with other images, the NoCSS scenario is catered for by the <code>height</code> and <code>width</code> attributes so that images are kept a manageable size. Failed CSS allows TFS to take over, and it has default responsive image CSS of <code>max-width: 100%; height: auto;</code> - without the attributes you can get massive images, or without <code>height: auto;</code> you get messed up aspect ratios.</p>
+<p>Also note that as with other images, the NoCSS scenario is catered for by the <code>height</code> and <code>width</code> attributes so that images are kept a manageable size. Failed CSS allows TFS to take over, and it has default responsive image CSS of <code>max-width: 100%; height: auto;</code> - without the attributes you can get massive images, or without <code>height: auto;</code> you get messed up aspect ratios.</p>
 
 
-<h3 class="u-padding--sides">Badge - decorated</h3>
+<h3>Badge - decorated</h3>
 
 <p class="u-padding  u-block-center">
     <a href="https://www.npeu.ox.ac.uk/ctu" class="c-badge  c-badge--decorated  c-badge--limit-height--xl" style="color: #BC945C;">
@@ -50,7 +50,7 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
     </a>
 </p>
 
-<div class="u-padding--s">
+<div>
     <details class="u-padding  d-background--light">
         <summary>Show code:</summary>
 <pre><code class="html">&lt;a ... class=&quot;c-badge  <strong>c-badge--decorated</strong>  c-badge--limit-height--xl&quot;&gt;
@@ -61,14 +61,14 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
 
 
 
-<h3 class="u-padding--sides">Badges in Layouts</h3>
+<h3>Badges in Layouts</h3>
 
-<p class="u-padding--sides">This is to test how badges behave in different layouts, NOT to test how the layouts work. See the Layouts section for that.</p>
+<p>This is to test how badges behave in different layouts, NOT to test how the layouts work. See the Layouts section for that.</p>
 
 
-<h4 class="u-padding--sides">Distribute - natural width</h4>
+<h4>Distribute - natural width</h4>
 
-<div class="u-padding--s">
+<div>
     <div class="l-layout  l-distribute  l-gutter">
         <div class="l-layout__inner" role="list">
             <p class="l-box" role="listitem">
@@ -91,9 +91,9 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
 </div>
 
 
-<h4 class="u-padding--sides">Distribute - limited width</h4>
+<h4>Distribute - limited width</h4>
 
-<div class="u-padding--s">
+<div>
     <div class="l-layout  l-distribute  l-basis-30  l-gutter">
         <div class="l-layout__inner" role="list">
             <p class="l-box" role="listitem">
@@ -115,10 +115,10 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
     </div>
 </div>
 
-<h4 class="u-padding--sides">Distribute - balanced top</h4>
-<p class="u-padding--sides">Note, only if @supports min/max functions. I.e. NOT IE.</p>
+<h4>Distribute - balanced top</h4>
+<p>Note, only if @supports min/max functions. I.e. NOT IE.</p>
 
-<div class="u-padding--s">
+<div>
     <div class="l-layout  l-distribute  l-distribute--balance-top  l-basis-30  l-gutter">
         <div class="l-layout__inner" role="list">
             <p class="l-box" role="listitem">
@@ -141,10 +141,10 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
 </div>
 
 
-<h3 class="u-padding--sides">Badge - page brand</h3>
+<h3>Badge - page brand</h3>
 
-<p class="u-padding--sides">This type of badge is used for the brand of 'badged sections'.</p>
-<p class="u-padding--sides">It's designed to be in the sidebar at full width, or limited width in single-column layout.</p>
+<p>This type of badge is used for the brand of 'badged sections'.</p>
+<p>It's designed to be in the sidebar at full width, or limited width in single-column layout.</p>
 
 <p class="u-padding--s  u-block-center">
     <a href="https://www.npeu.ox.ac.uk/ctu" class="c-badge  c-badge--page-brand  c-badge" style="color: #BC945C;">
@@ -159,7 +159,7 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
     </a>
 </p>
 
-<div class="u-padding--s">
+<div>
     <details class="u-padding  d-background--light">
         <summary>Show code:</summary>
 <pre><code class="html">&lt;a ... class=&quot;c-badge  <strong>c-badge--page-brand</strong>  ...&quot;&gt;
@@ -169,9 +169,9 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
 </div>
 
 
-<h3 class="u-padding--sides">Badge - primary logo</h3>
+<h3>Badge - primary logo</h3>
 
-<p class="u-padding--sides">A badge that represents the main brand of a page should use this following markup instead. (no new styles applied as yet)</p>
+<p>A badge that represents the main brand of a page should use this following markup instead. (no new styles applied as yet)</p>
 
 <p class="u-space--below  u-padding--s  u-block-center">
     <a href="/neoclear" class="c-badge  c-badge--primary-logo">
@@ -192,7 +192,7 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
 </p>
 
 
-<div class="u-padding--s">
+<div>
     <details class="u-padding  d-background--light">
         <summary>Show code:</summary>
 <pre><code class="html"><strong>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; viewBox=&quot;0 0 1474.6 283.5&quot; preserveAspectRatio=&quot;xMidYMid meet&quot; role=&quot;img&quot; focusable=&quot;false&quot; aria-labelledby=&quot;neoclear--title&quot; height=&quot;96px&quot;&gt;
@@ -211,6 +211,6 @@ SVGO removes these attributes for the final SVG output, but svg2png requires tha
     </details>
 </div>
 
-<p class="u-padding--sides">This method ensures the main brand is always shown in SVG-supporting browsers, as it doesn't rely on an external resource.</p>
-<p class="u-padding--sides">The fallback PNG is still external, but there is only a very very small chance of a non-SVG-supporting browser also failing to load the fallback image.</p>
-<p class="u-padding--sides">This pattern should ideally only be used once per page due to the extra markup weight, but if necessary, it can be used more than once.</p>
+<p>This method ensures the main brand is always shown in SVG-supporting browsers, as it doesn't rely on an external resource.</p>
+<p>The fallback PNG is still external, but there is only a very very small chance of a non-SVG-supporting browser also failing to load the fallback image.</p>
+<p>This pattern should ideally only be used once per page due to the extra markup weight, but if necessary, it can be used more than once.</p>

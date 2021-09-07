@@ -368,11 +368,14 @@ html {
 
 /*
     1. Ensure that absolutely positioned child elements expand to the full height of the body.
-    2. Reset any FOUC font match fallback. @TODO Make these vars.
+    2. Allows for layouts such as sticky footers.
+    3. Reset any FOUC font match fallback. @TODO Make these vars.
 */
 body {
   position: relative;
   /* 1 */
+  display: flex;
+  /* 2 */
   width: 100%;
   min-width: 250px;
   min-height: 100%;
@@ -383,20 +386,21 @@ body {
   font-size: 1.6em;
   line-height: 2.4rem;
   letter-spacing: initial;
-  /* 2 */
+  /* 3 */
   word-spacing: initial;
-  /* 2 */
+  /* 3 */
   background-color: transparent;
   color: #111;
 }
 
 /* IE9-11 */
-@media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
-  body {
-    height: 100%;
-  }
-}
+/*@media screen and (min-width:0\0) and (min-resolution: +72dpi) {
 
+    body {
+        height: 100%;
+    }
+
+}*/
 /*
     @DEPRECATED - use the clearer method below:
     CSS only message
@@ -1211,15 +1215,31 @@ h6:last-child {
     1. Show the overflow in Edge and IE. (N)
 */
 hr {
-  height: 0;
+  position: relative;
+  height: 2.4rem;
   overflow: visible;
   /* 1 */
-  margin-top: -0.1rem;
+  margin-top: 2.4rem;
   margin-bottom: 2.4rem;
-  border-top: none;
-  border-right: none;
+  border: none;
+}
+
+hr:first-child {
+  margin-top: 0;
+}
+
+hr:last-child {
+  margin-bottom: 0;
+}
+
+hr::before {
+  content: "";
+  position: absolute;
+  top: 1.2rem;
+  display: block;
+  width: 100%;
+  height: 0;
   border-bottom: 0.1rem solid #5F4776;
-  border-left: none;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2929,6 +2949,7 @@ a[href][rel~="external"].c-badge:focus::after {
     ========
 */
 .c-page-wrap.c-page-wrap {
+  width: 100%;
   max-width: 1600px;
   margin: 0 auto;
   background-color: #fff;
@@ -2960,19 +2981,37 @@ a[href][rel~="external"].c-badge:focus::after {
   list-style-type: none;
 }
 
+/*
+    1. This allows for --expand to work.
+*/
 .l-layout__inner {
   display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* 1 */
+}
+
+.l-box {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  min-width: 100%;
+}
+
+.l-box--expand {
+  flex-grow: 1;
+}
+
+.l-row .l-layout__inner, .l-layout.l-distribute .l-layout__inner {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
 }
 
-.l-box {
+.l-row .l-layout__inner .l-box, .l-layout.l-distribute .l-layout__inner .l-box {
+  min-width: auto;
   flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-  min-width: 100%;
 }
 
 .l-gutter--s > .l-layout__inner {
@@ -3046,7 +3085,6 @@ a[href][rel~="external"].c-badge:focus::after {
 /*    Distribute Layout    =================    Distribute items inside a container.*/
 .l-layout.l-distribute > .l-layout__inner > .l-box {
   flex-grow: 0;
-  min-width: auto;
 }
 
 .l-layout.l-distribute.l-distribute--balance-bottom > .l-layout__inner > .l-box {
@@ -4086,6 +4124,117 @@ a[href][rel~="external"].c-badge:focus::after {
 */
 .u-fill-width {
   width: 100%;
+}
+
+/*
+    Fill and area with an image.
+
+    ! NOTE: test this in all non-object-fit-supporting browsers as it may be a fix for those too.
+
+    This only works for landscape containers. If it's portrait it breaks unless the width and
+    translate are inverted, and that can't be detected if size changes.
+    Will be replying on JS to check for change to portrait and apply portrait class.
+
+    Also note:
+    Where a 'cover' image is in a flexible box, and especially in a ff-width pair where the two parts
+    stack on small widths, there's a problem in that the image has no height when stacked.
+    This is obvious, because when side-by-side, the image container height is the same as the 'other'
+    height, but when it's stacked, that's no longer the case. The only way I can think of to solve
+    this is to force a minimum height. We do this using the padding hack, similar to the
+    'proportional container' pattern.
+*/
+.u-image-cover.u-image-cover {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+.u-image-cover.u-image-cover::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 1px;
+}
+
+.u-image-cover.u-image-cover--min-10::before {
+  padding-top: 10%;
+}
+
+.u-image-cover.u-image-cover--min-20::before {
+  padding-top: 20%;
+}
+
+.u-image-cover.u-image-cover--min-30::before {
+  padding-top: 30%;
+}
+
+.u-image-cover.u-image-cover--min-40::before {
+  padding-top: 40%;
+}
+
+.u-image-cover.u-image-cover--min-50::before {
+  padding-top: 50%;
+}
+
+.u-image-cover.u-image-cover--min-60::before {
+  padding-top: 60%;
+}
+
+.u-image-cover.u-image-cover--min-70::before {
+  padding-top: 70%;
+}
+
+.u-image-cover.u-image-cover--min-80::before {
+  padding-top: 80%;
+}
+
+.u-image-cover.u-image-cover--min-90::before {
+  padding-top: 90%;
+}
+
+.u-image-cover.u-image-cover--min-100::before {
+  padding-top: 100%;
+}
+
+.u-image-cover .u-image-cover__inner {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.u-image-cover .u-image-cover__image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  max-width: none;
+  max-height: none;
+}
+
+/* If `object-fit` is supported, use that and override vertical centering: */
+@supports (object-fit: cover) {
+  .u-image-cover .u-image-cover__image {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  .u-image-cover {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-10, .u-image-cover.u-image-cover--min-20, .u-image-cover.u-image-cover--min-30, .u-image-cover.u-image-cover--min-40, .u-image-cover.u-image-cover--min-50, .u-image-cover.u-image-cover--min-60, .u-image-cover.u-image-cover--min-70, .u-image-cover.u-image-cover--min-80, .u-image-cover.u-image-cover--min-90, .u-image-cover.u-image-cover--min-100 {
+    min-height: auto;
+  }
 }
 
 /* ---------------------------------------------------------------------------------------------- */
