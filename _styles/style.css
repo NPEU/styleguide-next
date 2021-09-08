@@ -4143,6 +4143,11 @@ a[href][rel~="external"].c-badge:focus::after {
     this is to force a minimum height. We do this using the padding hack, similar to the
     'proportional container' pattern.
 */
+/*
+    56.25% = 16:9 ratio
+    75%    = 4:3 ratio
+    100%   = 1:1 ratio
+*/
 .u-image-cover.u-image-cover {
   position: relative;
   height: 100%;
@@ -4177,12 +4182,20 @@ a[href][rel~="external"].c-badge:focus::after {
   padding-top: 50%;
 }
 
+.u-image-cover.u-image-cover--min-56-25::before {
+  padding-top: 56.25%;
+}
+
 .u-image-cover.u-image-cover--min-60::before {
   padding-top: 60%;
 }
 
 .u-image-cover.u-image-cover--min-70::before {
   padding-top: 70%;
+}
+
+.u-image-cover.u-image-cover--min-75::before {
+  padding-top: 75%;
 }
 
 .u-image-cover.u-image-cover--min-80::before {
@@ -4232,7 +4245,40 @@ a[href][rel~="external"].c-badge:focus::after {
   .u-image-cover {
     min-height: auto;
   }
-  .u-image-cover.u-image-cover--min-10, .u-image-cover.u-image-cover--min-20, .u-image-cover.u-image-cover--min-30, .u-image-cover.u-image-cover--min-40, .u-image-cover.u-image-cover--min-50, .u-image-cover.u-image-cover--min-60, .u-image-cover.u-image-cover--min-70, .u-image-cover.u-image-cover--min-80, .u-image-cover.u-image-cover--min-90, .u-image-cover.u-image-cover--min-100 {
+  .u-image-cover.u-image-cover--min-10 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-20 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-30 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-40 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-50 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-56.25 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-60 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-70 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-75 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-80 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-90 {
+    min-height: auto;
+  }
+  .u-image-cover.u-image-cover--min-100 {
     min-height: auto;
   }
 }
