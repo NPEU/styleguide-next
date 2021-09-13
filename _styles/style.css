@@ -2992,6 +2992,7 @@ a[href][rel~="external"].c-badge:focus::after {
 }
 
 .l-box {
+  display: block;
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
@@ -3100,6 +3101,10 @@ a[href][rel~="external"].c-badge:focus::after {
 
 .l-gutter--l.l-flush-edge-gutter > .l-layout__inner {
   margin: -4.8rem;
+}
+
+.l-preserve-space .l-box::after {
+  content: "\00a0";
 }
 
 .l-layout.l-basis-15 > .l-layout__inner > .l-box {
@@ -4328,84 +4333,47 @@ a[href][rel~="external"].c-badge:focus::after {
   }
 }
 
-/*
-    Groups.
-
-    Attempts to improve where text wraps.
-
-*/
-.u-text-group {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-  align-items: center;
-  max-width: 100%;
-}
-
-.u-text-group--center {
-  justify-content: center;
-}
-
-.u-text-group--push-apart {
-  justify-content: space-between;
-}
-
-.u-text-group > * {
-  margin-left: 0;
-  margin-right: 0;
-  flex: 0 1 auto !important;
-}
-
-.u-text-group--h-gap,
-.u-text-group--gap {
-  margin-left: -2.4rem;
-}
-
-.u-text-group--h-gap > *,
-.u-text-group--gap > * {
-  padding-left: 2.4rem;
-  padding-right: 2.4rem;
-}
-
 /* ---------------------------------------------------------------------------------------------- */
 /* --| SHAME |----------------------------------------------------------------------------------- */
 .c-utilitext {
   font-size: 0.875em;
 }
 
+/*
 p[role="list"] {
-  overflow-x: hidden;
-  overflow-y: visible;
-  display: flex;
-  flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: visible;
+    display: flex;
+    flex-wrap: wrap;
 }
 
+
 span[role="listitem"] {
-  white-space: nowrap;
-  padding-left: 1.5em;
-  margin-left: -1.5em;
-  margin-right: 1.5em;
-  text-indent: -0.15em;
+    white-space: nowrap;
+    padding-left: 1.5em;
+    margin-left: -1.5em;
+    margin-right: 1.5em;
+    text-indent: -0.15em;
 }
 
 span[role="listitem"]::before {
-  content: ' | ';
-  text-align: center;
-  display: inline-block;
-  width: 1.5em;
-  height: 1em;
-  margin-left: -1.5em;
-  text-indent: 0.3em;
+    content: ' | ';
+    text-align: center;
+    display: inline-block;
+    width: 1.5em;
+    height: 1em;
+    margin-left: -1.5em;
+    text-indent: 0.3em;
 }
 
 [itemtype="https://schema.org/BreadcrumbList"] span[role="listitem"]::before {
-  content: ' / ';
+    content: ' / ';
 }
 
 span[role="listitem"] > * {
-  white-space: normal;
+    white-space: normal;
 }
-
+*/
 /*
     1. This size allows 2px on normal fonts, 1px on smaller fonts.
 *

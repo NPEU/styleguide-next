@@ -51,6 +51,7 @@ $layout-bases: (
 }
 
 .#{$layout-namespace}box {
+    display: block;
     flex-grow: 0;
     flex-shrink: 1;
     flex-basis: auto;
@@ -178,7 +179,12 @@ $layout-bases: (
 }
 
 
-// Item bases:
+// Preserve space between items (used for text groups):
+.#{$layout-namespace}preserve-space .#{$layout-namespace}box {
+    &::after {
+        content: "\00a0";
+    }
+} 
 
 // Item bases:
 @each $basis in $layout-bases {
