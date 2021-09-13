@@ -75,6 +75,38 @@ $layout-bases: (
     }
 }
 
+.#{$layout-namespace}row.#{$layout-namespace}row--start .#{$layout-namespace}layout__inner {
+    justify-content: flex-start;
+    
+    .#{$layout-namespace}box {
+        flex-grow: 0;
+    }
+}
+
+.#{$layout-namespace}row.#{$layout-namespace}row--end .#{$layout-namespace}layout__inner {
+    justify-content: flex-end;
+    
+    .#{$layout-namespace}box {
+        flex-grow: 0;
+    }
+}
+
+.#{$layout-namespace}row.#{$layout-namespace}row--center .#{$layout-namespace}layout__inner {
+    justify-content: center;
+    
+    .#{$layout-namespace}box {
+        flex-grow: 0;
+    }
+}
+
+.#{$layout-namespace}row.#{$layout-namespace}row--push-apart .#{$layout-namespace}layout__inner {
+    justify-content: space-between;
+    
+    .#{$layout-namespace}box {
+        flex-grow: 0;
+    }
+}
+
 // Add gutters:
 
 // Small /**/
@@ -84,6 +116,10 @@ $layout-bases: (
 
 .#{$layout-namespace}gutter--s > .#{$layout-namespace}layout__inner > .#{$layout-namespace}box {
     padding: $layout-spacing-unit--s;
+    
+    .#{$layout-namespace}box__seperator {
+        padding-left: $layout-spacing-unit--s;
+    }
 }
 
 
@@ -96,6 +132,10 @@ $layout-bases: (
 .#{$layout-namespace}gutter > .#{$layout-namespace}layout__inner > .#{$layout-namespace}box,
 .#{$layout-namespace}gutter--m > .#{$layout-namespace}layout__inner > .#{$layout-namespace}box {
     padding: $layout-spacing-unit;
+    
+    .#{$layout-namespace}box__seperator {
+        padding-left: $layout-spacing-unit;
+    }
 }
 
 
@@ -106,6 +146,10 @@ $layout-bases: (
 
 .#{$layout-namespace}gutter--l > .#{$layout-namespace}layout__inner > .#{$layout-namespace}box {
     padding: $layout-spacing-unit--l;
+    
+    .#{$layout-namespace}box__seperator {
+        padding-left: $layout-spacing-unit--l;
+    }
 }
 
 

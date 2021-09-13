@@ -1,266 +1,34 @@
 ---
 layout: structure--pattern
-title: NPEU Navigation Patterns
+title:  Navigation Patterns
 ---
-<h2 class="u-padding--sides" id="navbar">Navbar</h2>
-
-<p class="u-padding--sides">
-    Note, this is a Fall-Back pattern.
-</p>
-
-<div class="u-space--below">
-    <div class="nav-bar  u-padding--sides--s  t-npeu">
-
-        <div class="nav-bar__start" data-area="navbar-controls">
-            <div class="nav-bar__item">
-                <button class="over-panel-control t-npeu js-over-panel-control" hidden="" aria-controls="menu-panel" aria-label="Main menu" aria-expanded="false" data-js="overpanel__control"><svg display="none" focusable="false" class="icon  icon--is-closed"><use xlink:href="#icon-menu"></use></svg><svg display="none" focusable="false" class="icon  icon--is-open"><use xlink:href="#icon-cross"></use></svg></button>
-            </div>
-            <div class="nav-bar__item">
-                <button class="over-panel-control t-npeu js-over-panel-control" hidden="" aria-controls="search-panel" aria-label="Search" aria-expanded="false" data-js="overpanel__control"><svg display="none" focusable="false" class="icon  icon--is-closed"><use xlink:href="#icon-search"></use></svg><svg display="none" focusable="false" class="icon  icon--is-open"><use xlink:href="#icon-cross"></use></svg></button>
-            </div>
-        </div>
-
-        <nav class="nav-bar__main" id="primary-nav" aria-label="Primary" data-area="main-nav">
-
-            <div class="over-panel over-panel--fade js-over-panel" id="menu-panel" data-js="over-panel">
-                <button class="over-panel__overlay  t-npeu" hidden="" aria-hidden="true" tabindex="-1" data-js="over-panel__overlay"></button>
-                <div class="over-panel__contents  t-npeu" data-js="over-panel__contents">
-                    <ul class="nav-bar__items">
-
-                    <li class="nav-bar__item  dropdown-container">
-                        <a href="/contact" class="nav-bar__link"><span>Contact</span></a>
-                    </li>
-                    <li class="nav-bar__item  dropdown-container">
-                        <a href="/about" class="nav-bar__link"><span>About Us</span></a>
-                        <div class="dropdown dropdown--only-wide js-dropdown">
-                            <button id="about-alias-sub-menu" class="dropdown__button  t-npeu" data-js="dropdown__button" hidden="" aria-label="About Us sub-menu" aria-expanded="false"><svg display="none" focusable="false" class="icon  icon--is-closed"><use xlink:href="#icon-chevron-down"></use></svg><svg display="none" focusable="false" class="icon  icon--is-open"><use xlink:href="#icon-chevron-up"></use></svg></button>
-                            <div class="dropdown__area" id="about-alias-sub-menu--target">
-                                <ul class="subnav__items  subnav__items--stacked  t-npeu">
-                                <li class="subnav__item">
-                                    <a href="/about/athena-swan" class="subnav__link"><span>Athena SWAN</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/about/jobs" class="subnav__link"><span>Job Vacancies</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/about/people" class="subnav__link"><span>People</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/about/postgrad" class="subnav__link"><span>Postgraduate Studies</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/about/seminars" class="subnav__link"><span>Seminars</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/about/working-in-npeu" class="subnav__link"><span>Working in the NPEU</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-bar__item  dropdown-container">
-                        <a href="/research" class="nav-bar__link"><span>Research</span></a>
-                        <div class="dropdown dropdown--only-wide js-dropdown">
-                            <button id="research-alias-sub-menu" class="dropdown__button  t-npeu" data-js="dropdown__button" hidden="" aria-label="Research sub-menu" aria-expanded="false"><svg display="none" focusable="false" class="icon  icon--is-closed"><use xlink:href="#icon-chevron-down"></use></svg><svg display="none" focusable="false" class="icon  icon--is-open"><use xlink:href="#icon-chevron-up"></use></svg></button>
-                            <div class="dropdown__area" id="research-alias-sub-menu--target">
-                                <ul class="subnav__items  subnav__items--stacked  t-npeu">
-                                <li class="subnav__item">
-                                    <a href="/pru-mnhc" class="subnav__link"><span>PRU-MNHC</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/ctu" class="subnav__link"><span>Clinical Trials Unit</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/sheer" class="subnav__link"><span>SHEER</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/research/projects" class="subnav__link"><span>Research Projects</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/research/publications" class="subnav__link"><span>Publications</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/mbrrace-uk" class="subnav__link"><span>MBRRACE-UK</span></a>
-                                </li>
-                                <li class="subnav__item">
-                                    <a href="/ukoss" class="subnav__link"><span>UKOSS</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-bar__item  dropdown-container">
-                        <a href="/public-involvement" class="nav-bar__link"><span>Public Involvement</span></a>
-                    </li>
-                    <li class="nav-bar__item  dropdown-container">
-                        <a href="/news" class="nav-bar__link"><span>What's New</span></a>
-                    </li>
-                    <li class="nav-bar__item  dropdown-container">
-                        <a href="/privacy-notice" class="nav-bar__link"><span>Privacy Notice</span></a>
-                    </li>    
-                    </ul>                        
-                </div>
-            </div>
-
-        </nav>
-
-        <div class="nav-bar__end" data-area="search-form">
-            <div class="over-panel over-panel--fade js-over-panel" id="search-panel" data-js="over-panel">
-                <button class="over-panel__overlay  t-npeu" hidden="" aria-hidden="true" tabindex="-1" data-js="over-panel__overlay"></button>
-                <div class="over-panel__contents  t-npeu" data-js="over-panel__contents">
-                    <form action="/search" id="searchform" class="search-form  search-form---restrict-width  t-npeu  u-space--left--auto" method="GET">
-                                                        <input type="search" class="search-form__field" id="search" placeholder="Search (e.g. Randomisation)" name="q" value="" aria-label="Search">
-                        <button class="search-form__submit" type="submit">
-                            <span>
-                                <svg width="20" height="20" viewBox="0 0 20 20" focusable="false">
-                                    <path fill="currentColor" d="M12.917 11.667h-0.662l-0.229-0.229c0.817-0.946 1.308-2.175 1.308-3.521 0-2.992-2.425-5.417-5.417-5.417s-5.417 2.425-5.417 5.417 2.425 5.417 5.417 5.417c1.346 0 2.575-0.492 3.521-1.304l0.229 0.229v0.658l4.167 4.158 1.242-1.242-4.158-4.167zM7.917 11.667c-2.071 0-3.75-1.679-3.75-3.75s1.679-3.75 3.75-3.75 3.75 1.679 3.75 3.75-1.679 3.75-3.75 3.75z"></path>
-                                    <text y="-10">Search</text>
-                                </svg>
-                            </span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
 
 <hr>
-<h2 class="u-padding--sides" id="breadcrumbs">Breadcrumbs</h2>
 
-<div class="u-padding--sides  u-padding--bottom--xs  u-padding--top--xs  d-background  t-npeu">    
-    <nav aria-label="Breadcrumbs">
-        <p role="list" class="n-breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList">
-            <span class="n-breadcrumbs__title">You are here: </span>
-            <span role="listitem" class="n-breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                <a class="n-breadcrumbs__link" itemprop="item" href="#"><span itemprop="name">NeoCLEAR</span></a>
-                <meta itemprop="position" content="1">
-                <span data-if-css="hide"> / </span>
-            </span>
-            <span role="listitem" class="n-breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                <a class="n-breadcrumbs__link" itemprop="item" href="#"><span itemprop="name">Clinicians</span></a>
-                <meta itemprop="position" content="2">
-                <span data-if-css="hide"> / </span>
-            </span>
-            <span role="listitem" class="n-breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-                <a class="n-breadcrumbs__link" itemprop="name" aria-current="page"><span>DCFs</span></a>
-                <meta itemprop="position" content="3">
-            </span>
-        </p>
-    </nav>
-</div>
-
+{% include navigation/breadcrumbs.html %}
 
 <hr>
-<h2 class="u-padding--sides" id="links-list">Links list</h2>
 
-<p class="u-padding--sides">
-    Note, there's nothing special about this pattern (no specific CSS). It may not actually be needed, but keep for now.
-</p>
-
-<div class="u-padding--sides" style="max-width: 100%; width: calc((40em - 100%) * 1000); min-width: 33%;">
-    <div class="n-links-list">
-        <h3>List title</h3>
-
-        <ul>
-            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></li>
-            <li><a href="#">Vivamus vitae elit vel mauris aliquam commodo a ut lorem</a></li>
-            <li><a href="#">Maecenas velit leo, dictum a consectetur accumsan, ornare in tortor</a></li>
-            <li><a href="#">Praesent in hendrerit lectus</a></li>
-            <li><a href="#">Maecenas consequat imperdiet massa egestas commodo</a></li>
-            <li><a href="#">Sed facilisis, risus sed accumsan tristique, nisi velit porttitor nibh, nec bibendum ex sapien eu lorem</a></li>
-        </ul>
-    </div>
-</div>
+{% include navigation/links-list.html %}
 
 <hr>
-<h2 class="u-padding--sides" id="pagination">Pagination</h2>
 
-<div class="u-padding--sides  u-space--below">
-    <div class="n-pagination">
-        <p role="list" class="n-pagination__list">
-            <span role="listitem" class="n-pagination__item"><span class="n-pagination__link"><span>First</span></span></span>
-            <span role="listitem" class="n-pagination__item"><span class="n-pagination__link"><span>Prev</span></span></span>
-            <span role="listitem" class="n-pagination__item  n-pagination__item--active"><span class="n-pagination__link"><span>1</span></span></span>
-            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>2</span></a></span>
-            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>3</span></a></span>
-            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>Next</span></a></span>
-            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>Last</span></a></span>
-        </p>
-    </div>
-</div>
-
-<h3 class="u-padding--sides" id="article-navigation">Article Navigation</h3>
-
-<div class="u-padding--sides  u-space--below">
-    <div class="n-pagination">
-        <p role="list" class="n-pagination__list  n-pagination__list--push-apart">
-            <span role="listitem" class="n-pagination__item">
-                <a class="n-pagination__link" aria-label="Newer article: Bradford start recruiting" href="/neoclear/updates/1681-bradford-start-recruiting" rel="prev">
-                    <span aria-hidden="true"><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-left"></use></svg>Newer article</span>
-                </a>
-            </span>
-            <span role="listitem" class="n-pagination__item">
-                <a class="n-pagination__link" aria-label="Older article: Congratulations to St. Peter's Hospital, Chertsey" href="/neoclear/updates/1672-congratulations-to-st-peter-s-hospital-chertsey" rel="next">
-                    <span aria-hidden="true">Older article<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></span>
-                </a>
-            </span>
-        </p>
-    </div>
-</div>
+{% include navigation/navbar.html %}
 
 <hr>
-<h2 class="u-padding--sides" id="search-results">Search Results</h2>
 
-<ul class="n-search-results">
-    <li class="n-search-results__result">
-        <h2 class="n-search-results__heading"><a href="/cats/139-neoclear/1544-general-information-protocol?highlight=WyJsdW1iYXIiXQ==">General Information &amp; Protocol</a></h2>
-        <p class="n-search-results_description">Why do we need NeoCLEAR? The aim of this study is to find out which technique is best to achieve a successful <span class="highlight" rel="lumbar">lumbar</span> puncture. A <span class="highlight" rel="lumbar">lumbar</span> puncture is a procedure which takes a small amount of fluid from the spine through a needle in the lower back. This...</p>
-    </li>
-    <li class="n-search-results__result">
-        <h2 class="n-search-results__heading"><a href="/neoclear/parents?highlight=WyJsdW1iYXIiXQ==">Information for Parents</a></h2>
-        <p class="n-search-results_description">Privacy Notice Read the privacy notice. The aim of this study is to find out which method is best to achieve a successful <span class="highlight" rel="lumbar">lumbar</span> puncture. A <span class="highlight" rel="lumbar">lumbar</span> puncture is a procedure which takes a small amount of fluid from the spine through a needle in the lower...</p>
-    </li>
-    <li class="n-search-results__result">
-        <h2 class="n-search-results__heading"><a href="/cats/139-neoclear/1423-neoclear?highlight=WyJsdW1iYXIiXQ==">NeoCLEAR</a></h2>
-        <p class="n-search-results_description">umbar punctures E very time – A n R CT is a multicentre, randomised controlled trial to investigate techniques to increase <span class="highlight" rel="lumbar">lumbar</span> puncture success in newborn babies. <span class="highlight" rel="Lumbar">Lumbar</span> puncture is a procedure performed to diagnose meningitis or another neurological...</p>
-    </li>
-    <li class="n-search-results__result">
-        <h2 class="n-search-results__heading"><a href="/cats/139-neoclear/1690-neoclear-intro?highlight=WyJsdW1iYXIiXQ==">NeoCLEAR Intro</a></h2>
-        <p class="n-search-results_description">umbar punctures E very time – A n R CT is a multicentre, randomised controlled trial to investigate techniques to increase <span class="highlight" rel="lumbar">lumbar</span> puncture success in newborn babies. <span class="highlight" rel="Lumbar">Lumbar</span> puncture is a procedure performed to diagnose meningitis or another neurological...</p>
-    </li>
-    <li class="n-search-results__result">
-        <h2 class="n-search-results__heading"><a href="/neoclear/clinicians/data-collection-forms?highlight=WyJsdW1iYXIiXQ==">Data Collection Forms</a></h2>
-        <p class="n-search-results_description">the link below. Please contact the Trial Manager if your query is regarding the Parent Questionnaire. Entry Form First <span class="highlight" rel="Lumbar">Lumbar</span> Puncture Incident and Deviation Outcomes SAE Report Form Second <span class="highlight" rel="Lumbar">Lumbar</span> Puncture Transfer Discharge Death Withdrawal</p>
-    </li>
-    <li class="n-search-results__result">
-        <h2 class="n-search-results__heading"><a href="/neoclear/whats-new/1660-neoclear-features-in-infant?highlight=WyJsdW1iYXIiXQ==">NeoCLEAR features in Infant</a></h2>
-        <p class="n-search-results_description">NeoCLEAR Team published an editorial piece titled ‘Champagne and bloody taps: can we improve the success rate of neonatal <span class="highlight" rel="lumbar">lumbar</span> punctures?’ in the November 2018 issue of Infant : http://www.infantjournal.co.uk/journal_article.html?RecordNumber=7052</p>
-    </li>
-    <li class="n-search-results__result">
-        <h2 class="n-search-results__heading"><a href="/neoclear/clinicians/lp-training?highlight=WyJsdW1iYXIiXQ==">LP Training</a></h2>
-        <p class="n-search-results_description">Please view the training videos for more information on the <span class="highlight" rel="Lumbar">Lumbar</span> Puncture techniques used in NeoCLEAR. Direct link to MP4 Direct link to MP4 Direct link to MP4 Direct link to MP4 Direct link to MP4</p>
-    </li>
-</ul>
+{% include navigation/pagination.html %}
 
 <hr>
-<h2 class="u-padding--sides" id="section-menu">Section Menu</h2>
 
-<div class="u-padding--sides  u-space--below" style="max-width: 100%; width: calc((40em - 100%) * 1000); min-width: 33%;">
-    <div class="n-section-menu">
-        <h3 class="n-section-menu__title">Menu Title</h3>
-
-        <ul class="n-section-menu__list">
-            <li class="n-section-menu__item"><a href="#" class="n-section-menu__link"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span></a></li>
-            <li class="n-section-menu__item"><a href="#" class="n-section-menu__link"><span>Vivamus vitae elit vel mauris aliquam commodo a ut lorem</span></a></li>
-            <li class="n-section-menu__item"><a href="#" class="n-section-menu__link"><span>Maecenas velit leo, dictum a consectetur accumsan, ornare in tortor</span></a></li>
-            <li class="n-section-menu__item  n-section-menu__item--active"><a href="#main" class="n-section-menu__link"><span>Praesent in hendrerit lectus</span></a></li>
-            <li class="n-section-menu__item"><a href="#" class="n-section-menu__link"><span>Maecenas consequat imperdiet massa egestas commodo</span></a></li>
-            <li class="n-section-menu__item"><a href="#" class="n-section-menu__link"><span>Sed facilisis, risus sed accumsan tristique, nisi velit porttitor nibh, nec bibendum ex sapien eu lorem</span></a></li>
-        </ul>
-    </div>
-</div>
+{% include navigation/search-results.html %}
 
 <hr>
+
+{% include navigation/section-menu.html %}
+
+<hr>
+
+{% include navigation/table-of-contents.html %}
+
 <hr>

@@ -11,11 +11,15 @@ layout: structure
                 {% if page.url != '/' %}
                 {% include breadcrumbs.html %}
                 {% endif %}
+                <hr>
             </header>
 
         </div>
 
+
         <div class="l-box  l-box--expand">
+        
+            {% include section-menu.html %}
 
             <main>
             {{ content }}

@@ -11,6 +11,16 @@
 }
 
 
+
+.s-example {
+    background: #ddd;
+}
+
+.s-example--padded {
+    background: #ddd;
+    padding: 1.2rem;
+}
+
 /*details {
     margin-top: 1em;
 }
@@ -40,7 +50,7 @@ h1 {
 
     Attempts to improve where text wraps.
 
-*/
+
 .u-text-group {
   display: flex !important;
   flex-direction: row !important;
@@ -69,3 +79,4 @@ h1 {
 .u-text-group--wide-space > :not(:last-child) {
   padding-right: 1em !important;
 }
+*/

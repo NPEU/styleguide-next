@@ -30,6 +30,10 @@ span[role="listitem"]::before {
     text-indent: 0.3em;
 }
 
+[itemtype="https://schema.org/BreadcrumbList"] span[role="listitem"]::before {
+    content: ' / ';
+}
+
 span[role="listitem"] > * {
     white-space: normal;
 }
