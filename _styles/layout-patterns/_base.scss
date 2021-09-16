@@ -118,7 +118,7 @@ $layout-bases: (
 .#{$layout-namespace}gutter--s > .#{$layout-namespace}layout__inner > .#{$layout-namespace}box {
     padding: $layout-spacing-unit--s;
     
-    .#{$layout-namespace}box__seperator {
+    .#{$layout-namespace}box__separator {
         padding-left: $layout-spacing-unit--s;
     }
 }
@@ -134,7 +134,7 @@ $layout-bases: (
 .#{$layout-namespace}gutter--m > .#{$layout-namespace}layout__inner > .#{$layout-namespace}box {
     padding: $layout-spacing-unit;
     
-    .#{$layout-namespace}box__seperator {
+    .#{$layout-namespace}box__separator {
         padding-left: $layout-spacing-unit;
     }
 }
@@ -148,7 +148,7 @@ $layout-bases: (
 .#{$layout-namespace}gutter--l > .#{$layout-namespace}layout__inner > .#{$layout-namespace}box {
     padding: $layout-spacing-unit--l;
     
-    .#{$layout-namespace}box__seperator {
+    .#{$layout-namespace}box__separator {
         padding-left: $layout-spacing-unit--l;
     }
 }

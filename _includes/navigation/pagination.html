@@ -4,37 +4,132 @@
 
 -->
 
-<h2 id="pagination">Pagination NOT DONE</h2>
+<h2 id="pagination">Pagination</h2>
 
-<div class="u-space--below">    
-    <div class="n-pagination">
-        <p role="list" class="n-pagination__list">
-            <span role="listitem" class="n-pagination__item"><span class="n-pagination__link"><span>First</span></span></span>
-            <span role="listitem" class="n-pagination__item"><span class="n-pagination__link"><span>Prev</span></span></span>
-            <span role="listitem" class="n-pagination__item  n-pagination__item--active"><span class="n-pagination__link"><span>1</span></span></span>
-            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>2</span></a></span>
-            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>3</span></a></span>
-            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>Next</span></a></span>
-            <span role="listitem" class="n-pagination__item"><a href="#" class="n-pagination__link"><span>Last</span></a></span>
+<div class="u-space--below">
+
+    <nav aria-label="Pagination" class="l-layout  l-row  l-row--center  n-pagination">
+        <p class="l-layout__inner">
+            <span class="l-box  n-pagination__start-links">
+                <span class="l-layout  l-row  l-row--center">
+                    <span class="l-layout__inner">
+                        <span class="l-box">
+                            <a aria-hidden="true"><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevrons-left"></use></svg><span>First<span data-hidden="visually">&nbsp;page.</span></span></a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span class="l-box">
+                            <a aria-hidden="true" rel="prev"><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-left"></use></svg><span>Previous<span data-hidden="visually">&nbsp;page.</span></span></a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                    </span>
+                </span>
+            </span>
+
+            <span role="list" class="l-box  n-pagination__page-links">
+                <span class="l-layout  l-row  l-row--center">
+                    <span class="l-layout__inner">
+                        <span role="listitem" class="l-box">
+                            <a aria-current="page">1</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span role="listitem" class="l-box">
+                            <a href="#"><span data-hidden="visually">Page&nbsp;</span>2</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span role="listitem" class="l-box">
+                            <a href="#"><span data-hidden="visually">Page&nbsp;</span>3</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span role="listitem" class="l-box">
+                            <a href="#"><span data-hidden="visually">Page&nbsp;</span>4</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span role="listitem" class="l-box">
+                            <a href="#"><span data-hidden="visually">Page&nbsp;</span>5</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                    </span>
+                </span>
+            </span>
+
+            <span class="l-box  n-pagination__end-links">
+                <span class="l-layout  l-row  l-row--center">
+                    <span class="l-layout__inner">
+                        <span class="l-box">
+                            <a href="#" rel="next"><span>Next<span data-hidden="visually">&nbsp;page.</span></span><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span class="l-box">
+                            <a href="#"><span>Last<span data-hidden="visually">&nbsp;page.</span></span><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevrons-right"></use></svg></a>
+                        </span>
+                    </span>
+                </span>
+            </span>
         </p>
-    </div>
+    </nav>
+</div>
+
+<div class="u-space--below">
+
+    <nav aria-label="Pagination" class="l-layout  l-row  l-row--center  n-pagination">
+        <p class="l-layout__inner">
+            <span class="l-box  n-pagination__start-links">
+                <span class="l-layout  l-row  l-row--center">
+                    <span class="l-layout__inner">
+                        <span class="l-box">
+                            <a href="#"><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevrons-left"></use></svg><span>First<span data-hidden="visually">&nbsp;page.</span></span></a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span class="l-box">
+                            <a href="#" rel="prev"><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-left"></use></svg><span>Previous<span data-hidden="visually">&nbsp;page.</span></span></a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                    </span>
+                    </span>
+                </span>
+            </span>
+
+            <span role="list" class="l-box  n-pagination__page-links">
+                <span class="l-layout  l-row  l-row--center">
+                    <span class="l-layout__inner">
+                        <span role="listitem" class="l-box">
+                            <a href="#"><span data-hidden="visually">Page&nbsp;</span>1</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span role="listitem" class="l-box">
+                            <a href="#"><span data-hidden="visually">Page&nbsp;</span>2</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span role="listitem" class="l-box">
+                            <a aria-current="page">3</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span role="listitem" class="l-box">
+                            <a href="#"><span data-hidden="visually">Page&nbsp;</span>4</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span role="listitem" class="l-box">
+                            <a href="#"><span data-hidden="visually">Page&nbsp;</span>5</a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                    </span>
+                </span>
+            </span>
+
+            <span class="l-box  n-pagination__end-links">
+                <span class="l-layout  l-row  l-row--center">
+                    <span class="l-layout__inner">
+                        <span class="l-box">
+                            <a href="#" rel="next"><span>Next<span data-hidden="visually">&nbsp;page.</span></span><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
+                        </span>
+                        <span class="l-box">
+                            <a href="#"><span>Last<span data-hidden="visually">&nbsp;page.</span></span><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevrons-right"></use></svg></a>
+                        </span>
+                    </span>
+                </span>
+            </span>
+        </p>
+    </nav>
 </div>
 
 <h3 id="article-navigation">Article Navigation</h3>
 
 <div class="u-space--below">
-    <div class="n-pagination">
-        <p role="list" class="n-pagination__list  n-pagination__list--push-apart">
-            <span role="listitem" class="n-pagination__item">
-                <a class="n-pagination__link" aria-label="Newer article: Bradford start recruiting" href="/neoclear/updates/1681-bradford-start-recruiting" rel="prev">
-                    <span aria-hidden="true"><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-left"></use></svg>Newer article</span>
-                </a>
+
+    <nav aria-label="Pagination" class="l-layout  l-row  l-row--push-apart  n-pagination">
+        <p class="l-layout__inner">
+            <span class="l-box">
+                <a href="#" rel="next"><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-left"></use></svg><span>Newer article</span></a><span class="l-box__separator">&nbsp;&nbsp;|&nbsp;</span>
             </span>
-            <span role="listitem" class="n-pagination__item">
-                <a class="n-pagination__link" aria-label="Older article: Congratulations to St. Peter's Hospital, Chertsey" href="/neoclear/updates/1672-congratulations-to-st-peter-s-hospital-chertsey" rel="next">
-                    <span aria-hidden="true">Older article<svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></span>
-                </a>
+            <span class="l-box">
+                <a href="#" rel="next"><span>Older article</span><svg display="none" focusable="false" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg></a>
             </span>
         </p>
-    </div>
+    </nav>
+
 </div>

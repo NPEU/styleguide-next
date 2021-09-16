@@ -5,16 +5,12 @@
 
 $badge-namespace: c- !default;
 
-$theme-only: false !default;
-
-$content-breakpoint: 60em !default;
-
-
 .#{$badge-namespace}badge {
 
     /*
         1. For positioned pseudo elements, e.g. External indicator.
         2. For IE11
+        3. Extra qualification to override StartCSS a[href] selectors.
     */
     &#{&} {
         display: inline-block;
@@ -32,12 +28,12 @@ $content-breakpoint: 60em !default;
             max-width: 100%;
         }
 
-        img {
+        img[src] { /* [3] */
             /*
                 1. This is to provide positioning context for the ::after pseudo-element.
                 2. This is so a broken image is still 100%.
                 3. -- Center in container. -- don't think this is necessary until find example
-                   breaks IE11 so need to overridide it below if keeping.
+                   breaks IE11 so need to override it below if keeping.
             */
 
             position: relative; /* [1] */
@@ -56,6 +52,12 @@ $content-breakpoint: 60em !default;
 
             /* margin: 0 auto; /* [3] */
             margin: 0;
+            padding: 0;
+            
+            &:hover {
+                margin: 0;
+                padding: 0;
+            }
 
         }
 

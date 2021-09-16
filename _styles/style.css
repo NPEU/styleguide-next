@@ -220,6 +220,8 @@ $fs__include_class_poem:     false;
     1. This size allows 2px on normal fonts, 1px on smaller fonts.
 */
 /* [1] */
+/* [1] */
+/* [1] */
 /*
     ASIDE
 */
@@ -401,37 +403,6 @@ body {
     }
 
 }*/
-/*
-    @DEPRECATED - use the clearer method below:
-    CSS only message
-*/
-[data-css-only="true"] {
-  display: none;
-}
-
-/*
-    New method hide stuff if CSS has loaded:
-*/
-[data-if-css="hide"] {
-  display: none;
-}
-
-/*
-    This method duplicates [hidden="false"][aria-hidden="false"] in accessibility.scss, but I'm
-    thinking of maybe deprecating that.
-*/
-[data-if-css="visually-hide"] {
-  clip: rect(0 0 0 0);
-  position: absolute;
-  display: inline;
-  /*border: 0;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    width: 1px;*/
-}
-
 /*------------------------------------------------------------------------------------------------*\
 
     ALL ELEMENTS
@@ -446,7 +417,7 @@ body {
 /*
     a:link a:visited a:hover a:active a:focus
 
-    1. Remove the gray background on active links in IE 10.
+    1. Remove the grey background on active links in IE 10.
     2. Remove the gaps in underlines in iOS 8+ and Safari 8+.
     3. Remove the tapping delay from clickable elements .
 */
@@ -455,9 +426,9 @@ a[href] {
   background-color: transparent;
   /* 1 */
   text-decoration: underline;
-  text-decoration-style: underline;
-  text-decoration-thickness: 0.2rem;
-  text-underline-offset: 0.2em;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.0625em;
   -webkit-text-decoration-skip: objects;
   /* 2 */
   -ms-touch-action: manipulation;
@@ -467,24 +438,33 @@ a[href] {
   /*
         1. For older browsers, the 2nd rule is ignored in those.
     */
+  /*
+        1. Make sure focus is still visible in Forced Colour modes.
+           (https://www.sarasoueidan.com/blog/focus-indicators/)
+    */
+  /*@supports (-moz-appearance:none) {
+    
+        text-decoration-thickness: $s__anchor-line-width - 0.04em;
+        //text-underline-offset:     $s__anchor-line-offset + 0.1em;
+    
+        &:hover,
+        &:active {
+            text-decoration-thickness: 0.1em;
+        }
+    }*/
 }
 
 a[href]:hover, a[href]:active {
   text-decoration: none;
   /* [1] */
-  text-decoration: underline dashed;
+  text-decoration: underline double currentColor 0.0625em;
   /* [1] */
 }
 
 a[href]:focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
-}
-
-@supports (-moz-appearance: none) {
-  a[href] {
-    text-decoration-thickness: 0.15385em;
-  }
+  outline: 1px solid transparent;
+  /* [1] */
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 a[href] svg:not(:only-child) {
@@ -704,7 +684,7 @@ button:hover, button:active {
 
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 button svg {
@@ -1296,11 +1276,13 @@ img .gm-style {
     Special treatment for images inside links.
 */
 a[href] img {
-  border-bottom: 0.2rem solid;
+  border-bottom: 0.1875em solid inherit;
+  padding-bottom: 0.1875em;
 }
 
 a[href] img:active, a[href] img:hover {
-  border-bottom: 0.2rem dashed;
+  border-bottom: 0.375em double inherit;
+  padding-bottom: 0;
 }
 
 /*
@@ -1312,7 +1294,7 @@ a[href] img:active, a[href] img:hover {
 */
 a:focus img {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1378,7 +1360,7 @@ input:not([type]):focus,
 [type="url"]:focus,
 [type="week"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 /*
@@ -1388,7 +1370,7 @@ input:not([type]):focus,
 [type="checkbox"]:focus,
 [type="radio"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 /*
@@ -1460,7 +1442,7 @@ _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
 [type="reset"]:focus,
 [type="submit"]:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 /*
@@ -2059,7 +2041,7 @@ _:-moz-tree-row(hover), select:not([multiple]) {
 
 select:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 /*
@@ -2120,21 +2102,6 @@ small {
   /* 1 */
   line-height: normal;
   /* 2 */
-  /*
-    a[href] {
-        margin-bottom: $s__anchor-border-bottom-offset / 2;
-
-        padding-bottom: $s__anchor-padding-bottom / 2;
-
-        border-bottom: 0.1rem $s__anchor-border-bottom-style;
-    }
-    
-    a[href]:hover,
-    a[href]:focus,
-    a[href]:active {
-        border-bottom: 0.1rem $s__anchor-border-bottom-style--alt;
-    }
-    */
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2195,7 +2162,7 @@ summary {
 
 summary:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 /* Hide the details marker as we're supplying our own. */
@@ -2396,7 +2363,7 @@ textarea {
 
 textarea:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -2487,7 +2454,7 @@ video {
 
 video:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem white, 0 0 0 0.4rem black;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
 /*
@@ -2571,55 +2538,19 @@ main :target {
     ============================================================================================
 
 |-------------------------------------------------------------------------------------------------*/
+/*
+    Change the cursor on busy elements in all browsers. (S)
+*/
 [aria-busy="true"] {
   cursor: progress;
 }
 
 /*
-    Specify the pointer cursor of trigger elements. (S)
-*/
-[aria-controls] {
-  cursor: pointer;
-}
-
-/*
     Specify the un-styled cursor of disabled, not-editable, or otherwise inoperable elements. (S)
 */
-[disabled],
-[aria-disabled] {
+[aria-disabled="true"],
+[disabled] {
   cursor: default;
-}
-
-/*
-    Address `[hidden]` styling not present in IE 8/9/10. (N)
-*/
-[hidden] {
-  display: none;
-}
-
-/*
-    Specify the style of visually hidden yet accessible elements. (S)
-*/
-[hidden="false"][aria-hidden="false"] {
-  clip: rect(0 0 0 0);
-  position: absolute;
-  display: inline;
-  /*border: 0;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    width: 1px;*/
-}
-
-a[hidden="false"][aria-hidden="false"]:focus,
-a[hidden="false"][aria-hidden="false"]:active {
-  clip: auto;
-  position: static;
-  /*height: auto;
-        margin: 0;
-        overflow: visible;
-        width: auto;*/
 }
 
 /*
@@ -2631,14 +2562,30 @@ a[hidden="false"][aria-hidden="false"]:active {
   outline: none;
 }
 
-/*
-    A blanket attempt to respect prefers-reduced-motion.
-    (https://dev.to/alvaromontoro/consider-reducing-motions-1a13)
+/* Reduced Motion (S)
+    1. Remove animations when motion is reduced (opinionated).
+    2. Remove fixed background attachments when motion is reduced (opinionated).
+    3. Remove timed scrolling behaviors when motion is reduced (opinionated).
+    4. Remove transitions when motion is reduced (opinionated).
 */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    /* 1 */
+    animation-duration: 1ms !important;
+    /* 1 */
+    animation-iteration-count: 1 !important;
+    /* 1 */
+    background-attachment: initial !important;
+    /* 2 */
+    scroll-behavior: auto !important;
+    /* 3 */
+    transition-delay: 0s !important;
+    /* 4 */
+    transition-duration: 0s !important;
+    /* 4 */
   }
 }
 
@@ -2659,7 +2606,298 @@ a[hidden="false"][aria-hidden="false"]:active {
     1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
        keeping both for now.
 */
+/*! Start-CSS Visibility. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    VISIBILITY
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    @DEPRECATED - use the clearer method below:
+    CSS only message
+
+[data-css-only="true"] {
+    display: none;
+}
+
+/*
+    New method hide stuff if CSS has loaded:
+
+[data-if-css="hide"] {
+    display: none;
+}
+
+/*
+    This method duplicates [hidden="false"][aria-hidden="false"] in accessibility.scss, but I'm
+    thinking of maybe deprecating that.
+
+[data-if-css="visually-hide"] {
+    clip: rect(0 0 0 0);
+    position: absolute;
+
+    display: inline;
+    /*border: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;
+}
+
+*/
+/*
+    Method hide stuff if CSS has loaded:
+*/
+[data-hidden="if-css"] {
+  display: none !important;
+}
+
+/*
+    Method hide stuff if printing:
+*/
+@media print {
+  [data-hidden="if-print"] {
+    display: none !important;
+  }
+}
+
+/*
+    Method hide stuff if NOT printing:
+*/
+@media not print {
+  [data-hidden="if-not-print"] {
+    display: none !important;
+  }
+}
+
+/*
+    Address `[hidden]` styling not present in IE 8/9/10. (N)
+*/
+[hidden] {
+  display: none;
+}
+
+/*
+    Visually hidden.
+    https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html
+
+    Note previous Sanitize CSS option using [aria-hidden="false" i][hidden] causes problems on NVDA
+    on Chrome (at least).
+    For example take a pagination link:
+    <a href="#"><span hidden aria-hidden="false>Page </span>1</a>
+    NVDA announces "link page link 1". Annoying. This only happens with continuous reading but it's
+    still a problem.
+*/
+[data-hidden="visually"]:not(:focus):not(:active) {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
 /*! End Start-CSS */
+/*! Start CSS Icons. See SCSS file for documentation. */
+/*------------------------------------------------------------------------------------------------*\
+
+    Icons
+
+\*------------------------------------------------------------------------------------------------*/
+/*
+
+    This default icon set used Feather Icons (https://feathericons.com/)
+    If you want to use a different icon set, omit the @import declaration for this file and replace
+    it with a custom one.
+    
+    The markup here is based on this article:
+    [Accessible SVG Icons with Inline Sprites](https://www.24a11y.com/2018/accessible-svg-icons-with-inline-sprites/)
+
+    <!-- At the top of each page: -->
+    <svg xmlns="http://www.w3.org/2000/svg" display="none">
+        <style>
+            svg[focusable="false"][role="img"][aria-labelledby],
+            svg[focusable="false"][aria-hidden="true"] {
+                fill: none;
+                fill-opacity: 0;
+                stroke: currentColor;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                width: 1.25em;
+                height: 1.25em;
+                margin: 0;
+                padding: 0;
+                vertical-align: text-bottom;
+            }
+        </style>
+        <symbol id="icon-building" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+        </symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+        </symbol>
+        <symbol id="icon-chevron-down" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <polyline points="6 9 12 15 18 9"/>
+        </symbol>
+        <symbol id="icon-chevron-up" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <polyline points="18 15 12 9 6 15"/>
+        </symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <polyline points="15 18 9 12 15 6"/>
+        </symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <polyline points="9 18 15 12 9 6"/>
+        </symbol>
+        <symbol id="icon-cross" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </symbol>
+        <symbol id="icon-edit" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+        </symbol>
+        <symbol id="icon-email" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+        </symbol>
+        <symbol id="icon-facebook" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </symbol>
+        <symbol id="icon-fax" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path class="st0" d="M6,18H4c-1.1,0-2-0.7-2-1.6v-4c0-0.9,0.9-1.6,2-1.6h16c1.1,0,2,0.7,2,1.6v4c0,0.9-0.9,1.6-2,1.6h-2"/>
+            <rect x="6" y="14" class="st0" width="12" height="8"/>
+            <path class="st0" d="M6,7.4L4.8,6.2C4.4,5.7,4.4,5,4.8,4.6c0,0,0.1,0,0.1-0.1c1.4-1.1,3-1.9,4.7-2.2c1.6-0.4,3.2-0.4,4.8,0 c1.7,0.4,3.3,1.1,4.7,2.2c0.5,0.4,0.5,1.1,0.1,1.6c0,0,0,0.1-0.1,0.1L18,7.4c-0.4,0.4-1,0.5-1.5,0.1c-0.4-0.3-0.9-0.6-1.4-0.8 c-0.4-0.2-0.7-0.6-0.7-1v-1c-1.6-0.4-3.2-0.4-4.8,0v1c0,0.4-0.3,0.8-0.7,1C8.4,6.9,8,7.2,7.5,7.5C7.1,7.8,6.4,7.8,6,7.4z"/>
+        </symbol>
+        <symbol id="icon-file" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+            <polyline points="13 2 13 9 20 9"/>
+        </symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >            
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+        </symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+        </symbol>
+        <symbol id="icon-person" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+        </symbol>
+        <symbol id="icon-phone" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </symbol>
+        <symbol id="icon-rss" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path class="st0" d="M5.6,9.1c4,0,7.2,3.2,7.2,7.2"/><path class="st0" d="M5.6,3.5c7,0,12.8,5.7,12.8,12.8"/><circle class="st0" cx="6.4" cy="15.5" r="0.8"/>
+        </symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <circle cx="10.5" cy="10.5" r="7.5"/>
+            <line x1="21" y1="21" x2="15.8" y2="15.8"/>
+        </symbol>
+        <symbol id="icon-twitter" viewBox="0 0 24 24"
+            fill="none" fill-opacity="0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"        
+        >
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+        </symbol>
+     </svg>
+
+
+
+    <!-- Where it's needed: -->
+    <svg display="none" class="icon" aria-label="Spoken label"><use xlink:href="#icon-triangle-down"></use></svg>
+    <!-- Note the aria-label can be removed if equivalent text is already present or the icon is visual only -->
+
+*/
+/*
+        1. Override display attribute.
+        2. FF55- otherwise fill is applied.
+    */
+.icon {
+  display: inline;
+  /* [1] */
+  fill: none;
+  fill-opacity: 0;
+  /* [2] */
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 1.25em;
+  height: 1.25em;
+  margin: 0;
+  padding: 0;
+}
+
+_:-o-prefocus, :root .icon {
+  vertical-align: middle;
+}
+
+.icon-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 /* ---------------------------------------------------------------------------------------------- */
 /* --| THEME |----------------------------------------------------------------------------------- */
 /**/
@@ -2727,6 +2965,7 @@ a[hidden="false"][aria-hidden="false"]:active {
   /*
         1. For positioned pseudo elements, e.g. External indicator.
         2. For IE11
+        3. Extra qualification to override StartCSS a[href] selectors.
     */
   /*
     &.c-badge--circle {
@@ -2757,12 +2996,13 @@ a[hidden="false"][aria-hidden="false"]:active {
   max-width: 100%;
 }
 
-.c-badge img {
+.c-badge img[src] {
+  /* [3] */
   /*
                 1. This is to provide positioning context for the ::after pseudo-element.
                 2. This is so a broken image is still 100%.
                 3. -- Center in container. -- don't think this is necessary until find example
-                   breaks IE11 so need to overridide it below if keeping.
+                   breaks IE11 so need to override it below if keeping.
             */
   position: relative;
   /* [1] */
@@ -2774,6 +3014,12 @@ a[hidden="false"][aria-hidden="false"]:active {
   background-color: transparent;
   /* margin: 0 auto; /* [3] */
   margin: 0;
+  padding: 0;
+}
+
+.c-badge img[src]:hover {
+  margin: 0;
+  padding: 0;
 }
 
 .c-badge.c-badge--limit-height img, .c-badge.c-badge--limit-height--8 img {
@@ -3055,7 +3301,7 @@ a[href][rel~="external"].c-badge:focus::after {
   padding: 0.6rem;
 }
 
-.l-gutter--s > .l-layout__inner > .l-box .l-box__seperator {
+.l-gutter--s > .l-layout__inner > .l-box .l-box__separator {
   padding-left: 0.6rem;
 }
 
@@ -3069,8 +3315,8 @@ a[href][rel~="external"].c-badge:focus::after {
   padding: 1.2rem;
 }
 
-.l-gutter > .l-layout__inner > .l-box .l-box__seperator,
-.l-gutter--m > .l-layout__inner > .l-box .l-box__seperator {
+.l-gutter > .l-layout__inner > .l-box .l-box__separator,
+.l-gutter--m > .l-layout__inner > .l-box .l-box__separator {
   padding-left: 1.2rem;
 }
 
@@ -3082,7 +3328,7 @@ a[href][rel~="external"].c-badge:focus::after {
   padding: 2.4rem;
 }
 
-.l-gutter--l > .l-layout__inner > .l-box .l-box__seperator {
+.l-gutter--l > .l-layout__inner > .l-box .l-box__separator {
   padding-left: 2.4rem;
 }
 
@@ -3253,6 +3499,90 @@ a[href][rel~="external"].c-badge:focus::after {
   .l-layout.l-distribute.l-distribute--balance-top > .l-layout__inner > .l-box:nth-last-child(n+12) ~ * {
     flex-basis: min(max(50%, ((var(--b) * 2) - 100%) * 999), max(33%, ((var(--b) * 3) - 100%) * 999), max(25%, ((var(--b) * 4) - 100%) * 999), max(16%, ((var(--b) * 6) - 100%) * 999), max(8%, ((var(--b) * 12) - 100%) * 999));
   }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --| Navigation Patterns |------------------------------------------------------------------------- */
+/*
+    Pagination
+    ===========
+
+    Note that the bulk of the pagination pattern is service by the layout classes.
+    The classes declared here provide some additional decoration.
+*/
+.n-pagination {
+  /*
+    */
+}
+
+.n-pagination .l-box__separator {
+  display: none;
+}
+
+.n-pagination a {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  margin-left: 0.6rem;
+  margin-right: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.n-pagination a svg[display][focusable][aria-hidden] {
+  margin: 0;
+}
+
+.n-pagination a[aria-hidden] {
+  opacity: 0.5;
+}
+
+.n-pagination a[aria-current] {
+  background: #eee;
+  border-radius: 100%;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+}
+
+.n-pagination .n-pagination__page-links a {
+  width: 3.6rem;
+}
+
+.n-pagination .n-pagination__start-links a {
+  padding-left: 0;
+  padding-right: 0.6rem;
+}
+
+.n-pagination .n-pagination__end-links a {
+  padding-left: 0.6rem;
+  padding-right: 0;
+}
+
+.n-pagination .n-pagination__start-links .l-box,
+.n-pagination .n-pagination__page-links .l-box,
+.n-pagination .n-pagination__end-links .l-box:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+/*
+    Search Results
+    ==============
+*/
+.n-search-results.n-search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.n-search-results .n-search-results__heading {
+  font-size: 1.375em;
+  line-height: 3.6rem;
+  margin-bottom: 0;
+}
+
+.n-search-results .n-search-results__description {
+  margin-top: 0;
+  margin-bottom: 2.4rem;
 }
 
 /* ---------------------------------------------------------------------------------------------- */

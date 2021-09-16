@@ -39,7 +39,6 @@ $not-too-small: 18em;
 
 
 
-
 $s__main-max-line-length: 0;
 $s__main-padding: 0;
 
@@ -118,7 +117,7 @@ $fs__include_class_poem:     false;
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
 ///@import '../bower_components/Fall-Back-Start-CSS/scss/_start-accessibility.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-utilities.scss';
-///@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
+@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
 ///@import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -150,6 +149,18 @@ $layout-spacing-unit: $s__base-rem-space-unit / 2;
 @import "layout-patterns/_base.scss";
 
 @import "layout-patterns/_distribute.scss";
+
+
+//@import "layout-patterns/_col-to-row.scss";
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+
+/* --| Navigation Patterns |------------------------------------------------------------------------- */
+
+@import "navigation-patterns/_pagination.scss";
+@import "navigation-patterns/_search-results.scss";
 
 
 //@import "layout-patterns/_col-to-row.scss";

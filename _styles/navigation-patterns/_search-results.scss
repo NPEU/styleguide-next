@@ -1,0 +1,32 @@
+/*
+    Search Results
+    ==============
+*/
+
+$search-results-namespace: n- !default;
+
+
+// Search results heading:
+//$search-results-heading--font-size: 2rem !default;
+
+.#{$search-results-namespace}search-results {
+
+    &#{&} {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .#{$search-results-namespace}search-results__heading {
+        font-size: $s__h4-font-size;
+        line-height: $s__h4-height;
+        margin-bottom: 0;
+    }
+    
+    .#{$search-results-namespace}search-results__description {
+        margin-top: 0;
+        margin-bottom: $s__sz-m;
+    }
+}
+
+
