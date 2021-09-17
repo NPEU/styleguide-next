@@ -13,11 +13,11 @@
 
 
 .s-example {
-    box-shadow: 0 0 3px 0 inset rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.4);
 }
 
 .s-example--padded {
-    box-shadow: 0 0 3px 0 inset rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.4);
     padding: 1.2rem;
 }
 

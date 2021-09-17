@@ -14,6 +14,9 @@ $secondary-color : #BC955C;
 $neutral-color   : #8e8279;
 
 
+/**/
+$border-thick: 0.3rem;
+
 $s__base-ui-color: $primary-color;
 
 $s__base-text-color: #111;
@@ -114,11 +117,26 @@ $fs__include_class_poem:     false;
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_functions.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start.scss';
-//@import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
+
+$s__class-namespace: c-;
+
+//$fs__include_class_cta_button:    false;
+$fs__include_class_bordered:      false;
+$fs__include_class_padded:        false;
+$fs__include_class_subtitle:      false;
+$fs__include_class_tagline:       false;
+//$fs__include_class_composite:     false;
+$fs__include_class_custom_inputs: false;
+$fs__include_class_poem:          false;
+
+@import '../bower_components/Fall-Back-Start-CSS/scss/_start-classes.scss';
 ///@import '../bower_components/Fall-Back-Start-CSS/scss/_start-accessibility.scss';
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-utilities.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_Xstart-icons.scss';
-///@import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
+
+//$s__experimental: true;
+$s__experimental_checkradios: true;
+@import '../bower_components/Fall-Back-Start-CSS/scss/_start-experimental.scss';
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -136,7 +154,17 @@ $fs__include_class_poem:     false;
 
 //@import "component-patterns/_card.scss";
 
+@import "component-patterns/_tool-form.scss";
+
 @import "component-patterns/_page-wrap.scss";
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+
+/* --| Decoration Patterns |---------------------------------------------------------------------- */
+
+@import "decoration-patterns/_background.scss";
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -160,6 +188,7 @@ $layout-spacing-unit: $s__base-rem-space-unit / 2;
 /* --| Navigation Patterns |------------------------------------------------------------------------- */
 
 @import "navigation-patterns/_pagination.scss";
+
 @import "navigation-patterns/_search-results.scss";
 
 

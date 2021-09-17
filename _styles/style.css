@@ -5,6 +5,7 @@
 /**/
 /**/
 /**/
+/**/
 /*
 //@debug $s__base-ui-color;
 
@@ -2703,6 +2704,211 @@ main :target {
 }
 
 /*! End Start-CSS */
+/*! Start CSS Classes. See SCSS file for documentation. */
+/*------------------------------------------------------------------------------------------------*\
+
+    Classes
+
+\*------------------------------------------------------------------------------------------------*/
+/*
+    Resources:
+    *
+*/
+/*
+        "Buttons" or "CTAs" that are really links should be distinguished from real buttons, so by
+        default we're swapping the foreground and background colors:
+    */
+a[href].c-button,
+a[href].c-cta {
+  display: inline-block;
+  /* AK. IE9 needs this. Hmmm, for what exactly?*/
+  min-height: 3rem;
+  overflow: visible;
+  /* S: Internet Explorer 11-, N: Show the overflow in Edge, Firefox, and IE. */
+  margin: 0.3rem 0;
+  padding-top: 0.3rem;
+  padding-top: -moz-calc(0);
+  padding-top: calc(0.3rem - 0.1rem);
+  padding-right: 0.6rem;
+  padding-bottom: 0.3rem;
+  padding-bottom: -moz-calc(0);
+  padding-bottom: calc(0.3rem - 0.1rem);
+  padding-left: 0.6rem;
+  border-color: #5F4776;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-radius: 0.3rem;
+  color: #5F4776;
+  background-color: #fff;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  text-transform: none;
+  /* [N0], N: Remove the inheritance of text transform in Edge, Firefox, and IE. */
+  cursor: pointer;
+  -ms-touch-action: manipulation;
+  /* 1 (IE10) */
+  touch-action: manipulation;
+  /* 1 */
+  -webkit-appearance: none;
+}
+
+a[href].c-button:hover, a[href].c-button:active,
+a[href].c-cta:hover,
+a[href].c-cta:active {
+  background-color: white;
+}
+
+a[href].c-button:focus,
+a[href].c-cta:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
+}
+
+a[href].c-button:hover, a[href].c-button:active, a[href].c-button:focus,
+a[href].c-cta:hover,
+a[href].c-cta:active,
+a[href].c-cta:focus {
+  background-color: #ebe6f0;
+}
+
+a[href].c-button--has-icon,
+a[href].c-cta--has-icon {
+  position: relative;
+}
+
+a[href].c-button--has-icon::after,
+a[href].c-cta--has-icon::after {
+  content: "";
+  display: inline;
+  padding-left: 1.25em;
+  line-height: 0;
+}
+
+a[href].c-button--has-icon .icon,
+a[href].c-cta--has-icon .icon {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(-15%);
+}
+
+.c-button[data-text][aria-hidden="true"] {
+  display: inline-block;
+  /* AK. IE9 needs this. Hmmm, for what exactly?*/
+  min-height: 3rem;
+  overflow: visible;
+  /* S: Internet Explorer 11-, N: Show the overflow in Edge, Firefox, and IE. */
+  margin: 0.3rem 0;
+  padding-top: 0.3rem;
+  padding-top: -moz-calc(0);
+  padding-top: calc(0.3rem - 0.1rem);
+  padding-right: 0.6rem;
+  padding-bottom: 0.3rem;
+  padding-bottom: -moz-calc(0);
+  padding-bottom: calc(0.3rem - 0.1rem);
+  padding-left: 0.6rem;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: 0.1rem;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: #5F4776;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  text-transform: none;
+  /* [N0], N: Remove the inheritance of text transform in Edge, Firefox, and IE. */
+  cursor: pointer;
+  -ms-touch-action: manipulation;
+  /* 1 (IE10) */
+  touch-action: manipulation;
+  /* 1 */
+  -webkit-appearance: none;
+}
+
+.c-button[data-text][aria-hidden="true"]:hover, .c-button[data-text][aria-hidden="true"]:active {
+  background-color: #453456;
+}
+
+.c-button[data-text][aria-hidden="true"]:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
+}
+
+.c-button[data-text][aria-hidden="true"]::before {
+  content: attr(data-text);
+}
+
+/*
+        1. Collapse whitespace.
+        2. Prevent extra height being added.
+    */
+.c-composite {
+  display: -webkit-inline-box;
+  /* 1 */
+  display: -ms-inline-flexbox;
+  /* 1 */
+  display: inline-flex;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+  max-width: 100%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/*
+        1. Prevent extra height being added.
+    */
+.c-composite > * {
+  vertical-align: top;
+  /* 1 */
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+
+/*
+        IE9
+
+        1. Make sure there are no spaces between elements in the markup as the as the white space won't
+           collapse.
+
+        2. Hide button.
+    */
+@media screen and (min-width: 0\0) and (min-resolution: 0.001dpcm) {
+  .c-composite {
+    display: inline-block;
+    /* 1 */
+    white-space: nowrap;
+    /* 1 */
+    overflow: hidden;
+    /* 2 */
+  }
+  .c-composite > * {
+    vertical-align: top;
+    display: inline-block;
+  }
+}
+
+.c-composite > *:not(:first-child) {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.c-composite > *:not(:last-child) {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: 0 !important;
+}
+
 /*! Start CSS Icons. See SCSS file for documentation. */
 /*------------------------------------------------------------------------------------------------*\
 
@@ -2898,6 +3104,97 @@ _:-o-prefocus, :root .icon {
   justify-content: center;
 }
 
+/*! Start-CSS Experimental. See SCSS file for documentation. */
+/*-------------------------------------------------------------------------------------------------|
+
+    EXPERIMENTAL
+    ============================================================================================
+
+|-------------------------------------------------------------------------------------------------*/
+/*
+    These may be experimental, but they actually make Safari usable with a keyboard, so long as
+    you enable an "Accessibility" setting located in the advanced tab of Safari preferences.
+    ("Press TAB to highlight each item on a web page.)
+    That is - the default outline focus style works, but shadows don't unless appearance: none
+    is used.
+    
+    1. Safari 9.1 doesn't recognize 'auto' but I suspect others won't recognize 'initial', so
+       keeping both for now.
+*/
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type="checkbox"],
+  input[type="radio"] {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    min-height: auto;
+    /* 1 */
+    min-height: initial;
+    /* 1 */
+    border-width: 0.1rem;
+    border-style: solid;
+    border-color: #111;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  input[type="radio"] {
+    border-radius: 50%;
+  }
+  input[type="radio"]:checked {
+    background-image: -moz-radial-gradient(center, ellipse cover, #111111 0%, #111111 35%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 100%);
+    /* FF3.6-15 */
+    background-image: -webkit-radial-gradient(center, ellipse cover, #111111 0%, #111111 35%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background-image: radial-gradient(ellipse at center, #111111 0%, #111111 35%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+  input[type="checkbox"]:checked::after {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 0.3em;
+    border: solid #111;
+    border-width: 0 0 0.125em 0.125em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -70%) rotate(-50deg);
+    -ms-transform: translate(-50%, -70%) rotate(-50deg);
+    transform: translate(-50%, -70%) rotate(-50deg);
+  }
+  /*
+            Turn off the outline we reinstated for non-experimental styles in Safari:
+        */
+  _::-webkit-full-page-media, _:future, :root [type="checkbox"]:focus,
+  _::-webkit-full-page-media, _:future, :root [type="radio"]:focus {
+    outline: 0;
+  }
+}
+
+/*
+        Turn off checkbox styling for Edge for now.
+    */
+@supports (-ms-ime-align: auto) {
+  input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+  }
+}
+
+/*
+        Turn off checkradio styling for UCBrowser for now.
+    */
+.ucbrowser input[type="checkbox"] {
+  min-height: 0;
+  -webkit-appearance: checkbox;
+}
+
+.ucbrowser input[type="radio"] {
+  min-height: 0;
+  -webkit-appearance: radio;
+}
+
 /* ---------------------------------------------------------------------------------------------- */
 /* --| THEME |----------------------------------------------------------------------------------- */
 /**/
@@ -2910,12 +3207,12 @@ _:-o-prefocus, :root .icon {
   --t-very-dark-adjust: 0.5;
   --t-primary-color: #5F4776;
   /* hsl(271, 25%, 37%) */
-  --t-primary-color-h: 271deg;
+  --t-primary-color-h: 271;
   --t-primary-color-s: 25%;
   --t-primary-color-l: 37%;
   --t-primary-color-l-copy: 37%;
   /* Declared twice so it can be part of a lightening calculation) */
-  --t-primary-fore-text-color: s__set_color_for_background(#5F4776, #fff, #111);
+  --t-primary-fore-text-color: var(--t-text-color-inverse);
   /* SASS would generate this from the base colour. */
   --t-secondary-color: #2c9cdf;
   /* hsl(202, 74%, 53%) */
@@ -2952,6 +3249,10 @@ _:-o-prefocus, :root .icon {
   --t-neutral-color-l--dark: 36%;
   --t-neutral-color-l--very-dark: 26%;
   /**/
+}
+
+body {
+  color: var(--t-text-color);
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -3191,6 +3492,58 @@ a[href][rel~="external"].c-badge:focus::after {
 }
 
 /*
+    Tool Form
+    =========
+*/
+.c-tool-form.c-tool-form {
+  background-color: #fff;
+  border-style: solid;
+  border-color: var(--t-primary-color);
+  border-width: 0.3rem;
+  border-radius: 1.2rem;
+  padding: calc(2.4rem - 0.3rem);
+}
+
+.c-tool-form .c-tool-form__fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  /*
+            Chrome and older Firefox (and others?) don't support flex on a fieldset so we need
+            an internal wrapper.
+        */
+  /*
+            1. Legends don't flex, this gets around that problem.
+        */
+}
+
+.c-tool-form .c-tool-form__fieldset::after {
+  display: none;
+}
+
+.c-tool-form .c-tool-form__fieldset > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-tool-form .c-tool-form__fieldset legend {
+  float: left;
+  /* [1] */
+  padding: 0.6rem 0;
+  margin-right: 1.2rem;
+  margin-bottom: 0;
+}
+
+.c-tool-form .c-tool-form__fieldset > div > :not(:last-child):not(legend) {
+  margin-right: 2.4rem;
+}
+
+.c-tool-form .c-tool-form__group {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/*
     Page Wrap
     ========
 */
@@ -3199,6 +3552,123 @@ a[href][rel~="external"].c-badge:focus::after {
   max-width: 1600px;
   margin: 0 auto;
   background-color: #fff;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --| Decoration Patterns |---------------------------------------------------------------------- */
+/*
+    Background
+    ===========
+*/
+[class*="d-background"] {
+  background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l));
+  color: var(--t-primary-fore-text-color);
+}
+
+[class*="d-background"].t-secondary {
+  background-color: hsl(var(--t-secondary-color-h), var(--t-secondary-color-s), var(--t-secondary-color-l));
+  color: var(--t-secondary-fore-text-color);
+}
+
+[class*="d-background"].t-neutral {
+  background-color: hsl(var(--t-neutral-color-h), var(--t-neutral-color-s), var(--t-neutral-color-l));
+  color: var(--t-neutral-fore-text-color);
+}
+
+.d-background--light {
+  /* For IE11: */
+  --t-primary-color-l: var(--t-primary-color-l--light);
+  --t-secondary-color-l: var(--t-secondary-color-l--light);
+  --t-neutral-color-l: var(--t-neutral-color-l--light);
+  /**/
+}
+
+/*
+    This isn't necessary while the IE11 stuff is present above, but keep it here for when the
+    IE11 stuff isn't needed any more.
+*/
+@supports (--css: variables) {
+  .d-background--light {
+    --t-primary-color-l: calc(var(--t-primary-color-l-copy) + ((100% - var(--t-primary-color-l-copy)) * var(--t-light-adjust)));
+    --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) + ((100% - var(--t-secondary-color-l-copy)) * var(--t-light-adjust)));
+    --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) + ((100% - var(--t-neutral-color-l-copy)) * var(--t-light-adjust)));
+  }
+}
+
+/**/
+.d-background--very-light {
+  /* For IE11: */
+  --t-primary-color-l: var(--t-primary-color-l--very-light);
+  --t-secondary-color-l: var(--t-secondary-color-l--very-light);
+  --t-neutral-color-l: var(--t-neutral-color-l--very-light);
+  /**/
+}
+
+/*
+    This isn't necessary while the IE11 stuff is present above, but keep it here for when the
+    IE11 stuff isn't needed any more.
+*/
+@supports (--css: variables) {
+  .d-background--very-light {
+    --t-primary-color-l: calc(var(--t-primary-color-l-copy) + ((100% - var(--t-primary-color-l-copy)) * var(--t-very-light-adjust)));
+    --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) + ((100% - var(--t-secondary-color-l-copy)) * var(--t-very-light-adjust)));
+    --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) + ((100% - var(--t-neutral-color-l-copy)) * var(--t-very-light-adjust)));
+  }
+}
+
+/**/
+.d-background--dark {
+  /* For IE11: */
+  --t-primary-color-l: var(--t-primary-color-l--dark);
+  --t-secondary-color-l: var(--t-secondary-color-l--dark);
+  --t-neutral-color-l: var(--t-neutral-color-l--dark);
+  /**/
+}
+
+/*
+    This isn't necessary while the IE11 stuff is present above, but keep it here for when the
+    IE11 stuff isn't needed any more.
+*/
+@supports (--css: variables) {
+  .d-background--dark {
+    --t-primary-color-l: calc(var(--t-primary-color-l-copy) * var(--t-dark-adjust));
+    --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) * var(--t-dark-adjust));
+    --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) * var(--t-dark-adjust));
+  }
+}
+
+/**/
+.d-background--very-dark {
+  /* For IE11: */
+  --t-primary-color-l: var(--t-primary-color-l--very-dark);
+  --t-secondary-color-l: var(--t-secondary-color-l--very-dark);
+  --t-neutral-color-l: var(--t-neutral-color-l--very-dark);
+  /**/
+}
+
+/*
+    This isn't necessary while the IE11 stuff is present above, but keep it here for when the
+    IE11 stuff isn't needed any more.
+*/
+@supports (--css: variables) {
+  .d-background--very-dark {
+    --t-primary-color-l: calc(var(--t-primary-color-l-copy) * var(--t-very-dark-adjust));
+    --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) * var(--t-very-dark-adjust));
+    --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) * var(--t-very-dark-adjust));
+  }
+}
+
+/**/
+/**/
+/* Overqualified selectors to raise specificity above the theme classes defined below. */
+[class*=d-background].d-background--dark.d-background--dark,
+[class*=d-background].d-background--very-dark.d-background--very-dark {
+  color: var(--t-text-color-inverse);
+}
+
+[class*=d-background].d-background--light.d-background--light,
+[class*=d-background].d-background--very-light.d-background--very-light {
+  color: var(--t-text-color);
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -3538,7 +4008,7 @@ a[href][rel~="external"].c-badge:focus::after {
 }
 
 .n-pagination a[aria-current] {
-  background: #eee;
+  background-color: #eee;
   border-radius: 100%;
   margin-left: 1.2rem;
   margin-right: 1.2rem;
@@ -3580,9 +4050,14 @@ a[href][rel~="external"].c-badge:focus::after {
   margin-bottom: 0;
 }
 
-.n-search-results .n-search-results__description {
+.n-search-results .n-search-results__result {
+  margin-left: 0;
+}
+
+.n-search-results .n-search-results__description,
+.n-search-results .n-search-results__separator {
   margin-top: 0;
-  margin-bottom: 2.4rem;
+  margin-bottom: 0;
 }
 
 /* ---------------------------------------------------------------------------------------------- */

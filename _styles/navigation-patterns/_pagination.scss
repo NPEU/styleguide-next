@@ -39,12 +39,12 @@ $pagination-namespace: n- !default;
     }
     
     a[aria-current] {
-        background: #eee;
+        background-color: #eee;
         border-radius: 100%;
         margin-left: $s__sz-s;
         margin-right: $s__sz-s;
     }
-
+    
 
     .#{$pagination-namespace}pagination__page-links a {
         width: #{$s__sz-m + $s__sz-s};
