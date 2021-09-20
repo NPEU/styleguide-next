@@ -33,7 +33,7 @@ $background-namespace: d- !default;
 /*
     This isn't necessary while the IE11 stuff is present above, but keep it here for when the
     IE11 stuff isn't needed any more.
-*/
+*
 @supports (--css: variables) {
     .#{$background-namespace}background--light {
         --t-primary-color-l: calc(var(--t-primary-color-l-copy) + ((100% - var(--t-primary-color-l-copy)) * var(--t-light-adjust)));
@@ -53,7 +53,7 @@ $background-namespace: d- !default;
 /*
     This isn't necessary while the IE11 stuff is present above, but keep it here for when the
     IE11 stuff isn't needed any more.
-*/
+*
 @supports (--css: variables) {
     .#{$background-namespace}background--very-light {
         --t-primary-color-l: calc(var(--t-primary-color-l-copy) + ((100% - var(--t-primary-color-l-copy)) * var(--t-very-light-adjust)));
@@ -73,7 +73,7 @@ $background-namespace: d- !default;
 /*
     This isn't necessary while the IE11 stuff is present above, but keep it here for when the
     IE11 stuff isn't needed any more.
-*/
+*
 @supports (--css: variables) {
     .#{$background-namespace}background--dark {
         --t-primary-color-l: calc(var(--t-primary-color-l-copy) * var(--t-dark-adjust));
@@ -93,7 +93,7 @@ $background-namespace: d- !default;
 /*
     This isn't necessary while the IE11 stuff is present above, but keep it here for when the
     IE11 stuff isn't needed any more.
-*/
+*
 @supports (--css: variables) {
     .#{$background-namespace}background--very-dark {
         --t-primary-color-l: calc(var(--t-primary-color-l-copy) * var(--t-very-dark-adjust));

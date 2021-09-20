@@ -3206,31 +3206,28 @@ _:-o-prefocus, :root .icon {
   --t-dark-adjust: 0.7;
   --t-very-dark-adjust: 0.5;
   --t-primary-color: #5F4776;
-  /* hsl(271, 25%, 37%) */
   --t-primary-color-h: 271;
   --t-primary-color-s: 25%;
   --t-primary-color-l: 37%;
   --t-primary-color-l-copy: 37%;
   /* Declared twice so it can be part of a lightening calculation) */
-  --t-primary-fore-text-color: var(--t-text-color-inverse);
+  --t-primary-fore-text-color: #fff;
   /* SASS would generate this from the base colour. */
-  --t-secondary-color: #2c9cdf;
-  /* hsl(202, 74%, 53%) */
-  --t-secondary-color-h: 202;
-  --t-secondary-color-s: 74%;
-  --t-secondary-color-l: 53%;
-  --t-secondary-color-l-copy: 53%;
+  --t-secondary-color: #b9975b;
+  --t-secondary-color-h: 38;
+  --t-secondary-color-s: 40%;
+  --t-secondary-color-l: 54%;
+  --t-secondary-color-l-copy: 54%;
   /* Declared twice so it can be part of a lightening calculation) */
-  --t-secondary-fore-text-color: var(--t-text-color);
+  --t-secondary-fore-text-color: #111;
   /* SASS would generate this from the base colour. */
   --t-neutral-color: #8e8279;
-  /* hsl(26, 9%, 52%) */
   --t-neutral-color-h: 26;
   --t-neutral-color-s: 9%;
   --t-neutral-color-l: 52%;
   --t-neutral-color-l-copy: 52%;
   /* Declared twice so it can be part of a lightening calculation) */
-  --t-neutral-fore-text-color: var(--t-text-color);
+  --t-neutral-fore-text-color: #111;
   /* SASS would generate this from the base colour. */
   /*
         Without being able to perform a calc in the hsl function (grrr IE11 even with polyfill) we
@@ -3586,15 +3583,14 @@ a[href][rel~="external"].c-badge:focus::after {
 /*
     This isn't necessary while the IE11 stuff is present above, but keep it here for when the
     IE11 stuff isn't needed any more.
-*/
+*
 @supports (--css: variables) {
-  .d-background--light {
-    --t-primary-color-l: calc(var(--t-primary-color-l-copy) + ((100% - var(--t-primary-color-l-copy)) * var(--t-light-adjust)));
-    --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) + ((100% - var(--t-secondary-color-l-copy)) * var(--t-light-adjust)));
-    --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) + ((100% - var(--t-neutral-color-l-copy)) * var(--t-light-adjust)));
-  }
+    .d-background--light {
+        --t-primary-color-l: calc(var(--t-primary-color-l-copy) + ((100% - var(--t-primary-color-l-copy)) * var(--t-light-adjust)));
+        --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) + ((100% - var(--t-secondary-color-l-copy)) * var(--t-light-adjust)));
+        --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) + ((100% - var(--t-neutral-color-l-copy)) * var(--t-light-adjust)));
+    }
 }
-
 /**/
 .d-background--very-light {
   /* For IE11: */
@@ -3607,15 +3603,14 @@ a[href][rel~="external"].c-badge:focus::after {
 /*
     This isn't necessary while the IE11 stuff is present above, but keep it here for when the
     IE11 stuff isn't needed any more.
-*/
+*
 @supports (--css: variables) {
-  .d-background--very-light {
-    --t-primary-color-l: calc(var(--t-primary-color-l-copy) + ((100% - var(--t-primary-color-l-copy)) * var(--t-very-light-adjust)));
-    --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) + ((100% - var(--t-secondary-color-l-copy)) * var(--t-very-light-adjust)));
-    --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) + ((100% - var(--t-neutral-color-l-copy)) * var(--t-very-light-adjust)));
-  }
+    .d-background--very-light {
+        --t-primary-color-l: calc(var(--t-primary-color-l-copy) + ((100% - var(--t-primary-color-l-copy)) * var(--t-very-light-adjust)));
+        --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) + ((100% - var(--t-secondary-color-l-copy)) * var(--t-very-light-adjust)));
+        --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) + ((100% - var(--t-neutral-color-l-copy)) * var(--t-very-light-adjust)));
+    }
 }
-
 /**/
 .d-background--dark {
   /* For IE11: */
@@ -3628,15 +3623,14 @@ a[href][rel~="external"].c-badge:focus::after {
 /*
     This isn't necessary while the IE11 stuff is present above, but keep it here for when the
     IE11 stuff isn't needed any more.
-*/
+*
 @supports (--css: variables) {
-  .d-background--dark {
-    --t-primary-color-l: calc(var(--t-primary-color-l-copy) * var(--t-dark-adjust));
-    --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) * var(--t-dark-adjust));
-    --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) * var(--t-dark-adjust));
-  }
+    .d-background--dark {
+        --t-primary-color-l: calc(var(--t-primary-color-l-copy) * var(--t-dark-adjust));
+        --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) * var(--t-dark-adjust));
+        --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) * var(--t-dark-adjust));
+    }
 }
-
 /**/
 .d-background--very-dark {
   /* For IE11: */
@@ -3649,15 +3643,14 @@ a[href][rel~="external"].c-badge:focus::after {
 /*
     This isn't necessary while the IE11 stuff is present above, but keep it here for when the
     IE11 stuff isn't needed any more.
-*/
+*
 @supports (--css: variables) {
-  .d-background--very-dark {
-    --t-primary-color-l: calc(var(--t-primary-color-l-copy) * var(--t-very-dark-adjust));
-    --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) * var(--t-very-dark-adjust));
-    --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) * var(--t-very-dark-adjust));
-  }
+    .d-background--very-dark {
+        --t-primary-color-l: calc(var(--t-primary-color-l-copy) * var(--t-very-dark-adjust));
+        --t-secondary-color-l: calc(var(--t-secondary-color-l-copy) * var(--t-very-dark-adjust));
+        --t-neutral-color-l: calc(var(--t-neutral-color-l-copy) * var(--t-very-dark-adjust));
+    }
 }
-
 /**/
 /**/
 /* Overqualified selectors to raise specificity above the theme classes defined below. */
