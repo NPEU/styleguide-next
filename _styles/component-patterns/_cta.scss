@@ -1,0 +1,49 @@
+/*
+    CTA
+    ===
+*/
+
+$cta-namespace: c- !default;
+
+a[href].#{$cta-namespace}cta {
+    @include s__button(
+        $s__button-background-color,
+        $s__button-text-color,
+        20,
+        $s__button-background-color
+    );
+    
+    text-decoration: none;
+    position: relative;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: lighten($s__button-background-color, 55%);
+        }
+        
+        svg {
+            vertical-align: text-top;
+        }
+}
+
+
+/*a[href].#{$s__class-namespace}button--has-icon,
+a[href].#{$s__class-namespace}cta--has-icon {
+    position: relative;
+}
+
+a[href].#{$s__class-namespace}button--has-icon::after,
+a[href].#{$s__class-namespace}cta--has-icon::after {
+    content: "";
+    display: inline;
+    padding-left: 1.25em;
+    line-height: 0;
+}
+
+a[href].#{$s__class-namespace}button--has-icon .icon,
+a[href].#{$s__class-namespace}cta--has-icon .icon {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(-15%);
+}*/
