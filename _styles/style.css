@@ -3175,10 +3175,17 @@ a[href].c-cta--has-icon .icon {
     transform: translateY(-15%);
 }*/
 /*
-    Tool Form
-    =========
+    Forms
+    =====
 */
-.c-tool-form.c-tool-form {
+.c-form {
+  /*
+        1. Collapse whitespace.
+        2. Prevent extra height being added.
+    */
+}
+
+.c-form--tool-form.c-form--tool-form {
   background-color: #fff;
   border-style: solid;
   border-color: var(--t-primary-color);
@@ -3187,29 +3194,29 @@ a[href].c-cta--has-icon .icon {
   padding: calc(2.4rem - 0.3rem);
 }
 
-.c-tool-form .c-tool-form__fieldset {
+.c-form--tool-form .c-form--tool-form__fieldset {
   padding: 0;
   margin: 0;
   border: 0;
   /*
-            Chrome and older Firefox (and others?) don't support flex on a fieldset so we need
-            an internal wrapper.
-        */
+                Chrome and older Firefox (and others?) don't support flex on a fieldset so we need
+                an internal wrapper.
+            */
   /*
-            1. Legends don't flex, this gets around that problem.
-        */
+                1. Legends don't flex, this gets around that problem.
+            */
 }
 
-.c-tool-form .c-tool-form__fieldset::after {
+.c-form--tool-form .c-form--tool-form__fieldset::after {
   display: none;
 }
 
-.c-tool-form .c-tool-form__fieldset > div {
+.c-form--tool-form .c-form--tool-form__fieldset > div {
   display: flex;
   flex-wrap: wrap;
 }
 
-.c-tool-form .c-tool-form__fieldset legend {
+.c-form--tool-form .c-form--tool-form__fieldset legend {
   float: left;
   /* [1] */
   padding: 0.6rem 0;
@@ -3217,13 +3224,38 @@ a[href].c-cta--has-icon .icon {
   margin-bottom: 0;
 }
 
-.c-tool-form .c-tool-form__fieldset > div > :not(:last-child):not(legend) {
+.c-form--tool-form .c-form--tool-form__fieldset > div > :not(:last-child):not(legend) {
   margin-right: 2.4rem;
 }
 
-.c-tool-form .c-tool-form__group {
+.c-form .c-form__group {
   display: inline-block;
   white-space: nowrap;
+}
+
+.c-form .c-form__composite {
+  display: inline-flex;
+  /* 1 */
+  flex-wrap: wrap;
+  vertical-align: middle;
+  /* 2 */
+  max-width: 100%;
+}
+
+.c-form .c-form__composite > * {
+  vertical-align: top;
+  /* 2 */
+  flex: 0 1 auto;
+}
+
+.c-form .c-form__composite > :not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.c-form .c-form__composite > :not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /*
@@ -3687,7 +3719,6 @@ a[href].c-cta--has-icon .icon {
 }
 
 .n-pagination a[aria-current] {
-  background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l--very-light));
   border-radius: 100%;
   margin-left: 1.2rem;
   margin-right: 1.2rem;

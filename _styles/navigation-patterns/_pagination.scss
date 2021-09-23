@@ -40,7 +40,7 @@ $pagination-namespace: n- !default;
     
     a[aria-current] {
         //background-color: #eee;
-        background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l--very-light));
+        //background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l--very-light));
         border-radius: 100%;
         margin-left: $s__sz-s;
         margin-right: $s__sz-s;
