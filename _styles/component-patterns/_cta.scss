@@ -12,7 +12,7 @@ a[href].#{$cta-namespace}cta {
         20,
         $s__button-background-color
     );
-    
+
     text-decoration: none;
     position: relative;
 
@@ -20,8 +20,10 @@ a[href].#{$cta-namespace}cta {
         &:active,
         &:focus {
             background-color: lighten($s__button-background-color, 55%);
+            text-decoration: none;
+            box-shadow: 0 0 0 0.2rem currentColor;
         }
-        
+
         svg {
             vertical-align: text-top;
         }

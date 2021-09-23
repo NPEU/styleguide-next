@@ -460,7 +460,7 @@ a[href]:hover, a[href]:active {
 }
 
 @supports (text-decoration-line: underline) {
-  a[href] {
+  a[href]:hover, a[href]:active {
     text-decoration: underline double currentColor 0.0625em;
     /* [1] */
     box-shadow: none;
@@ -3147,6 +3147,8 @@ a[href].c-cta:focus {
 
 a[href].c-cta:hover, a[href].c-cta:active, a[href].c-cta:focus {
   background-color: #ebe6f0;
+  text-decoration: none;
+  box-shadow: 0 0 0 0.2rem currentColor;
 }
 
 a[href].c-cta svg {
