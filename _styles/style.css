@@ -418,24 +418,21 @@ body {
 /*
     a:link a:visited a:hover a:active a:focus
 
-    1. Remove the grey background on active links in IE 10.
-    2. Remove the gaps in underlines in iOS 8+ and Safari 8+.
-    3. Remove the tapping delay from clickable elements .
+    1. Remove the gaps in underlines in iOS 8+ and Safari 8+.
+    2. Remove the tapping delay from clickable elements .
 */
 a[href] {
   color: inherit;
-  background-color: transparent;
-  /* 1 */
   text-decoration: underline;
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-thickness: 0.0625em;
   -webkit-text-decoration-skip: objects;
-  /* 2 */
+  /* 1 */
   -ms-touch-action: manipulation;
-  /* 3 (IE10) */
+  /* 2 (IE10) */
   touch-action: manipulation;
-  /* 3 */
+  /* 2 */
   /*
         1. For older browsers.
     */
@@ -473,14 +470,18 @@ a[href]:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
-a[href] svg:not(:only-child) {
-  margin-left: 0.25em;
-}
-
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   a[href] svg {
     vertical-align: text-bottom;
   }
+}
+
+/*
+    Sometimes anchors can be used without an href, and may contain icons etc, so make sure styles
+    are applied to ALL anchors where appropriate.
+*/
+a svg:not(:only-child) {
+  margin-left: 0.25em;
 }
 
 a[href][rel~="external"] {
@@ -3185,6 +3186,10 @@ a[href].c-cta--has-icon .icon {
     */
 }
 
+.c-form.c-form > * {
+  vertical-align: middle;
+}
+
 .c-form--tool-form.c-form--tool-form {
   background-color: #fff;
   border-style: solid;
@@ -3237,6 +3242,7 @@ a[href].c-cta--has-icon .icon {
   display: inline-flex;
   /* 1 */
   flex-wrap: wrap;
+  align-items: center;
   vertical-align: middle;
   /* 2 */
   max-width: 100%;
@@ -3768,6 +3774,50 @@ a[href].c-cta--has-icon .icon {
 .n-search-results .n-search-results__separator {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+/*
+    Section Menu
+    =============
+
+*/
+.n-menu {
+  /*
+    */
+}
+
+.n-menu .n-menu__title {
+  margin: 0;
+}
+
+.n-menu .n-menu__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.n-menu .n-menu__links li {
+  padding: 0;
+  margin: 0;
+}
+
+.n-menu .n-menu__links li:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.n-menu .n-menu__links a {
+  text-decoration: none;
+  padding: 0.6rem;
+  display: block;
+  position: relative;
+}
+
+.n-menu .n-menu__links a[href]:hover {
+  background: #eee;
+}
+
+.n-menu .n-menu__links a[href]:focus {
+  z-index: 1;
 }
 
 /* ---------------------------------------------------------------------------------------------- */

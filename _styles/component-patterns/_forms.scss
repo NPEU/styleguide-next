@@ -7,6 +7,14 @@ $forms-namespace: c- !default;
 
 .#{$forms-namespace}form {
 
+    &#{&} {
+
+        & > * {
+            vertical-align: middle;
+        }
+
+    }
+
     &--tool-form {
 
         &#{&} {
@@ -65,6 +73,7 @@ $forms-namespace: c- !default;
     #{&}__composite {
         display: inline-flex; /* 1 */
         flex-wrap: wrap;
+        align-items: center;
         vertical-align: middle; /* 2 */
         max-width: 100%;
 

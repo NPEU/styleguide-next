@@ -6,9 +6,9 @@
 
 
 <!--
-<h2 class="u-padding--sides" id="search-form">Search Form</h2>
+<h2 id="search-form">Search Form</h2>
 
-<div class="u-padding--s  u-space--below">
+<div class="u-space--below">
     <form action="/neoclear/search" id="searchform" method="GET">
         <input type="hidden" value="&amp;t[]=4463" name="Search">
         <span class="composite">
@@ -35,9 +35,10 @@
     </details>
 </div>
 
-<h3 class="u-padding--sides">Boxed form:</h3>
+<!--
+<h3>Boxed form:</h3>
 
-<p class="u-padding--sides">Also illustrating expandable input.</p>
+<p>Also illustrating expandable input.</p>
 
 <div class="u-padding--s  u-space--below">
     <form action="/neoclear/search" id="searchform-2" class="c-panel  t-neoclear  d-bands" method="GET">
@@ -69,11 +70,11 @@
 
 <hr>
 -->
-<h2 class="u-padding--sides" id="tool-form">Tool Form IN PROGRESS</h2>
+<h2 id="tool-form">Tool Form</h2>
 
-<p class="u-padding--sides">Simple forms for things like filtering lists. Note it's quite likely a wrapping fieldset isn't appropriate.</p>
-<p class="u-padding--sides">This example includes Filterability attributes that might be relevant here, but not EVERYTHING Filterability would need to function.</p>
-<p class="u-padding--sides">Note the fieldset's div is so flex works properly - it doesn't in Chrome and older versions of Firefox.</p>
+<p>Simple forms for things like filtering lists. Note it's quite likely a wrapping fieldset isn't appropriate.</p>
+<p>This example includes Filterability attributes that might be relevant here, but not EVERYTHING Filterability would need to function.</p>
+<p>Note the fieldset's div is so flex works properly - it doesn't in Chrome and older versions of Firefox.</p>
 
 <div class="u-space--below">
     <form class="c-form  c-form--tool-form">
@@ -125,22 +126,17 @@
 &lt;/form&gt;</code></pre>
     </details>
 </div>
-<!--
+
 <hr>
 
-<h2 class="u-padding--sides" id="tool-form">Another Form</h2>
+<h2 id="tool-form">Another Form</h2>
 
-<p class="u-padding--sides">Simple forms for things like filtering lists. Note it's quite likely a wrapping fieldset isn't appropriate.</p>
-<p class="u-padding--sides">This example includes Filterability attributes that might be relevant here, but not EVERYTHING Filterability would need to function.</p>
-<p class="u-padding--sides">Note the fieldset's div is so flex works properly - it doesn't in Chrome and older versions of Firefox.</p>
-
-<div class="u-padding--sides  u-space--below">
-    <form class="c-tool-form  c-panel  d-bands">
-        <label for="filter">Filter projects:</label>
-        <span class="c-composite">
-            <span>Prefix info here</span> <input id="filter" filterable_input> <button filterable_submit>Filter</button>
+<div class="u-space--below">
+    <form class="c-form  c-form--tool-form">
+        <label for="prefixed-filter">Filter projects:</label>
+        <span>Prefix info here</span>
+        <span class="c-form__composite">
+            <input id="prefixed-filter" filterable_input> <button filterable_submit>Filter</button>
         </span>
     </form>
 </div>
-
--->
