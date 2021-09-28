@@ -3282,18 +3282,18 @@ a[href].c-cta--has-icon .icon {
     ===========
 */
 [class*="d-background"] {
-  background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l));
-  color: var(--t-primary-fore-text-color);
+  background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l)) !important;
+  color: var(--t-primary-fore-text-color) !important;
 }
 
 [class*="d-background"].t-secondary {
-  background-color: hsl(var(--t-secondary-color-h), var(--t-secondary-color-s), var(--t-secondary-color-l));
-  color: var(--t-secondary-fore-text-color);
+  background-color: hsl(var(--t-secondary-color-h), var(--t-secondary-color-s), var(--t-secondary-color-l)) !important;
+  color: var(--t-secondary-fore-text-color) !important;
 }
 
 [class*="d-background"].t-neutral {
-  background-color: hsl(var(--t-neutral-color-h), var(--t-neutral-color-s), var(--t-neutral-color-l));
-  color: var(--t-neutral-fore-text-color);
+  background-color: hsl(var(--t-neutral-color-h), var(--t-neutral-color-s), var(--t-neutral-color-l)) !important;
+  color: var(--t-neutral-fore-text-color) !important;
 }
 
 .d-background--light {
@@ -3380,12 +3380,12 @@ a[href].c-cta--has-icon .icon {
 /* Overqualified selectors to raise specificity above the theme classes defined below. */
 [class*=d-background].d-background--dark.d-background--dark,
 [class*=d-background].d-background--very-dark.d-background--very-dark {
-  color: var(--t-text-color-inverse);
+  color: var(--t-text-color-inverse) !important;
 }
 
 [class*=d-background].d-background--light.d-background--light,
 [class*=d-background].d-background--very-light.d-background--very-light {
-  color: var(--t-text-color);
+  color: var(--t-text-color) !important;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -3689,7 +3689,7 @@ a[href].c-cta--has-icon .icon {
 }
 
 /* ---------------------------------------------------------------------------------------------- */
-/* --| Navigation Patterns |------------------------------------------------------------------------- */
+/* --| Navigation Patterns |--------------------------------------------------------------------- */
 /*
     Pagination
     ===========
@@ -3818,6 +3818,1073 @@ a[href].c-cta--has-icon .icon {
 
 .n-menu .n-menu__links a[href]:focus {
   z-index: 1;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --| Fall-Back Patterns |---------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------------- *\
+    
+    Fall-Back Dropdown v3.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Dropdown
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
+
+\* ---------------------------------------------------------------------------------------------- */
+/*
+    This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
+    It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
+    unenhanced version.
+    UPDATE: Due to problem with FOBP, now checking for existence of class in styesheet earlier
+    on, so this isn't needed:
+*/
+/*.nav-bar::before {
+    content: 'CSS Loaded';
+    display: none;
+}*/
+.js-has--dropdown {
+  border: 0;
+}
+
+/* -- Basic/fallback layout --------------------------------------------------------------------- */
+/* -- .dropdown ------------------------------------------------------------------------------*/
+/*
+        1. iOS, OSX
+    */
+.dropdown {
+  margin: 0;
+  /* 1 */
+}
+
+/* -------------------------------------------------------------------------------------------*/
+/* -- .dropdown__area ------------------------------------------------------------------------*/
+/*
+        1. Duplicating parent background-color here. There HAS to be a color here for the pattern
+           to work, the parent background-color is there to allow things to be NOT BROKEN on
+           browsers that don't support HTML semantic elements.
+
+        2. This hides focus shadow so leaving out for now.
+           --Prevent any overflow and possible contain floats.--
+    */
+.dropdown .dropdown__area {
+  background-color: transparent;
+  /* 1 */
+  color: inherit;
+  padding: 0;
+}
+
+/* -------------------------------------------------------------------------------------------*/
+/* -- .dropdown__control ----------------------------------------------------------------------*/
+/*
+		1. This removes StartCSS outline focus, so leave it out.
+           --These override control styles defined as part of StartCSS. I may consider making these
+		   customisable via more variables.--
+	*/
+.dropdown .dropdown__control {
+  display: block;
+  margin: 0;
+  padding-left: 0.5625em;
+  padding-right: 0.5625em;
+  padding-bottom: 0;
+  /* 1 */
+  padding-top: 0;
+  /* 1 */
+  border: 0;
+  border-radius: 0;
+  line-height: 2.25em;
+  text-decoration: none;
+  outline: 0;
+}
+
+/*.dropdown .dropdown__control:hover,
+    .dropdown .dropdown__control:active,
+    .dropdown .dropdown__control:focus {
+        border: 0;
+    }*/
+.dropdown .dropdown__control:focus {
+  position: relative;
+  z-index: 2;
+}
+
+.dropdown__control--centered {
+  text-align: center;
+}
+
+/*
+        Fix for Opera Mini vertical centering:
+        (affects Opera 12.10-16 as well)
+    */
+_:-o-prefocus, body:last-child .dropdown .dropdown__control {
+  line-height: 2.25em !important;
+}
+
+.dropdown .dropdown__control {
+  color: inherit;
+  background-color: transparent;
+}
+
+/*
+        Provide interaction effects for dropdown links that ARE links:
+        (this excludes submenu heading links - note that submenu links should never also be
+        submenu heading links)
+    */
+.dropdown .dropdown__control:hover,
+.dropdown .dropdown__control:active,
+.dropdown .dropdown__control[aria-expanded="true"] {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.dropdown .dropdown__control:focus {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.dropdown .dropdown__control {
+  display: none;
+}
+
+/*
+        iOS, OSX
+    */
+.dropdown .dropdown__area {
+  margin: 0;
+  z-index: 1;
+}
+
+/* -------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------*/
+/* ********************************************************************************************** */
+/* -- Enhanced layout --------------------------------------------------------------------------- */
+/*
+    This layout can only be used if JS is there to support the toggling of hidden submenus.
+    (CSS only attempts weren't good enough)
+    So, scoping these styles to the 'js-dropdown' class.
+*/
+.dropdown.dropdown--all-widths {
+  display: block;
+  /*& .dropdown__control[aria-expanded="true"] ~ .dropdown__area {
+                visibility: visible;
+                opacity: 1;
+
+                transition: opacity $td  $tf;
+            }*/
+}
+
+.dropdown.dropdown--all-widths .dropdown__area {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.dropdown.dropdown--all-widths .dropdown__area--is-animating {
+  transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
+}
+
+.dropdown.dropdown--all-widths .dropdown__area--is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  /* [1] */
+  transition: opacity ease 0.8s;
+}
+
+.dropdown.dropdown--all-widths .dropdown__control {
+  display: block;
+}
+
+.dropdown.dropdown--all-widths .dropdown__control .icon--is-open,
+.dropdown.dropdown--all-widths .dropdown__control[aria-expanded="true"] .icon--is-closed {
+  display: none;
+}
+
+.dropdown.dropdown--all-widths .dropdown__control .icon--is-closed,
+.dropdown.dropdown--all-widths .dropdown__control[aria-expanded="true"] .icon--is-open {
+  display: inline;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow {
+  display: block;
+  /*& .dropdown__control[aria-expanded="true"] ~ .dropdown__area {
+                visibility: visible;
+                opacity: 1;
+
+                transition: opacity $td  $tf;
+            }*/
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__area {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__area--is-animating {
+  transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__area--is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  /* [1] */
+  transition: opacity ease 0.8s;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control {
+  display: block;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control .icon--is-open,
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control[aria-expanded="true"] .icon--is-closed {
+  display: none;
+}
+
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control .icon--is-closed,
+.js-cmr--narrow .dropdown.dropdown--only-narrow .dropdown__control[aria-expanded="true"] .icon--is-open {
+  display: inline;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide {
+  display: block;
+  /*& .dropdown__control[aria-expanded="true"] ~ .dropdown__area {
+                visibility: visible;
+                opacity: 1;
+
+                transition: opacity $td  $tf;
+            }*/
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__area {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__area--is-animating {
+  transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__area--is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  /* [1] */
+  transition: opacity ease 0.8s;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control {
+  display: block;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control .icon--is-open,
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control[aria-expanded="true"] .icon--is-closed {
+  display: none;
+}
+
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control .icon--is-closed,
+.js-cmr--wide .dropdown.dropdown--only-wide .dropdown__control[aria-expanded="true"] .icon--is-open {
+  display: inline;
+}
+
+/*@media only screen and (max-width:$s__dropdown--breakpoint--enhanced) {
+
+       @include activate-dropdown("--only-narrow");
+
+    }
+
+    @media only screen and (min-width:$s__dropdown--breakpoint--enhanced) {
+
+       @include activate-dropdown("--only-wide");
+
+    }*/
+/* -----------------------------------------------------------------------------------------------*/
+/*! --------------------------------------------------------------------------------------------- *\
+
+    Fall-Back Nav Bar v3.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Nav%20Bar
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
+
+\* ---------------------------------------------------------------------------------------------- */
+/*
+    This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
+    It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
+    unenhanced version.
+    UPDATE: Due to problem with FOBP, now checking for existence of class in styesheet earlier
+    on, so this isn't needed:
+*/
+/*.nav-bar::before {
+    content: 'CSS Loaded';
+    display: none;
+}*/
+.js-nav-bar {
+  border: 0;
+}
+
+/* -- Basic/fallback layout --------------------------------------------------------------------- */
+.nav-bar {
+  /* -- Main wrapper ---------------------------------------------------------------------------*/
+  /*
+        1. Helps to position above subsequent elements so sub-navs sit on top.
+        There are problems with this, if z-index or position is declared it messes up positioning
+        if subsequent blocks also are nav-bars or similar.
+    */
+  /* -------------------------------------------------------------------------------------------*/
+  /* -- Layout ---------------------------------------------------------------------------------*/
+  /*
+        iOS/OSX seem to apply mystery margins.
+    */
+  /*
+    */
+  /* -------------------------------------------------------------------------------------------*/
+  /* -- Links and headings ---------------------------------------------------------------------*/
+  /*
+    */
+  /*
+		1. These override button styles defined as part of StartCSS. I may consider making these
+		   customisable via more variables.
+	*/
+  /*
+        FF15- fix button height.
+    */
+  /*
+        Provide interaction effects for nav-bar links that ARE links:
+        (this excludes submenu heading links - note that submenu links should never also be
+        submenu heading links)
+    */
+  /*.nav-bar__link:focus {
+        color: $s__nav-bar__link--color--alt;
+        background-color: $s__nav-bar__link--background-color--alt2;
+        border: 0;
+        box-shadow: none;
+    }*/
+  /* -------------------------------------------------------------------------------------------*/
+}
+
+.nav-bar.nav-bar {
+  background-color: transparent;
+  width: 100%;
+}
+
+.nav-bar .nav-bar__end,
+.nav-bar .nav-bar__main,
+.nav-bar .nav-bar__start,
+.nav-bar .nav-bar__title {
+  margin: 0;
+}
+
+.nav-bar .sub-nav {
+  padding: 0;
+  margin: 0;
+}
+
+.nav-bar .nav-bar__items,
+.nav-bar .sub-nav__items {
+  display: block;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-bar .sub-nav__items {
+  margin-left: 1.125em;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.nav-bar .nav-bar__item,
+.nav-bar .sub-nav__item {
+  margin: 0;
+}
+
+.nav-bar .nav-bar__title .nav-bar__link {
+  height: 1.5em;
+  line-height: 1.5em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1.5em;
+  white-space: nowrap;
+}
+
+.nav-bar .nav-bar__link,
+.nav-bar .sub-nav__link,
+.nav-bar .sub-nav__heading {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding-left: 0.5625em;
+  padding-right: 0.5625em;
+  padding-bottom: 0;
+  /* 1 */
+  padding-top: 0;
+  /* 1 */
+  border: 0;
+  border-radius: 0;
+  line-height: 2.25em;
+  text-decoration: none;
+  outline: 0;
+  box-shadow: none;
+  /* 1 */
+}
+
+.nav-bar .nav-bar button.nav-bar__link {
+  min-height: 2.25em;
+}
+
+.nav-bar .nav-bar__link {
+  color: inherit;
+  background-color: transparent;
+}
+
+.nav-bar .nav-bar__link--centered {
+  text-align: center;
+}
+
+.nav-bar .sub-nav__heading {
+  color: inherit;
+}
+
+.nav-bar .sub-nav__link {
+  color: inherit;
+  background-color: transparent;
+}
+
+.nav-bar .nav-bar__link:hover,
+.nav-bar .nav-bar__link:active {
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 0;
+  text-decoration: none;
+}
+
+.nav-bar .sub-nav__link:hover,
+.nav-bar .sub-nav__link:active {
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 0;
+  text-decoration: none;
+}
+
+.nav-bar .nav-bar__link:focus,
+.nav-bar .sub-nav__link:focus {
+  z-index: 2;
+}
+
+.nav-bar .sub-nav__control {
+  display: none;
+}
+
+/* ********************************************************************************************** */
+/* -- Enhanced layout --------------------------------------------------------------------------- */
+/*
+    This layout can only be used if JS is there to support the toggling of hidden submenus.
+    (CSS only attempts weren't good enough)
+    So, scoping these styles to the 'js-nav-bar' class.
+*/
+/*
+		Note we do only want these applied when JS is available, because it'll have adde buttons so
+		we need to adjust layout to that. In other words these styles break things in a no-js
+		scenario.
+
+	*/
+.js-cmr--narrow .nav-bar__start {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.js-cmr--narrow .nav-bar__start > * {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.js-cmr--narrow .nav-bar__title {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  margin: 0 auto;
+}
+
+.js-cmr--wide {
+  /*
+            Add dividers.
+            Dividers created by adding right borders to nav-bar__items.
+        */
+  /* -- Layout -----------------------------------------------------------------------------*/
+  /*
+            Prevent anything wrapping (fixed height is crucial to making this work),
+            and make things float
+        */
+  /*
+            1. Prevent content from increasing height of element.
+        */
+  /*
+			This pseudo element helps to cover any sub-navs to stop them being visible in the main
+			nav-bar.
+		*/
+  /* -- Behaviour: -------------------------------------------------------------------------*/
+  /*
+            Set-up slide toggling for sub-navs:
+
+			1. This puts the sub-nav behind the covering pseudo element. See .nav-bar::before, above.
+            2. OSX/iOS needs this:
+		*/
+}
+
+.js-cmr--wide .nav-bar__title,
+.js-cmr--wide .nav-bar__item {
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-top-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 1px;
+}
+
+.js-cmr--wide .nav-bar__link[href] + * {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 1px;
+  border-right-width: 0;
+}
+
+.js-cmr--wide.nav-bar,
+.js-cmr--wide .nav-bar__title,
+.js-cmr--wide .nav-bar__main,
+.js-cmr--wide .nav-bar__items,
+.js-cmr--wide .nav-bar__item,
+.js-cmr--wide .nav-bar__item > *,
+.js-cmr--wide .sub-nav__link,
+.js-cmr--wide .sub-nav__heading {
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+}
+
+.js-cmr--wide.nav-bar > * {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.js-cmr--wide.nav-bar > .nav-bar__fill-at-wide {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+.js-cmr--wide .sub-nav__control[data-content]::before {
+  content: attr(data-content);
+  display: inline;
+  vertical-align: top;
+  /* 1 */
+}
+
+.js-cmr--wide .nav-bar__end {
+  white-space: nowrap;
+  margin-left: auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.js-cmr--wide .nav-bar__end > * {
+  margin-left: auto !important;
+}
+
+.js-cmr--wide.nav-bar::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: transparent;
+}
+
+.js-cmr--wide .sub-nav__heading {
+  display: none;
+}
+
+.js-cmr--wide .sub-nav__control {
+  display: block;
+}
+
+.js-cmr--wide .sub-nav__control .icon--is-open,
+.js-cmr--wide .sub-nav__control[aria-wide="true"] .icon--is-closed {
+  display: none;
+}
+
+.js-cmr--wide .sub-nav__control .icon--is-closed,
+.js-cmr--wide .sub-nav__control[aria-wide="true"] .icon--is-open {
+  display: inline;
+}
+
+.js-cmr--wide .sub-nav {
+  position: absolute;
+  visibility: hidden;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -2;
+  /* 1 */
+  height: 2.25em;
+  /* 2 */
+  transition: margin-top 0.5s ease, visibility 0s   ease 0.5s;
+}
+
+.js-cmr--wide .sub-nav__items {
+  margin: 0;
+  padding: 0;
+}
+
+.js-cmr--wide .sub-nav__control[aria-wide="true"] ~ .sub-nav {
+  visibility: visible;
+  margin-top: 2.25em;
+  transition: margin-top 0.5s ease;
+}
+
+/* -------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------*/
+/*! --------------------------------------------------------------------------------------------- *\
+    
+    Fall-Back Over Panel v3.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Over%20Panel
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
+
+\* ---------------------------------------------------------------------------------------------- */
+/*
+    This is a bit of a hack, but it's a way of letting JS know that this CSS has loaded.
+    It doesn't work for Opera Mini, but I'm happy to provide this browser only with the
+    unenhanced version.
+    UPDATE: Due to problem with FOBP, now checking for existence of class in styesheet earlier
+    on, so this isn't needed:
+*/
+/*.nav-bar::before {
+    content: 'CSS Loaded';
+    display: none;
+}*/
+.js-has--over-panel {
+  border: 0;
+}
+
+/* -- Basic/fallback layout --------------------------------------------------------------------- */
+/*
+        1. Helps compatibiliy with Nav-Bar. No down-sides I can see. May have to revise if some
+           become apparent.
+    */
+.over-panel {
+  width: 100%;
+  /* [1] */
+  position: relative;
+}
+
+.over-panel-control {
+  display: none !important;
+}
+
+/*.over-panel__contents {
+        background-color: $s__over-panel__contents--background-color;
+        color: $s__over-panel__contents--text-color;
+        padding: $s__over-panel__contents--padding;
+    }*/
+/*
+        iOS/OSX seem to apply mystery margins.
+    */
+.over-panel,
+.over-panel__contents {
+  margin: 0;
+}
+
+.over-panel__contents > * {
+  flex: 0 1 auto;
+}
+
+/*
+    .over-panel__contents a {
+        color: $s__over-panel__contents--link-color;
+    }
+
+    .over-panel__contents a:hover,
+    .over-panel__contents a:active,
+    .over-panel__contents a:focus {
+        color: $s__over-panel__contents--link-color--alt;
+    }
+    */
+/* -----------------------------------------------------------------------------------------------*/
+/* ********************************************************************************************** */
+/* -- Enhanced layout --------------------------------------------------------------------------- */
+.js-has--over-panel .over-panel {
+  width: auto;
+  flex: 1 0 auto;
+}
+
+.js-has--over-panel .over-panel__contents {
+  display: flex;
+}
+
+.js-has--over-panel .js-cmr--narrow {
+  /*
+                1. Make sure the over-panel is on top.
+            */
+  /*
+                This extra wrapper allows the content of the panel to be absolutely positioned so that the
+                container doesn't create a positioning context which would prevent the overlay from filling
+                the body.
+                The :target id needs to stay in actual position so the fall-back works, so everything
+                affected by the :target must come after or inside the element with the id, but we want to
+                allow the position of the controls to be as flexible as possible, so some trickery is
+                needed.
+
+
+                1. Make the over-panel invisible in a way that's transition-able but also removes from tab
+                   order.
+            */
+  /* Fade effect: */
+  /*
+                2. Make the over-panel visible in a way that's transition-able.
+                1. This necessary to collapse the element in cases where the page content without
+                   the over-panel contents is shorter than the over-panel contents themselves.
+                   Take, for example, where short-ish page that's part of a large site, which therefore
+                   has a long menu. When the menu is revealed in the over-panel contents, the end result
+                   is higher than the page contents.
+                   Without these declarations, the page (with over-panel closed) renders with a
+                   scrollbar and what looks like mystery space at the bottom of the page (when in
+                   reality that space is just what's needed to display the over-panel contents).
+                   This could be confusing for users (it was confusing for me!) and makes the page look
+                   broken.
+                   So, collapsing the contents while hidden prevents this space from appearing until
+                   needed.
+            */
+  /*
+                1. These override button styles defined as part of StartCSS. I may consider making these
+                   customisable via more variables.
+                2. Ensure the control is above the overlay.
+            */
+  /*.over-panel-control:hover,
+            .over-panel-control:active,
+            .over-panel-control:focus {
+                border: 0;
+            }*/
+  /*
+                1. Ensure the control is above the overlay.
+            */
+  /*
+                1. This is the obvious place for this rule but there's a weird Chrome bug that means
+                   the position/dimensions are ignore if it's initially hidden.
+                   Moving to the is-open declaration fixes this, as it only gets applied when it's
+                   visible.
+                2. Using absolute instead so that it still collapses, preventing it unintentionally
+                   overlapping anything.
+            */
+  /* Bring the overlay to the front and fade in when there's an over-panel target: */
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel {
+  position: absolute;
+  /* [1] */
+  left: 0;
+  width: 100%;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control {
+  display: inline-block !important;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel__contents {
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+  /* [1] */
+  flex-direction: column;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel__contents {
+  opacity: 0;
+  transform: scale(0);
+  /* [2] */
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel--is-animating .over-panel__contents {
+  transition: opacity ease 0.8s, visibility 0s 0.8s ease, transform 0s 0.8s ease;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel--is-open .over-panel__contents {
+  visibility: visible;
+  /* [1] */
+  opacity: 1;
+  transform: scale(1);
+  /* [2] */
+  transition: opacity ease 0.8s;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control {
+  display: block;
+  margin: 0;
+  padding-left: 0.5625em;
+  padding-right: 0.5625em;
+  padding-bottom: 0;
+  /* 1 */
+  padding-top: 0;
+  /* 1 */
+  border: 0;
+  border-radius: 0;
+  line-height: 2.25em;
+  text-decoration: none;
+  outline: 0;
+  box-shadow: none;
+  /* 1 */
+  color: #fff;
+  background-color: transparent;
+  position: relative;
+  z-index: 0;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control[aria-expanded="true"] {
+  z-index: 99999;
+  /* [1] */
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control:hover,
+.js-has--over-panel .js-cmr--narrow .over-panel-control:active,
+.js-has--over-panel .js-cmr--narrow .over-panel-control[aria-expanded="true"] {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control:focus {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control .icon--is-open,
+.js-has--over-panel .js-cmr--narrow .over-panel-control[aria-expanded="true"] .icon--is-closed {
+  display: none;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel-control .icon--is-closed,
+.js-has--over-panel .js-cmr--narrow .over-panel-control[aria-expanded="true"] .icon--is-open {
+  display: inline;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel__overlay {
+  display: block;
+  position: absolute;
+  /* [2] */
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  text-decoration: none;
+  visibility: hidden;
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel--is-open .over-panel__overlay {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0.6;
+  visibility: visible;
+}
+
+.js-has--over-panel .js-cmr--narrow .over-panel__overlay:hover,
+.js-has--over-panel .js-cmr--narrow .over-panel__overlay:active,
+.js-has--over-panel .js-cmr--narrow .over-panel__overlay:focus {
+  border: 0;
+  text-decoration: none;
+  background: #000;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------------- *\
+    
+    Fall-Back Search Form v3.0.0
+    https://github.com/Fall-Back/Patterns/tree/master/Search%20Form
+    Copyright (c) 2021, Andy Kirk
+    Released under the MIT license https://git.io/vwTVl
+
+    Designed for use with the EM2 [CSS Mustard Cut](https://github.com/Fall-Back/CSS-Mustard-Cut)
+    Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+
+    FF 47+
+
+    PLUS IE11
+
+\* ---------------------------------------------------------------------------------------------- */
+/* -- Basic/fallback layout --------------------------------------------------------------------- */
+/* -- .search-form ---------------------------------------------------------------------------*/
+/*
+        1. Prevent extra bottom space when form is inside a container.
+    */
+.search-form.search-form {
+  background: #5F4776;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  width: 100%;
+  vertical-align: top;
+}
+
+.search-form.search-form::before,
+.search-form.search-form::after {
+  content: " ";
+  display: table;
+}
+
+.search-form.search-form::after {
+  clear: both;
+}
+
+.search-form---restrict-width {
+  max-width: 25em;
+}
+
+/* -------------------------------------------------------------------------------------------*/
+/* -- .search-form__field --------------------------------------------------------------------*/
+/*
+        1. Override default size attr value - mainly for Opera mini which wierdley needs both
+           width AND min-width.
+    */
+.search-form .search-form__field {
+  border-radius: 0;
+  border: 0;
+  background-color: #fff;
+  color: #111;
+  height: 1.5em;
+  line-height: 1.5em;
+  margin: 0.1875em 0 0.1875em 0.1875em;
+  padding: 0.1875em;
+  flex: 1 1 auto;
+  width: 1%;
+  /* [1] */
+  min-width: 1%;
+  /* [1] */
+}
+
+/*
+    // Reset the width for FF8-27: ...
+    @media screen and (min--moz-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+        .search-form .search-form__field {
+            width: auto;
+        }
+    }
+    // And IE9
+    @media all and (min-width: 0\0) and (min-resolution: .001dpcm) {
+        .search-form .search-form__field {
+            width: auto;
+        }
+    }
+    
+    // ... but put it back for FF28+:
+    @supports (-moz-appearance:none) and (list-style-type:japanese-formal) {
+        .search-form .search-form__field {
+            width: 1%;
+        }
+    }
+    */
+.search-form .search-form__field:focus {
+  background-color: #ffffdc;
+  position: relative;
+  z-index: 1;
+}
+
+/* -------------------------------------------------------------------------------------------*/
+/* -- .search-form__submit -------------------------------------------------------------------*/
+/*
+    */
+.search-form .search-form__submit {
+  border-radius: 0;
+  border: 0;
+  background: #ded6e6;
+  color: #111;
+  height: 1.875em;
+  line-height: 0;
+  margin: 0.1875em 0.1875em 0.1875em 0;
+  padding: 0 0.375em;
+  flex: 0 0 auto;
+}
+
+.search-form .search-form__submit:hover,
+.search-form .search-form__submit:focus {
+  background-color: #ab96c0;
+}
+
+.search-form .search-form__submit:focus {
+  position: relative;
+  z-index: 1;
+}
+
+.js-cmr--wide .serach-form--push-right--wide {
+  margin-left: auto;
+}
+
+/* -------------------------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------------------------*/
+/* -- Enhanced layout --------------------------------------------------------------------------- */
+.js-cmr--narrow .search-form .search-form__collapse {
+  width: 100%;
+}
+
+.js-cmr--wide {
+  /*
+            1. Reinstate all flexbox for enhanced view as no wrapping needs to occure
+            (FF8-27 issue describbed above)
+        */
+}
+
+.js-cmr--wide .search-form.search-form {
+  display: flex;
+  /* [1] */
+  flex-wrap: nowrap;
+}
+
+.js-cmr--wide .search-form .search-form__field {
+  width: auto;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+.search-form.search-form {
+  margin-left: auto;
+}
+
+.search-form .search-form__field.search-form__field {
+  border-radius: 50px 0 0 50px;
+  padding-left: 0.5em;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
