@@ -13,11 +13,24 @@
 
 
 .s-example {
-    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.s-example--outer {
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
 }
 
 .s-example--padded {
-    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 4px 2px rgba(0, 0, 0, 0.1);
+    padding: 1.2rem;
+}
+
+.s-example--padded-only {
+    padding: 1.2rem;
+}
+
+.s-example--padded--outer {
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
     padding: 1.2rem;
 }
 

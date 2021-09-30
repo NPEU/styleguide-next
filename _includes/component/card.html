@@ -1,0 +1,131 @@
+<!--
+
+    CARD
+
+-->
+{% capture date_content %}
+<p>{% include date.html date=1632939147 %}</p>
+{% endcapture %}
+
+<h2 id="card">Card</h2>
+
+<p>Cards are more complex than you might think.</p>
+
+<ol>
+    <li>Firstly, there are several components to them, and only the title and link are required. The others can appear or not in any combination.</li>
+    <li>Next, they need to be able to account for these variations inside a layout of some kind and present themselves smartly in relation to each other.</li>
+    <li>Then the heading levels need to make sense in their surrounding context.</li>
+    <li>Finally, interaction with them (the links and state styling) should make sense in accessibility terms, as we all in NoCSS scenarios.</li>
+</ol>
+
+<h3>Typical card</h3>
+
+<div class="u-space--below">
+    {% include card.html
+        title="This is a typical card"
+        url="/components"
+        header_extra=date_content
+        content="<p>This card tells you something else about something else.</p>"
+        cta="Do a Thing"
+        img_src="/assets/images/patterns/placeholder-1"
+        img_alt="Mother looking at the child she's holding"
+    %}
+</div>
+
+<div>
+    <details class="u-padding  d-background--light">
+        <summary>Show code:</summary>
+        <pre><code class="html"></code></pre>
+    </details>
+</div>
+
+<h3>Minimal card</h3>
+
+<div class="u-space--below">
+    {% include card.html
+        title="This is a card"
+        url="/components"
+    %}
+</div>
+
+
+<div>
+    <details class="u-padding  d-background--light">
+        <summary>Show code:</summary>
+        <pre><code class="html"></code></pre>
+    </details>
+</div>
+
+<h3>Everything</h3>
+
+<p>Image, header extra, content, cta and footer</p>
+
+<div class="u-space--below">
+    {% include card.html
+        title="This is a typical card"
+        url="/components"
+        header_extra=date_content
+        content="<p>This card tells you something else about something else.</p><p>This card tells you something else about something else.</p><p>This card tells you something else about something else.</p>"
+        cta="Do a Thing"
+        img_src="/assets/images/patterns/placeholder-1"
+        img_alt="Mother looking at the child she's holding"
+        footer="<p>- by Some Author</p>"
+    %}
+</div>
+
+<div>
+    <details class="u-padding  d-background--light">
+        <summary>Show code:</summary>
+        <pre><code class="html"></code></pre>
+    </details>
+</div>
+
+
+
+
+<h2>Variations</h2>
+
+<h3>Different heading level</h3>
+
+<div class="u-space--below">
+    {% include card.html
+        title="This is a typical card"
+        url="/components"
+        hx="2"
+        header_extra=date_content
+        content="<p>This card tells you something else about something else.</p>"
+        cta="Do a Thing"
+    %}
+</div>
+
+
+<h3>Different image ratio</h3>
+
+<div class="u-space--below">
+    {% include card.html
+        title="This is a typical card"
+        url="/components"
+        header_extra=date_content
+        content="<p>This card tells you something else about something else.</p>"
+        cta="Do a Thing"
+        img_src="/assets/images/patterns/placeholder-1"
+        img_alt="Mother looking at the child she's holding"
+        img_ratio=40
+    %}
+</div>
+
+
+<h3>Unpublished state</h3>
+
+<div class="u-space--below">
+    {% include card.html
+        title="This is a typical card"
+        url="/components"
+        header_extra=date_content
+        content="<p>This card tells you something else about something else.</p>"
+        cta="Do a Thing"
+        img_src="/assets/images/patterns/placeholder-1"
+        img_alt="Mother looking at the child she's holding"
+        unpublished=true
+    %}
+</div>

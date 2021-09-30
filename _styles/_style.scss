@@ -156,8 +156,7 @@ $s__experimental_checkradios: true;
 
 @import "component-patterns/_cta.scss";
 
-
-//@import "component-patterns/_card.scss";
+@import "component-patterns/_card.scss";
 
 @import "component-patterns/forms.scss";
 
@@ -170,6 +169,8 @@ $s__experimental_checkradios: true;
 /* --| Decoration Patterns |---------------------------------------------------------------------- */
 
 @import "decoration-patterns/_background.scss";
+
+@import "decoration-patterns/_border.scss";
 
 /* ---------------------------------------------------------------------------------------------- */
 

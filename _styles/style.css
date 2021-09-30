@@ -2178,10 +2178,16 @@ summary::-webkit-details-marker {
 }
 
 details > summary::before {
-  display: inline-block;
-  content: '\25BA';
+  display: block;
+  content: '';
+  width: 0px;
+  height: 0px;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-left: 0.9em solid currentColor;
+  position: absolute;
   margin-left: -1.4em;
-  margin-right: 0.4em;
+  margin-top: 0.5em;
   font-size: 0.75em;
   font-family: serif;
   vertical-align: top;
@@ -3098,6 +3104,10 @@ a[href][rel~="external"].c-badge:focus::after {
     CTA
     ===
 */
+/*
+    The FallBAcl for CTA's usually wraps the link in <b> tags to attempt to convey a modicum of
+    visual importance. Reset the inherited weight and style.
+*/
 a[href].c-cta {
   display: inline-block;
   /* AK. IE9 needs this. Hmmm, for what exactly?*/
@@ -3135,6 +3145,10 @@ a[href].c-cta {
   -webkit-appearance: none;
   text-decoration: none;
   position: relative;
+  font-weight: normal;
+  /* [1] */
+  font-style: normal;
+  /* [1] */
 }
 
 a[href].c-cta:hover, a[href].c-cta:active {
@@ -3146,14 +3160,18 @@ a[href].c-cta:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
-a[href].c-cta:hover, a[href].c-cta:active, a[href].c-cta:focus {
+a[href].c-cta:hover, a[href].c-cta:active {
   background-color: #ebe6f0;
   text-decoration: none;
-  box-shadow: 0 0 0 0.2rem currentColor;
 }
 
 a[href].c-cta svg {
   vertical-align: text-top;
+}
+
+a[href].c-cta * {
+  font-weight: inherit;
+  font-style: inherit;
 }
 
 /*a[href].c-button--has-icon,
@@ -3175,6 +3193,104 @@ a[href].c-cta--has-icon .icon {
     bottom: 0;
     transform: translateY(-15%);
 }*/
+/*
+    Card
+    =====
+*/
+.c-card {
+  /*
+            The markup pattern allows for a TFS border, so zap that:
+        */
+}
+
+.c-card.c-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.c-card > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.c-card .c-card__header,
+.c-card .c-card__body,
+.c-card .c-card__footer {
+  margin: 0;
+}
+
+.c-card .c-card__header > *,
+.c-card .c-card__body > *,
+.c-card .c-card__footer > * {
+  padding: 0;
+  margin-right: calc(2.4rem - 0.1rem);
+  margin-left: calc(2.4rem - 0.1rem);
+}
+
+.c-card .c-card__header:first-child,
+.c-card .c-card__body:first-child,
+.c-card .c-card__footer:first-child {
+  margin-top: calc(2.4rem - 0.1rem);
+}
+
+.c-card .c-card__header:last-child,
+.c-card .c-card__body:last-child,
+.c-card .c-card__footer:last-child {
+  margin-bottom: calc(2.4rem - 0.1rem);
+}
+
+.c-card .c-card__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-card .c-card__image {
+  position: relative;
+  order: -1;
+  margin-top: calc(-2.4rem + 0.1rem);
+  margin-right: 0;
+  margin-bottom: calc(2.4rem - 0.1rem);
+  margin-left: 0;
+}
+
+.c-card .c-card__title {
+  position: relative;
+  font-size: 2.2rem;
+  line-height: 3.6rem;
+}
+
+.c-card .c-card__header-extra {
+  margin-top: 0;
+}
+
+.c-card .c-card__body {
+  margin-top: 2.4rem;
+  flex-grow: 1;
+}
+
+.c-card--unpublished {
+  opacity: 0.5;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.c-card--unpublished::after {
+  content: "Unpublished";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px;
+  font-size: 0.75em;
+  color: #fff;
+  background-color: #000;
+}
+
 /*
     Forms
     =====
@@ -3386,6 +3502,72 @@ a[href].c-cta--has-icon .icon {
 [class*=d-background].d-background--light.d-background--light,
 [class*=d-background].d-background--very-light.d-background--very-light {
   color: var(--t-text-color) !important;
+}
+
+/*
+    Border
+    ======
+*/
+[class~="d-border"] {
+  border-width: 0.1rem;
+  border-style: solid;
+}
+
+[class*="d-border"] {
+  border-color: var(--t-primary-color);
+}
+
+[class*="d-border"].t-secondary {
+  border-color: var(--t-secondary-color);
+}
+
+[class*="d-border"].t-neutral {
+  border-color: var(--t-neutral-color);
+}
+
+.d-border--thick {
+  border-width: 0.3rem;
+  border-style: solid;
+}
+
+.d-border--bottom {
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+}
+
+.d-border--bottom--thick {
+  border-bottom-width: 0.3rem;
+  border-bottom-style: solid;
+}
+
+.d-border--top {
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+}
+
+.d-border--top--thick {
+  border-top-width: 0.3rem;
+  border-top-style: solid;
+}
+
+.d-border--left {
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+}
+
+.d-border--left--thick {
+  border-left-width: 0.3rem;
+  border-left-style: solid;
+}
+
+.d-border--right {
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+}
+
+.d-border--right--thick {
+  border-right-width: 0.3rem;
+  border-right-style: solid;
 }
 
 /* ---------------------------------------------------------------------------------------------- */

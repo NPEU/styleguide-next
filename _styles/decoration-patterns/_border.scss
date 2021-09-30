@@ -1,75 +1,74 @@
-//$bands--base-color		 : #eee !default;
-$bands-namespace: d- !default;
-$theme-namespace: t- !default;
+/*
+    Border
+    ======
+*/
 
-$bands--band-color : $s__base-ui-color !default;
+$border-namespace: d- !default;
 
-$theme-only: false !default;
+$border-size: $s__border-width;
+$border-size--thick: $s__border-width * 3;
 
-@mixin bands-theme ($theme-name: "", $theme: ()) {
-	// Set up theme name:
-	$theme-class: "";
-	@if $theme-name != "" {
-		$theme-class: unquote('.')#{$theme-namespace}#{$theme-name};
-	}
-	//@debug $theme-class;
-
-	.#{$bands-namespace}bands#{$theme-class},
-    .#{$bands-namespace}bands--left#{$theme-class},
-    .#{$bands-namespace}bands--right#{$theme-class},
-    .#{$bands-namespace}bands--sides#{$theme-class},
-    .#{$bands-namespace}bands--top#{$theme-class},
-    .#{$bands-namespace}bands--above#{$theme-class},
-    .#{$bands-namespace}bands--bottom#{$theme-class},
-    .#{$bands-namespace}bands--below#{$theme-class} {
-		border-color: map-get($theme, band-color) !important;
-	}
+[class~="#{$background-namespace}border"] {
+    border-width: $border-size;
+    border-style: solid;
 }
 
 
-// We don't need this if we're only themeing the pattern:
-@if $theme-only == false {
+[class*="#{$background-namespace}border"] {
+    border-color: var(--t-primary-color);
+}
 
-    .#{$bands-namespace}bands--left,
-    .#{$bands-namespace}bands--sides {
-        border-left-style: solid !important;
-        border-left-width: 3px !important;
-    }
+[class*="#{$background-namespace}border"].t-secondary {
+    border-color: var(--t-secondary-color);
+}
 
-    .#{$bands-namespace}bands--right,
-    .#{$bands-namespace}bands--sides {
-        border-right-style: solid !important;
-        border-right-width: 3px !important;
-    }
-
-    .#{$bands-namespace}bands--top,
-    .#{$bands-namespace}bands--above {
-        border-top-style: solid !important;
-        border-top-width: 3px !important;
-    }
-
-    .#{$bands-namespace}bands--bottom,
-    .#{$bands-namespace}bands--below {
-        border-bottom-style: solid !important;
-        border-bottom-width: 3px !important;
-    }
-
-    .#{$bands-namespace}bands {
-        border-style: solid !important;
-        border-width: 3px !important;
-    }
-
-    @each $theme-name, $size in $sizes {
-        .#{$bands-namespace}bands--#{$theme-name} {
-            border-width: $size !important;
-        }
-    }
+[class*="#{$background-namespace}border"].t-neutral {
+    border-color: var(--t-neutral-color);
+}
 
 
 
-    @include bands-theme(
-        "",
-        (
-            band-color : $bands--band-color
-        ));
+.#{$background-namespace}border--thick {
+    border-width: $border-size--thick;
+    border-style: solid;
+}
+
+.#{$background-namespace}border--bottom {
+    border-bottom-width: $border-size;
+    border-bottom-style: solid;
+}
+
+.#{$background-namespace}border--bottom--thick {
+    border-bottom-width: $border-size--thick;
+    border-bottom-style: solid;
+}
+
+.#{$background-namespace}border--top {
+    border-top-width: $border-size;
+    border-top-style: solid;
+}
+
+.#{$background-namespace}border--top--thick {
+    border-top-width: $border-size--thick;
+    border-top-style: solid;
+}
+
+.#{$background-namespace}border--left {
+    border-left-width: $border-size;
+    border-left-style: solid;
+}
+
+.#{$background-namespace}border--left--thick {
+    border-left-width: $border-size--thick;
+    border-left-style: solid;
+}
+
+.#{$background-namespace}border--right {
+    border-right-width: $border-size;
+    border-right-style: solid;
+}
+
+.#{$background-namespace}border--right--thick {
+    border-right-width: $border-size--thick;
+    border-right-style: solid;
 }

@@ -1,6 +1,6 @@
 AddType application/x-httpd-php .html .htm
 
-php_value include_path "/var/www/html/lab/public/styleguide/"
+php_value include_path "/var/www/html/lab/public/styleguide-next/"
 php_value auto_prepend_file "auto_prepend.php"
 php_value auto_append_file  "auto_append.php"
 

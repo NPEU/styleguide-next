@@ -4,9 +4,9 @@ title: NPEU Mockups
 ---
 
 * [Assemblies](assemblies)
-* [Component](component)
+* [Component](component) - not finished
 * [Decoration](decoration)
-* [Layout](layout)
+* [Layout](layout)- not finished
 * [Navigation](navigation)
-* [User](user)
-* [Utility](utility)
+* [User](user) - not started
+* [Utility](utility) - not finished
