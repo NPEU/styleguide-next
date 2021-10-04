@@ -3105,10 +3105,10 @@ a[href][rel~="external"].c-badge:focus::after {
     ===
 */
 /*
-    The FallBAcl for CTA's usually wraps the link in <b> tags to attempt to convey a modicum of
+    The FallBack for CTA's usually wraps the link in <b> tags to attempt to convey a modicum of
     visual importance. Reset the inherited weight and style.
 */
-a[href].c-cta {
+.c-cta.c-cta {
   display: inline-block;
   /* AK. IE9 needs this. Hmmm, for what exactly?*/
   min-height: 3rem;
@@ -3151,25 +3151,26 @@ a[href].c-cta {
   /* [1] */
 }
 
-a[href].c-cta:hover, a[href].c-cta:active {
+.c-cta.c-cta:hover, .c-cta.c-cta:active {
   background-color: white;
 }
 
-a[href].c-cta:focus {
+.c-cta.c-cta:focus {
   outline: 0;
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.2rem black;
 }
 
-a[href].c-cta:hover, a[href].c-cta:active {
+.c-cta.c-cta:hover, .c-cta.c-cta:active {
   background-color: #ebe6f0;
   text-decoration: none;
 }
 
-a[href].c-cta svg {
+.c-cta.c-cta svg {
   vertical-align: text-top;
+  height: 1.25em;
 }
 
-a[href].c-cta * {
+.c-cta.c-cta * {
   font-weight: inherit;
   font-style: inherit;
 }
@@ -3206,7 +3207,10 @@ a[href].c-cta--has-icon .icon {
 .c-card.c-card {
   display: flex;
   flex-direction: column;
+  position: relative;
   height: 100%;
+  border-radius: 1.2rem;
+  overflow: hidden;
 }
 
 .c-card > div {
@@ -3253,24 +3257,98 @@ a[href].c-cta--has-icon .icon {
   position: relative;
   order: -1;
   margin-top: calc(-2.4rem + 0.1rem);
-  margin-right: 0;
   margin-bottom: calc(2.4rem - 0.1rem);
+  margin-right: 0;
   margin-left: 0;
+  clip-path: ellipse(170% 75% at 10% 25%);
 }
 
 .c-card .c-card__title {
-  position: relative;
   font-size: 2.2rem;
   line-height: 3.6rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.c-card .c-card__title a {
+  text-decoration: none !important;
+}
+
+.c-card .c-card__title a::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.c-card .c-card__title a span {
+  position: relative;
+  z-index: 2;
 }
 
 .c-card .c-card__header-extra {
-  margin-top: 0;
+  margin-top: 2.4rem;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .c-card .c-card__body {
   margin-top: 2.4rem;
+  margin-bottom: 0;
   flex-grow: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.c-card .c-card__footer {
+  margin-top: 2.4rem;
+  margin-bottom: 0;
+  z-index: 2;
+}
+
+.c-card .c-card__footer > div {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.c-card .c-card__footer > footer {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.c-card .c-card__footer > div + footer {
+  margin-top: 2.4rem;
+}
+
+.c-card .c-card__footer-image {
+  margin-top: 2.4rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.c-card .c-card__footer-image--padded {
+  padding: 2.4rem;
+}
+
+.c-card .c-cta svg {
+  display: inline;
+}
+
+.c-card--has-js {
+  cursor: pointer;
+}
+
+.c-card--has-js:hover, .c-card--has-js:active, .c-card--has-js:focus {
+  box-shadow: 0 0 0 0.6rem #fff, 0 0 0 1.2rem rgba(0, 0, 0, 0.2);
+}
+
+.c-card--is-mousedown .c-card__title a::after {
+  display: none;
 }
 
 .c-card--unpublished {
@@ -3285,7 +3363,8 @@ a[href].c-cta--has-icon .icon {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 3px;
+  padding: 0.6rem 1.2rem;
+  border-bottom-left-radius: 1.2rem;
   font-size: 0.75em;
   color: #fff;
   background-color: #000;
@@ -3398,18 +3477,18 @@ a[href].c-cta--has-icon .icon {
     ===========
 */
 [class*="d-background"] {
-  background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l)) !important;
-  color: var(--t-primary-fore-text-color) !important;
+  background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l));
+  color: var(--t-primary-fore-text-color);
 }
 
 [class*="d-background"].t-secondary {
-  background-color: hsl(var(--t-secondary-color-h), var(--t-secondary-color-s), var(--t-secondary-color-l)) !important;
-  color: var(--t-secondary-fore-text-color) !important;
+  background-color: hsl(var(--t-secondary-color-h), var(--t-secondary-color-s), var(--t-secondary-color-l));
+  color: var(--t-secondary-fore-text-color);
 }
 
 [class*="d-background"].t-neutral {
-  background-color: hsl(var(--t-neutral-color-h), var(--t-neutral-color-s), var(--t-neutral-color-l)) !important;
-  color: var(--t-neutral-fore-text-color) !important;
+  background-color: hsl(var(--t-neutral-color-h), var(--t-neutral-color-s), var(--t-neutral-color-l));
+  color: var(--t-neutral-fore-text-color);
 }
 
 .d-background--light {
@@ -3496,12 +3575,12 @@ a[href].c-cta--has-icon .icon {
 /* Overqualified selectors to raise specificity above the theme classes defined below. */
 [class*=d-background].d-background--dark.d-background--dark,
 [class*=d-background].d-background--very-dark.d-background--very-dark {
-  color: var(--t-text-color-inverse) !important;
+  color: var(--t-text-color-inverse);
 }
 
 [class*=d-background].d-background--light.d-background--light,
 [class*=d-background].d-background--very-light.d-background--very-light {
-  color: var(--t-text-color) !important;
+  color: var(--t-text-color);
 }
 
 /*

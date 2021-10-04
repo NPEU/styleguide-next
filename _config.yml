@@ -46,6 +46,7 @@ defaults:
       has_pull_outs: true
       has_map: false
       highcharts: false
+      translate: false
 
 # Build settings
 markdown: kramdown

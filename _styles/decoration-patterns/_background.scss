@@ -7,18 +7,18 @@ $background-namespace: d- !default;
 
 
 [class*="#{$background-namespace}background"] {
-    background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l)) !important;
-    color: var(--t-primary-fore-text-color) !important;
+    background-color: hsl(var(--t-primary-color-h), var(--t-primary-color-s), var(--t-primary-color-l));
+    color: var(--t-primary-fore-text-color);
 }
 
 [class*="#{$background-namespace}background"].t-secondary {
-    background-color: hsl(var(--t-secondary-color-h), var(--t-secondary-color-s), var(--t-secondary-color-l)) !important;
-    color: var(--t-secondary-fore-text-color) !important;
+    background-color: hsl(var(--t-secondary-color-h), var(--t-secondary-color-s), var(--t-secondary-color-l));
+    color: var(--t-secondary-fore-text-color);
 }
 
 [class*="#{$background-namespace}background"].t-neutral {
-    background-color: hsl(var(--t-neutral-color-h), var(--t-neutral-color-s), var(--t-neutral-color-l)) !important;
-    color: var(--t-neutral-fore-text-color) !important;
+    background-color: hsl(var(--t-neutral-color-h), var(--t-neutral-color-s), var(--t-neutral-color-l));
+    color: var(--t-neutral-fore-text-color);
 }
 
 
@@ -107,10 +107,10 @@ $background-namespace: d- !default;
 /* Overqualified selectors to raise specificity above the theme classes defined below. */
 [class*=#{$background-namespace}background].#{$background-namespace}background--dark.#{$background-namespace}background--dark,
 [class*=#{$background-namespace}background].#{$background-namespace}background--very-dark.#{$background-namespace}background--very-dark {
-    color: var(--t-text-color-inverse) !important;
+    color: var(--t-text-color-inverse);
 }
 
 [class*=#{$background-namespace}background].#{$background-namespace}background--light.#{$background-namespace}background--light,
 [class*=#{$background-namespace}background].#{$background-namespace}background--very-light.#{$background-namespace}background--very-light {
-    color: var(--t-text-color) !important;
+    color: var(--t-text-color);
 }

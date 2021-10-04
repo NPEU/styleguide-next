@@ -15,6 +15,10 @@ $neutral-color        : false !default; // Must be declared above StartCSS inclu
 $neutral-text-color   : s__set_color_for_background($neutral-color, $s__base-text-color-inverse, $s__base-text-color);
 
 
+//@debug #{$primary-text-color};
+//@debug #{$secondary-text-color};
+//@debug #{$neutral-text-color};
+
 //@debug #{$primary-color};
 //@debug #{$secondary-color};
 //@debug #{$neutral-color};
