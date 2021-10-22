@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! NPEU Theme (c) NPEU */
 /* --| START THEME |----------------------------------------------------------------------------- */
 /* --| SETTINGS |-------------------------------------------------------------------------------- */
@@ -422,7 +423,7 @@ body {
     2. Remove the tapping delay from clickable elements .
 */
 a[href] {
-  color: inherit;
+  color: currentColor;
   text-decoration: underline;
   text-decoration-line: underline;
   text-decoration-style: solid;
@@ -486,14 +487,14 @@ a svg:not(:only-child) {
 
 a[href][rel~="external"] {
   padding-right: 1em;
-  background-image: linear-gradient(45deg, transparent 65%, inherit 65%);
+  background-image: linear-gradient(45deg, transparent 65%, currentColor 65%);
   background-repeat: no-repeat;
   background-position: right 0.4em bottom 0.4em;
   background-size: 0.6em 0.6em;
 }
 
 a[href][rel~="external"]:hover {
-  background-image: linear-gradient(45deg, transparent 65%, inherit 65%);
+  background-image: linear-gradient(45deg, transparent 65%, currentColor 65%);
 }
 
 /*-------------------------------------------------------------------------------------------------|
@@ -1283,12 +1284,12 @@ img .gm-style {
     Special treatment for images inside links.
 */
 a[href] img {
-  border-bottom: 0.1875em solid inherit;
+  border-bottom: 0.1875em solid currentColor;
   padding-bottom: 0.1875em;
 }
 
 a[href] img:active, a[href] img:hover {
-  border-bottom: 0.375em double inherit;
+  border-bottom: 0.375em double currentColor;
   padding-bottom: 0;
 }
 
@@ -2716,6 +2717,39 @@ main :target {
 }
 
 /*! End Start-CSS */
+blockquote {
+  border-top: 1px dotted var(--t-neutral-color);
+  border-bottom: 1px dotted var(--t-neutral-color);
+  --t-neutral-color-l: var(--t-neutral-color-l--very-light);
+  background-color: hsl(var(--t-neutral-color-h), var(--t-neutral-color-s), var(--t-neutral-color-l));
+  padding: 2.4rem 4.8rem;
+}
+
+blockquote > p:first-child::before, blockquote > p:last-child::after {
+  display: block;
+  font-family: times,serif;
+  font-size: 60px;
+  font-size: 6rem;
+  line-height: 0;
+  opacity: 0.7;
+}
+
+blockquote > p:first-child::before {
+  content: "“";
+  content: open-quote;
+  float: left;
+  margin-left: -3.6rem;
+  margin-top: 2.5rem;
+}
+
+blockquote > p:last-child::after {
+  content: "”";
+  content: close-quote;
+  display: inline-block;
+  position: relative;
+  top: 2.5rem;
+}
+
 /*! Start-CSS Experimental. See SCSS file for documentation. */
 /*-------------------------------------------------------------------------------------------------|
 
@@ -3368,6 +3402,176 @@ a[href].c-cta--has-icon .icon {
   font-size: 0.75em;
   color: #fff;
   background-color: #000;
+}
+
+/*
+
+*/
+.c-contact-list.c-contact-list dt {
+  display: none;
+}
+
+.c-contact-list.c-contact-list dd {
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+
+.c-contact-list svg {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  margin-left: -1.75em;
+  margin-top: 0.1em;
+  position: absolute;
+}
+
+.c-contact-avatar.c-contact-avatar {
+  float: left;
+  margin: 0.5em;
+  width: 35%;
+  min-width: 8em;
+  max-width: 16em;
+  border-radius: 99999px;
+  overflow: hidden;
+}
+
+/*
+    The `height: 100%;` in the `.event` class below allows the event to fill it's container (if inside,
+    say, a list-grid). However, it doesn't work in Safari OSX/iOS.
+    Applying a `event-wrap` class to a list item to make those items flex-containers seems to work
+    OK, but perhaps this would be better abstracted as a `fill-height` class or something?
+*/
+.c-event.c-event {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+  padding: 2.4rem;
+  border: 1px solid currentColor;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  width: 0;
+  min-width: 100%;
+}
+
+.c-event > * {
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+.c-event .c-event__title {
+  border-bottom: 1px solid #999;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.c-event .c-event__speaker {
+  font-weight: bold;
+  font-size: 2.4rem;
+  margin: 0;
+}
+
+.c-event .c-event__speaker-role {
+  font-weight: normal;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #999;
+  padding-bottom: 1.2rem;
+  margin-bottom: 0;
+}
+
+.c-event .c-event__datetime {
+  width: auto;
+  font-weight: bold;
+  font-size: 2.4rem;
+  margin: 2.4rem 0 0 0;
+}
+
+.c-event .c-event__action {
+  width: auto;
+  margin: 2.4rem 0 0 auto;
+}
+
+.c-event .c-event__title {
+  font-size: 2.2rem;
+  line-height: 3.6rem;
+}
+
+/*
+    Note featurettes should only appear in the main body and fill the width, so media queries are
+    ok here - we don't need to worry about other contexts and container-queries.
+*/
+/*
+$featurette-cta--border-width: 1px !default;
+$featurette-cta--border-style: solid !default;
+$featurette-cta--border-radius: 3px !default;
+*/
+/*
+    1. This is a hack for IE11, otherwise the container goes as wide as the children in a row.
+*/
+.c-featurette.c-featurette {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-left: calc(8% - 4.8rem);
+  padding-right: calc(8% - 4.8rem);
+  width: 0;
+  /* [1] */
+  min-width: 100%;
+  /* [1] */
+}
+
+.c-featurette > * {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.c-featurette .c-featurette__image {
+  align-self: center;
+  margin-bottom: 0;
+  position: relative;
+  text-align: center;
+  max-width: 13em;
+  order: -1;
+}
+
+.c-featurette .c-featurette__image img {
+  width: 100%;
+}
+
+.c-featurette .c-featurette__image-link, .c-featurette .c-featurette__image-link:hover {
+  border-bottom: 0;
+}
+
+.c-featurette .c-featurette__image--round {
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.c-featurette.c-featurette--pull-image {
+  margin-top: 7.2rem;
+}
+
+.c-featurette.c-featurette--pull-image .c-featurette__image {
+  margin-top: -4.8rem;
+  margin-bottom: 2.4rem;
+  align-self: flex-start;
+}
+
+.c-featurette .c-featurette__body {
+  padding: 2.4rem calc(8% - 1.2rem);
+}
+
+.c-featurette .c-featurette__body > blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  background-color: transparent !important;
+  color: inherit;
+  border-top: 1px dotted currentColor;
+  border-bottom: 1px dotted currentColor;
 }
 
 /*
@@ -5169,6 +5373,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 25%;
 }
 
+.ff-width-100--10--30 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 30%;
+}
+
 .ff-width-100--10--33-333 {
   max-width: 100%;
   width: calc((10em - 100%) * 1000);
@@ -5199,6 +5409,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--10--70 {
+  max-width: 100%;
+  width: calc((10em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--10--75 {
   max-width: 100%;
   width: calc((10em - 100%) * 1000);
@@ -5221,6 +5437,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((15em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--15--30 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--15--33-333 {
@@ -5253,6 +5475,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--15--70 {
+  max-width: 100%;
+  width: calc((15em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--15--75 {
   max-width: 100%;
   width: calc((15em - 100%) * 1000);
@@ -5275,6 +5503,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((20em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--20--30 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--20--33-333 {
@@ -5307,6 +5541,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--20--70 {
+  max-width: 100%;
+  width: calc((20em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--20--75 {
   max-width: 100%;
   width: calc((20em - 100%) * 1000);
@@ -5329,6 +5569,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((25em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--25--30 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--25--33-333 {
@@ -5361,6 +5607,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--25--70 {
+  max-width: 100%;
+  width: calc((25em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--25--75 {
   max-width: 100%;
   width: calc((25em - 100%) * 1000);
@@ -5383,6 +5635,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((30em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--30--30 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--30--33-333 {
@@ -5415,6 +5673,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--30--70 {
+  max-width: 100%;
+  width: calc((30em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--30--75 {
   max-width: 100%;
   width: calc((30em - 100%) * 1000);
@@ -5437,6 +5701,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--35--30 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--35--33-333 {
@@ -5469,6 +5739,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--35--70 {
+  max-width: 100%;
+  width: calc((35em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--35--75 {
   max-width: 100%;
   width: calc((35em - 100%) * 1000);
@@ -5491,6 +5767,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((40em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--40--30 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--40--33-333 {
@@ -5523,6 +5805,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--40--70 {
+  max-width: 100%;
+  width: calc((40em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--40--75 {
   max-width: 100%;
   width: calc((40em - 100%) * 1000);
@@ -5545,6 +5833,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((45em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--45--30 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--45--33-333 {
@@ -5577,6 +5871,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--45--70 {
+  max-width: 100%;
+  width: calc((45em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--45--75 {
   max-width: 100%;
   width: calc((45em - 100%) * 1000);
@@ -5599,6 +5899,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((50em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--50--30 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--50--33-333 {
@@ -5631,6 +5937,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--50--70 {
+  max-width: 100%;
+  width: calc((50em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--50--75 {
   max-width: 100%;
   width: calc((50em - 100%) * 1000);
@@ -5653,6 +5965,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((55em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--55--30 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--55--33-333 {
@@ -5685,6 +6003,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--55--70 {
+  max-width: 100%;
+  width: calc((55em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--55--75 {
   max-width: 100%;
   width: calc((55em - 100%) * 1000);
@@ -5707,6 +6031,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((60em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--60--30 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--60--33-333 {
@@ -5739,6 +6069,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--60--70 {
+  max-width: 100%;
+  width: calc((60em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--60--75 {
   max-width: 100%;
   width: calc((60em - 100%) * 1000);
@@ -5761,6 +6097,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((65em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--65--30 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--65--33-333 {
@@ -5793,6 +6135,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--65--70 {
+  max-width: 100%;
+  width: calc((65em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--65--75 {
   max-width: 100%;
   width: calc((65em - 100%) * 1000);
@@ -5815,6 +6163,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((70em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--70--30 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--70--33-333 {
@@ -5847,6 +6201,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--70--70 {
+  max-width: 100%;
+  width: calc((70em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--70--75 {
   max-width: 100%;
   width: calc((70em - 100%) * 1000);
@@ -5869,6 +6229,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((75em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--75--30 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--75--33-333 {
@@ -5901,6 +6267,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   min-width: 66.666%;
 }
 
+.ff-width-100--75--70 {
+  max-width: 100%;
+  width: calc((75em - 100%) * 1000);
+  min-width: 70%;
+}
+
 .ff-width-100--75--75 {
   max-width: 100%;
   width: calc((75em - 100%) * 1000);
@@ -5923,6 +6295,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((80em - 100%) * 1000);
   min-width: 25%;
+}
+
+.ff-width-100--80--30 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 30%;
 }
 
 .ff-width-100--80--33-333 {
@@ -5953,6 +6331,12 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
   max-width: 100%;
   width: calc((80em - 100%) * 1000);
   min-width: 66.666%;
+}
+
+.ff-width-100--80--70 {
+  max-width: 100%;
+  width: calc((80em - 100%) * 1000);
+  min-width: 70%;
 }
 
 .ff-width-100--80--75 {
@@ -6184,6 +6568,9 @@ _:-o-prefocus, body:last-child .dropdown .dropdown__control {
     object-fit: cover;
     height: 100%;
     width: 100%;
+  }
+  .u-image-cover--contain .u-image-cover__image {
+    object-fit: contain;
   }
   .u-image-cover {
     min-height: auto;

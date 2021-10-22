@@ -76,7 +76,8 @@ $s__figure-scroll: true;
 
 
 
-$s__anchor-text-color: inherit;
+//$s__anchor-text-color: inherit;
+$s__anchor-text-color: currentColor;
 $s__anchor-text-color--alt: $s__anchor-text-color;
 
 
@@ -120,6 +121,9 @@ $fs__include_class_poem:     false;
 //@import '../bower_components/Fall-Back-Start-CSS/scss/_start_mixins.scss';
 @import '../bower_components/Fall-Back-Start-CSS/scss/_start.scss';
 
+@import "_start_tweaks.scss";
+
+
 $s__class-namespace: c-;
 
 //$fs__include_class_cta_button:    false;
@@ -158,7 +162,13 @@ $s__experimental_checkradios: true;
 
 @import "component-patterns/_card.scss";
 
-@import "component-patterns/forms.scss";
+@import "component-patterns/_contact-list.scss";
+
+@import "component-patterns/_event.scss";
+
+@import "component-patterns/_featurette.scss";
+
+@import "component-patterns/_forms.scss";
 
 @import "component-patterns/_page-wrap.scss";
 
@@ -255,6 +265,7 @@ $s__over-panel__overlay--background-color: #000;
 /* ---------------------------------------------------------------------------------------------- */
 
 
+
 /* --| Special Patterns |------------------------------------------------------------------------ */
 // Special patterns are intended to be utility patterns that work in isolation from anything else,
 // and/or do not share the u- prefix naming convention.
@@ -280,11 +291,13 @@ $ff-breakpoints: (
 $ff-min-widths: (
     20%,
     25%,
+    30%,
     33.333%,
     40%,
     50%,
     60%,
     66.666%,
+    70%,
     75%,
     80%
 );

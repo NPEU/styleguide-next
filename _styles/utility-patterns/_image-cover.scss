@@ -101,6 +101,13 @@ $image-cover-min-heights: (
             width: 100%;
         }
     }
+    
+    .#{$image-cover-namespace}image-cover--contain {
+
+        .#{$image-cover-namespace}image-cover__image {
+            object-fit: contain;
+        }
+    }
 
     .#{$image-cover-namespace}image-cover {
         min-height: auto;

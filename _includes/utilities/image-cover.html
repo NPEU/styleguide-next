@@ -16,6 +16,10 @@ They're there to help make the images more manageable in this context.</p>
 <p>Also note it's important to include a sensible width attribute, and a height attribute that corresponds to the images aspect ratio.
 This helps keep the images manageable in a FallBack scenario, and helps browsers reserve space for images to avoid layout shift.</p>
 
+<p>Minimum height values are:</p>
+
+<p>10%, 20%, 30%, 40%, 50%, 56.25%, 60%, 70%, 75%, 80%, 90%, 100%</p>
+
 <h3>Classic 16:9 min height (56.25%)</h3>
 
 <div class="u-space--below" style="max-width: 50em; margin-left: auto; margin-right: auto;">
@@ -61,6 +65,35 @@ This helps keep the images manageable in a FallBack scenario, and helps browsers
 
     <div class="l-box">
         <div class="u-image-cover  js-image-cover  u-image-cover--min-100">
+            <div class="u-image-cover__inner">
+                <img src="/assets/images/patterns/placeholder-1--small.jpg" sizes="100vw" srcset="/assets/images/patterns/placeholder-1--large.jpg 1600w, /assets/images/patterns/placeholder-1--medium.jpg 900w, /assets/images/patterns/placeholder-1--small.jpg 300w" alt="" class="u-image-cover__image" width="200" height="133">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<h3>Contain (not cover) image wider than container</h3>
+
+<div class="u-space--below" style="max-width: 50em; margin-left: auto; margin-right: auto;">
+
+    <div class="l-box">
+        <div class="u-image-cover  u-image-cover--contain  js-image-cover  u-image-cover--min-100  d-border">
+            <div class="u-image-cover__inner">
+                <img src="/assets/images/patterns/placeholder-1--small.jpg" sizes="100vw" srcset="/assets/images/patterns/placeholder-1--large.jpg 1600w, /assets/images/patterns/placeholder-1--medium.jpg 900w, /assets/images/patterns/placeholder-1--small.jpg 300w" alt="" class="u-image-cover__image" width="200" height="133">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<h3>Contain (not cover) image taller than container</h3>
+
+<div class="u-space--below" style="max-width: 50em; margin-left: auto; margin-right: auto;">
+
+    <div class="l-box">
+        <div class="u-image-cover  u-image-cover--contain  js-image-cover  u-image-cover--min-20  d-border">
             <div class="u-image-cover__inner">
                 <img src="/assets/images/patterns/placeholder-1--small.jpg" sizes="100vw" srcset="/assets/images/patterns/placeholder-1--large.jpg 1600w, /assets/images/patterns/placeholder-1--medium.jpg 900w, /assets/images/patterns/placeholder-1--small.jpg 300w" alt="" class="u-image-cover__image" width="200" height="133">
             </div>
